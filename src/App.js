@@ -1,9 +1,10 @@
 import "./App.css";
+import HeaderProducts from "./Headers/HeaderProducts";
 
 function App() {
   return (
     <div className="App">
-      <p>New App</p>
+      <HeaderProducts />
     </div>
   );
 }
