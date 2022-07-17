@@ -1,0 +1,17 @@
+.Headers {
+}
+
+.HeaderProducts {
+  height: 190px;
+  display: flex;
+  background: linear-gradient(
+    99.31deg,
+    #126244 0%,
+    #b1dfa9 70.35%,
+    #e3f7d8 100%
+  );
+}
+
+.Page {
+  width: 75%;
+}
