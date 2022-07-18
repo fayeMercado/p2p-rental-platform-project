@@ -13,8 +13,8 @@ import Badge from "react-bootstrap/Badge";
 import logoWhite from "../logoWhite.svg";
 import { IconAccount, IconCart } from "../Icons.js";
 
-const HeaderProducts = () => {
-  return (
+const HeaderLanding = () => (
+  <div className={styles.Headers} data-testid="Headers">
     <Container fluid className={styles.HeaderProducts} data-testid="Headers">
       <Container
         className={styles.Page + " d-flex flex-column justify-content-between"}
@@ -41,7 +41,7 @@ const HeaderProducts = () => {
                 <option value="3">Three</option>
               </Form.Select>
             </Col>
-            <Col>
+            <Col xs={7}>
               <InputGroup>
                 <Form.Control
                   placeholder="Search items"
@@ -51,15 +51,24 @@ const HeaderProducts = () => {
                 {/* <Icon /> */}
               </InputGroup>
             </Col>
+            {/* <Col className="d-flex align-items-center justify-content-center">
+              or
+            </Col> */}
+            <Col xs={2} className="d-flex align-items-center pl-0">
+              <span style={{ paddingRight: "12px" }}>or </span>
+              <Button variant="warning" className="w-100">
+                Explore
+              </Button>
+            </Col>
           </Row>
         </Container>
       </Container>
     </Container>
-  );
-};
+  </div>
+);
 
-HeaderProducts.propTypes = {};
+HeaderLanding.propTypes = {};
 
-HeaderProducts.defaultProps = {};
+HeaderLanding.defaultProps = {};
 
-export default HeaderProducts;
+export default HeaderLanding;
