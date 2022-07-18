@@ -14,3 +14,12 @@ body {
 .fontMain {
   font-family: "Mulish", sans-serif;
 }
+
+/* use for checking */
+.borders {
+  border: 1px solid red;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
