@@ -11,7 +11,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Badge from "react-bootstrap/Badge";
 
 import logoWhite from "../logoWhite.svg";
-import { IconAccount, IconCart } from "../Icons.js";
+import { IconAccount, IconCart, IconSearch } from "../Icons.js";
 
 const HeaderProducts = () => {
   return (
@@ -42,14 +42,18 @@ const HeaderProducts = () => {
               </Form.Select>
             </Col>
             <Col>
-              <InputGroup>
-                <Form.Control
-                  placeholder="Search items"
-                  aria-label="Search items"
-                  aria-describedby="basic-addon2"
-                />
-                {/* <Icon /> */}
-              </InputGroup>
+              <Container className="p-0">
+                <InputGroup>
+                  <Form.Control
+                    placeholder="Search items"
+                    aria-label="Search items"
+                    aria-describedby="basic-addon2"
+                  />
+                  <Button variant="outline-secondary" id="button-addon2">
+                    <IconSearch />
+                  </Button>
+                </InputGroup>
+              </Container>
             </Col>
           </Row>
         </Container>
