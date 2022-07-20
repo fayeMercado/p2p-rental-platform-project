@@ -11,7 +11,8 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Form from "react-bootstrap/Form";
 
 import HeaderProducts from "../Headers/HeaderProducts";
-import { ProductCard } from "./ProductCard";
+import { ProductList } from "./ProductList";
+import ItemPage from "../ItemPage/ItemPage";
 
 const ProductPage = () => (
   <Container fluid className={styles.ProductPage} data-testid="ProductPage">
@@ -56,20 +57,8 @@ const ProductPage = () => (
           </Container>
         </Col>
         <Col>
-          <Container
-            fluid
-            className="d-flex mb-3 p-0 align-items-end justify-content-between"
-          >
-            <h3 className="fontMain fw-bold m-0">COMPUTER & ACCESSORIES</h3>
-            <span>0 products found.</span>
-          </Container>
-          <Row className="g-3">
-            {ProductCard()}
-            {ProductCard()}
-            {ProductCard()}
-            {ProductCard()}
-            {ProductCard()}
-          </Row>
+          {/* {ProductList()} */}
+          <ItemPage />
         </Col>
       </Row>
     </Container>

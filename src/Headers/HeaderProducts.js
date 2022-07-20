@@ -10,6 +10,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Badge from "react-bootstrap/Badge";
 
+
 import logoWhite from "../Images/logoWhite.svg";
 import { IconAccount, IconCart } from "../Icons.js";
 
@@ -42,6 +43,7 @@ const HeaderProducts = () => {
               </Form.Select>
             </Col>
             <Col>
+
               <InputGroup>
                 <Form.Control
                   placeholder="Search items"
@@ -51,6 +53,7 @@ const HeaderProducts = () => {
                 />
                 {/* <Icon /> */}
               </InputGroup>
+
             </Col>
           </Row>
         </Container>
