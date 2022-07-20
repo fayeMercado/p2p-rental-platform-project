@@ -10,7 +10,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Badge from "react-bootstrap/Badge";
 
-import logoWhite from "../logoWhite.svg";
+import logoWhite from "../Images/logoWhite.svg";
 import { IconAccount, IconCart } from "../Icons.js";
 
 const HeaderProducts = () => {
@@ -34,7 +34,7 @@ const HeaderProducts = () => {
         <Container>
           <Row>
             <Col xs={3}>
-              <Form.Select aria-label="Default select example">
+              <Form.Select aria-label="Default select example" className={styles.round}>
                 <option>Select location (optional)</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -47,6 +47,7 @@ const HeaderProducts = () => {
                   placeholder="Search items"
                   aria-label="Search items"
                   aria-describedby="basic-addon2"
+                  className={styles.round}
                 />
                 {/* <Icon /> */}
               </InputGroup>
