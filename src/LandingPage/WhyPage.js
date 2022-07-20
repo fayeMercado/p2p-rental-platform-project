@@ -13,17 +13,17 @@ import choose6 from "../Images/c6.png";
 const WhyPage = () => (
     <Container>
         <Container>
-            <div>
-                Why use <span className="span--handeeman">Handeeman</span>?
+            <div style={{ textAlign: "center", color: "#184D47" }} className="fontMain">
+                <span className="span--why">Why use</span> <span className="span--handeeman">Handeeman</span><span className="span--question">?</span>
             </div>
         </Container>
-        <Container className="nice" >
-            <Row>
+        <Container className="landing--border w-75" >
+            <Row className="landing--margin">
                 <Col className="circle">
                     <div>
                         <img src={choose1} />
                         <div>
-                            <p className="card--title">
+                            <p className="card--title fontMain">
                                 Save money
                             </p>
                             <p className="card--body">
@@ -36,7 +36,7 @@ const WhyPage = () => (
                     <div>
                         <img src={choose2} />
                         <div>
-                            <p className="card--title">
+                            <p className="card--title fontMain">
                                 Make Money
                             </p>
                             <p className="card--body">
@@ -49,7 +49,7 @@ const WhyPage = () => (
                     <div>
                         <img src={choose3} />
                         <div>
-                            <p className="card--title">
+                            <p className="card--title fontMain">
                                 Go green
                             </p>
                             <p className="card--body">
@@ -59,12 +59,12 @@ const WhyPage = () => (
                     </div>
                 </Col>
             </Row>
-            <Row>
+            <Row className="landing--margin">
                 <Col className="circle">
                     <div>
                         <img src={choose4} />
                         <div>
-                            <p className="card--title">
+                            <p className="card--title fontMain">
                                 Convenient
                             </p>
                             <p className="card--body">
@@ -77,7 +77,7 @@ const WhyPage = () => (
                     <div>
                         <img src={choose5} />
                         <div>
-                            <p className="card--title">
+                            <p className="card--title fontMain">
                                 Secure Transaction
                             </p>
                             <p className="card--body">
@@ -90,7 +90,7 @@ const WhyPage = () => (
                     <div>
                         <img src={choose6} />
                         <div>
-                            <p className="card--title">
+                            <p className="card--title fontMain">
                                 Pick-up or Delivery
                             </p>
                             <p className="card--body">

@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap"
 import "./LandingPage.css"
+import "./ProgressBar.css"
 
 import owner1 from "../Images/owner1.png"
 import owner2 from "../Images/owner2.png"
@@ -15,67 +16,95 @@ import rent4 from "../Images/rent4.png"
 const HowPage = () => (
     <Container>
         <Container>
-            <div>How does <span className="span--handeeman">Handeeman</span> work</div>
+            <div style={{ textAlign: "center", color: "#184D47" }} className="span--how fontMain">How does <span className="span--handeeman">Handeeman</span> work ?</div>
         </Container>
-        <Container className="nice" >
-            <div>if you are the <span className="span--owner">owner</span> and wants to <span className="span--owner">rent out your items</span></div>
-            <Row>
-                <Col>
+        <Container className="landing--border w-75 mt-3" >
+            <div style={{ textAlign: "center", color: "#184D47" }} className="span--text">if you are the <span className="span--owner">owner</span> and wants to <span className="span--owner">rent out your items</span></div>
+            <div class="stepper-wrapper mt-3">
+                <div class="stepper-item completed">
+                    <div class="step-counter">1</div>
+                </div>
+                <div class="stepper-item completed">
+                    <div class="step-counter">2</div>
+                </div>
+                <div class="stepper-item completed">
+                    <div class="step-counter">3</div>
+                </div>
+                <div class="stepper-item completed">
+                    <div class="step-counter">4</div>
+                </div>
+            </div>
+            <Row className="landing--margin">
+                <Col className="col--align">
                     <div>
                         <img src={owner1} />
-                        <p>Set up your <span>Handeeman</span> account</p>
+                        <p className="paragraph--text">Set up your <span className="span--textmute">Handeeman</span> account</p>
                     </div>
                 </Col>
-                <Col>
+                <Col className="col--align">
                     <div>
                         <img src={owner2} />
-                        <p>Upload your item's photo and add details</p>
+                        <p className="paragraph--text">Upload your item's photo and add details</p>
                     </div>
                 </Col>
-                <Col>
+                <Col className="col--align">
                     <div>
                         <img src={owner3} />
-                        <p>Set your rental rates (daily, weekly and/or monthly)</p>
+                        <p className="paragraph--text">Set your rental rates (daily, weekly and/or monthly)</p>
                     </div>
                 </Col>
-                <Col>
+                <Col className="col--align">
                     <div>
                         <img src={owner4} />
-                        <p>Earn money on renting out tru <span>Handeeman</span></p>
+                        <p className="paragraph--text">Earn money on renting out tru <span className="span--textmute">Handeeman</span></p>
                     </div>
                 </Col>
             </Row>
         </Container>
-        <Container className="nice" >
-            <div>if you are the <span className="span--renter">renter</span> and wants to <span className="span--renter">rent</span> items</div>
-            <Row>
-                <Col>
+        <Container className="landing--border w-75 mt-4">
+            <div style={{ textAlign: "center", color: "#184D47" }} className="span--text">if you are the <span className="span--renter">renter</span> and wants to <span className="span--renter">rent</span> items</div>
+            <div class="stepper-wrapper mt-3">
+                <div class="stepper-item completed">
+                    <div class="step-counter">1</div>
+                </div>
+                <div class="stepper-item completed">
+                    <div class="step-counter">2</div>
+                </div>
+                <div class="stepper-item completed">
+                    <div class="step-counter">3</div>
+                </div>
+                <div class="stepper-item completed">
+                    <div class="step-counter">4</div>
+                </div>
+            </div>
+            <Row className="landing--margin">
+                <Col className="col--align">
                     <div>
                         <img src={rent1} />
-                        <p>Set up your <span>Handeeman</span> account</p>
+                        <p className="paragraph--text">Set up your <span className="span--textmute">Handeeman</span> account</p>
                     </div>
                 </Col>
-                <Col>
+                <Col className="col--align">
                     <div>
                         <img src={rent2} />
-                        <p>Browse for available items to rent</p>
+                        <p className="paragraph--text">Browse for available items to rent</p>
                     </div>
                 </Col>
-                <Col>
+                <Col className="col--align">
                     <div>
                         <img src={rent3} />
-                        <p>Request rentals from verified owners</p>
+                        <p className="paragraph--text">Request rentals from verified owners</p>
                     </div>
                 </Col>
-                <Col>
+                <Col className="col--align">
                     <div>
                         <img src={rent4} />
-                        <p>Save money by renting on <span>Handeeman</span></p>
+                        <p className="paragraph--text">Save money by renting on <span className="span--textmute">Handeeman</span></p>
                     </div>
                 </Col>
             </Row>
         </Container>
-    </Container>
+    </Container >
 );
 
 
