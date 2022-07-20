@@ -1,0 +1,13 @@
+.AccountPage {
+  padding: 0 !important;
+}
+
+.Cart {
+  font-size: 0.875rem;
+}
+
+.CartItem {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 0.75rem 0 0.75rem 0.5rem;
+}

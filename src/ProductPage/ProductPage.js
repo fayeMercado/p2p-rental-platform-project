@@ -21,6 +21,7 @@ const ProductPage = () => (
       <Row className="align-items-center">
         <Breadcrumb className="pt-3">
           <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+          <Breadcrumb.Item href="#">Products</Breadcrumb.Item>
           <Breadcrumb.Item active>All Categories</Breadcrumb.Item>
         </Breadcrumb>
       </Row>

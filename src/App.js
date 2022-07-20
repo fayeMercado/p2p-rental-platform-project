@@ -10,13 +10,14 @@ import MainPage from "./LandingPage/MainPage";
 import WhyPage from "./LandingPage/WhyPage";
 import HowPage from "./LandingPage/HowPage";
 import ReviewPage from "./LandingPage/ReviewPage";
-
+import AccountPage from "./AccountPage/AccountPage";
 
 function App() {
   return (
     <div className="App">
       {/* <HeaderLanding /> */}
-      <ProductPage />
+      {/* <ProductPage /> */}
+      <AccountPage />
     </div>
   );
 }
