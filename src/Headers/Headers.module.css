@@ -1,28 +1,30 @@
 .Headers {
   height: 190px;
-  background: linear-gradient(99.31deg,
-      #126244 0%,
-      #b1dfa9 70.35%,
-      #e3f7d8 100%);
+  background: linear-gradient(
+    99.31deg,
+    #126244 0%,
+    #b1dfa9 70.35%,
+    #e3f7d8 100%
+  );
 }
 
 .HeaderTitle {
-  font-family: 'Mulish', san-serif;
+  font-family: "Mulish", san-serif;
   font-weight: 900;
   font-size: 72px;
   line-height: 90px;
-  color: #FFFFFF;
-  -webkit-text-stroke: 0.5px #F4CE46;
+  color: #ffffff;
+  -webkit-text-stroke: 0.5px #f4ce46;
 }
-
 
 .round {
   border-radius: 50px;
 }
 
-
-
-
+.customInput {
+  border-radius: 50px;
+  background-color: #ffffff;
+}
 
 .HeaderProducts {
   padding: 0 !important;
