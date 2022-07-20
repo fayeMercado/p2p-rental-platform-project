@@ -85,16 +85,16 @@ const ItemPage = () => (
             Rates
             <Row className="text-center">
               <Col>
+                <h5>Php0</h5>
                 <i className="text-muted">per day</i>
-                <h5>Php0</h5>
               </Col>
               <Col>
+                <h5>Php0</h5>
                 <i className="text-muted">per week</i>
-                <h5>Php0</h5>
               </Col>
               <Col>
-                <i className="text-muted">per month</i>
                 <h5>Php0</h5>
+                <i className="text-muted">per month</i>
               </Col>
             </Row>
           </Container>
