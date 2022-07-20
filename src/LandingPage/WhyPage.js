@@ -13,12 +13,12 @@ import choose6 from "../Images/c6.png";
 const WhyPage = () => (
     <Container>
         <Container>
-            <div>
-                Why use <span className="span--handeeman">Handeeman</span>?
+            <div style={{ textAlign: "center", color: "#184D47" }} className="fontMain">
+                Why use <span className="span--handeeman">Handeeman</span><span className="span--question">? </span>
             </div>
         </Container>
-        <Container className="nice" >
-            <Row>
+        <Container className="landing--border w-75" >
+            <Row className="landing--margin">
                 <Col className="circle">
                     <div>
                         <img src={choose1} />
@@ -59,7 +59,7 @@ const WhyPage = () => (
                     </div>
                 </Col>
             </Row>
-            <Row>
+            <Row className="landing--margin">
                 <Col className="circle">
                     <div>
                         <img src={choose4} />

@@ -16,7 +16,8 @@ function App() {
   return (
     <div className="App">
       {/* <HeaderLanding /> */}
-      <ProductPage />
+      <HeaderLanding />
+      <WhyPage />
     </div>
   );
 }

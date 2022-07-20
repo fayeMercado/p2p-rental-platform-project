@@ -1,6 +1,35 @@
 /* How Page */
+.span--handeeman {
+    font-weight: 900;
+    font-size: 48px;
+}
 
-.nice {
-    border: 3px solid red;
-    margin-top: 10px;
+.span--question {
+    font-weight: 700;
+    font-size: 65px;
+}
+
+
+.landing--margin {
+    margin-top: 25px;
+}
+
+
+.landing--border {
+    border-radius: 20px;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #B1DFA9, #257457);
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.circle img {
+    border-radius: 50%;
+    border: 1px solid #FFFFFF5C;
+    box-shadow: 0px 3px 8px 1px #00000040;
 }
