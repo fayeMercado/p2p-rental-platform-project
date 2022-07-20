@@ -10,8 +10,9 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Badge from "react-bootstrap/Badge";
 
-import logoWhite from "../logoWhite.svg";
-import { IconAccount, IconCart, IconSearch } from "../Icons.js";
+
+import logoWhite from "../Images/logoWhite.svg";
+import { IconAccount, IconCart } from "../Icons.js";
 
 const HeaderProducts = () => {
   return (
@@ -34,7 +35,7 @@ const HeaderProducts = () => {
         <Container>
           <Row>
             <Col xs={3}>
-              <Form.Select aria-label="Default select example">
+              <Form.Select aria-label="Default select example" className={styles.round}>
                 <option>Select location (optional)</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -42,18 +43,17 @@ const HeaderProducts = () => {
               </Form.Select>
             </Col>
             <Col>
-              <Container className="p-0">
-                <InputGroup>
-                  <Form.Control
-                    placeholder="Search items"
-                    aria-label="Search items"
-                    aria-describedby="basic-addon2"
-                  />
-                  <Button variant="outline-secondary" id="button-addon2">
-                    <IconSearch />
-                  </Button>
-                </InputGroup>
-              </Container>
+
+              <InputGroup>
+                <Form.Control
+                  placeholder="Search items"
+                  aria-label="Search items"
+                  aria-describedby="basic-addon2"
+                  className={styles.round}
+                />
+                {/* <Icon /> */}
+              </InputGroup>
+
             </Col>
           </Row>
         </Container>
