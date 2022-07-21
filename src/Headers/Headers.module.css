@@ -1,26 +1,49 @@
 .Headers {
   height: 190px;
-  background: linear-gradient(99.31deg,
-      #126244 0%,
-      #b1dfa9 70.35%,
-      #e3f7d8 100%);
+  background: linear-gradient(
+    99.31deg,
+    #126244 0%,
+    #b1dfa9 70.35%,
+    #e3f7d8 100%
+  );
+}
+
+.HeaderTitle {
+  font-family: "Mulish", san-serif;
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 90px;
+  color: #ffffff;
+  -webkit-text-stroke: 0.5px #f4ce46;
+}
+
+.round {
+  border-radius: 50px;
+}
+
+.customInput {
+  border-radius: 50px;
+  background-color: #ffffff;
 }
 
 .HeaderProducts {
+  padding: 0 !important;
   height: 190px;
+  background: linear-gradient(100deg, #126244 0%, #b1dfa9 70%, #e3f7d8 100%);
   display: flex;
-  background: linear-gradient(99.31deg,
-      #126244 0%,
-      #b1dfa9 70.35%,
-      #e3f7d8 100%);
+  justify-content: center;
 }
 
 .Page {
+  padding: 25px 0 !important;
   width: 75%;
+  padding: 25px 0;
 }
 
-
-.nice {
-  border: 3px solid red;
-  margin-top: 10px;
+.Welcome {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 20px;
+  color: #f5f5f5;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }

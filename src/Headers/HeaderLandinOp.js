@@ -1,32 +1,40 @@
-import React from "react";
-import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import styles from "./Headers.module.css";
 
-import logoWhite from "../Images/logoWhite.svg";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import Badge from "react-bootstrap/Badge";
 
-const HeaderMain = () => (
+import logoWhite from "../logoWhite.svg";
+import { IconAccount, IconCart } from "../Icons.js";
+
+const HeaderLanding = () => (
   <div className={styles.Headers} data-testid="Headers">
     <Container fluid className={styles.HeaderProducts} data-testid="Headers">
-      <Container className={styles.Page + " d-flex flex-column justify-content-between"}>
+      <Container
+        className={styles.Page + " d-flex flex-column justify-content-between"}
+      >
         <Container>
           <Row>
             <Col>
               <img src={logoWhite} alt="" />
-              <div style={{ color: "#fff" }}>
-                is an online marketplace that facilitates
-                peer-to-peer renting in Philippines
-              </div>
             </Col>
             <Col className="d-flex justify-content-end align-items-center gap-3">
-              <div className="ms-auto"> <Button variant="outline-success" href="#" className={styles.round}>Login</Button> </div>
-              <div><Button variant="success" href="#" className={styles.round}>Signup</Button></div>
+              <span className={styles.Welcome}>Welcome, Username!</span>
+              <IconAccount defaultColor="#184D47" hoverColor="#81B395" />
+              <IconCart defaultColor="#184D47" hoverColor="#81B395" />
             </Col>
           </Row>
         </Container>
         <Container>
           <Row>
             <Col xs={3}>
-              <Form.Select aria-label="Default select example" className={styles.round}>
+              <Form.Select aria-label="Default select example">
                 <option>Select location (optional)</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -39,7 +47,6 @@ const HeaderMain = () => (
                   placeholder="Search items"
                   aria-label="Search items"
                   aria-describedby="basic-addon2"
-                  className={styles.round}
                 />
                 {/* <Icon /> */}
               </InputGroup>
@@ -49,19 +56,19 @@ const HeaderMain = () => (
             </Col> */}
             <Col xs={2} className="d-flex align-items-center pl-0">
               <span style={{ paddingRight: "12px" }}>or </span>
-              <Button variant="warning" className={styles.round} style={{ width: "180px" }} >
-                <span style={{ color: "#184D47", fontWeight: "bold" }}>Explore</span>
+              <Button variant="warning" className="w-100">
+                Explore
               </Button>
             </Col>
           </Row>
         </Container>
       </Container>
     </Container>
-  </div >
+  </div>
 );
 
-HeaderMain.propTypes = {};
+HeaderLanding.propTypes = {};
 
-HeaderMain.defaultProps = {};
+HeaderLanding.defaultProps = {};
 
-export default HeaderMain;
+export default HeaderLanding;
