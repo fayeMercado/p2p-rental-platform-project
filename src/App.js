@@ -16,14 +16,15 @@ import ProductPage from "./ProductPage/ProductPage";
 import AccountPage from "./AccountPage/AccountPage";
 
 function App() {
-  return (
-    <div className="App">
-    <Signup />
-      {/* <HeaderLanding /> */}
-      <ProductPage />
-      {/* <AccountPage /> */}
-    </div>
-  );
+	return (
+		<div className="App">
+			<Signup />
+			{/* <HeaderLanding /> */}
+			{/* <ProductPage /> */}
+			{/* <AccountPage /> */}
+			{/* <Login /> */}
+		</div>
+	);
 }
 
 export default App;
