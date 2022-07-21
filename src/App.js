@@ -1,3 +1,7 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import "./App.css";
 
 import Signup from "./Signup/Signup";
@@ -14,15 +18,25 @@ import ReviewPage from "./LandingPage/ReviewPage";
 
 import ProductPage from "./ProductPage/ProductPage";
 import AccountPage from "./AccountPage/AccountPage";
+import { ProductList } from "./ProductPage/ProductList";
+import ItemPage from "./ItemPage/ItemPage";
+import { MyCart } from "./AccountPage/MyCart";
 
 function App() {
   return (
-    <div className="App">
-    <Signup />
-      {/* <HeaderLanding /> */}
-      <ProductPage />
-      {/* <AccountPage /> */}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="signup" element={<Signup />}></Route>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="products" element={<ProductPage />}>
+          <Route path="product-list" element={<ProductList />} />
+          <Route path="item" element={<ItemPage />} />
+        </Route>
+        <Route path="account" element={<AccountPage />}>
+          <Route path="my-cart" element={<MyCart />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

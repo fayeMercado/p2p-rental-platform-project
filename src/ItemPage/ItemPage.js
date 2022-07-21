@@ -20,9 +20,9 @@ const ItemPage = () => (
         <Container className="p-0">
           <ItemCarousel />
         </Container>
-        <Container className="p-0">
+        <Container className="p-0 mt-3">
           <Row className="px-5">
-            <Col xs={3} className="d-flex align-items-center p-0">
+            <Col xs={2} className="d-flex align-items-center p-0">
               <Container className="p-0">
                 <img
                   src="https://www.sunsetlearning.com/wp-content/uploads/2019/09/User-Icon-Grey-300x300.png"
@@ -45,14 +45,6 @@ const ItemPage = () => (
                   <IconStarEmpty />
                 </Stack>
                 <span>0 reviews</span>
-              </Container>
-              <Container fluid className="d-flex justify-content-center mt-3">
-                <Button
-                  as="input"
-                  variant="warning"
-                  type="button"
-                  value="View Owner's Profile"
-                />
               </Container>
             </Col>
           </Row>
@@ -82,6 +74,9 @@ const ItemPage = () => (
             <div>
               Available Quantity : <span>N/A</span>
             </div>
+            <div>
+              Refundable Deposit: : <span>N/A</span>
+            </div>
           </Container>
           <hr />
           <Container className="mb-3">
@@ -101,75 +96,12 @@ const ItemPage = () => (
               </Col>
             </Row>
           </Container>
-          <Container>
-            Refundable Deposit: <span>N/A</span>
-          </Container>
           <hr />
-          <Form.Group
-            controlId="shippingMethod"
-            key="shipping-method"
-            className="d-flex justify-content-center gap-5"
-          >
-            <Form.Check type="radio" id="self-collect" label="Self collect" />
-
-            <Form.Check
-              disabled
-              type="radio"
-              label="Door-to-door delivery"
-              id="delivery"
-            />
-          </Form.Group>
-          <hr />
-          <Form.Group
-            as={Row}
-            key="shipping-method"
-            style={{ padding: "0 24px" }}
-          >
-            <Form.Label column htmlFor="inputItemQuantity">
-              Quantity
-            </Form.Label>
-            <Col>
-              <Form.Control
-                type="number"
-                id="inputItemQuantity"
-                defaultValue={1}
-                min={1}
-                max={3}
-              />
-            </Col>
-          </Form.Group>
-          <hr />
-          <Form.Group
-            as={Row}
-            key="rent-duration"
-            style={{ padding: "0 24px" }}
-          >
-            <Form.Label column htmlFor="rentDuration">
-              Rent Duration (in days)
-            </Form.Label>
-            <Col>
-              <Form.Control
-                type="number"
-                id="rentDuration"
-                defaultValue={1}
-                min={1}
-              />
-            </Col>
-          </Form.Group>
-          <hr />
-          <Form.Group as={Row} key="start-date" style={{ padding: "0 24px" }}>
-            <Form.Label column htmlFor="startDate">
-              Start Date
-            </Form.Label>
-            <Col>
-              <Form.Control
-                type="date"
-                id="startDate"
-                defaultValue={1}
-                min={1}
-              />
-            </Col>
-          </Form.Group>
+          <div className="d-flex justify-content-center gap-5">
+            Available for:
+            <span>&#10007; Pick-up</span>
+            <span>&#10003; Door-to-door delivery</span>
+          </div>
           <Container className="d-flex justify-content-center mt-5">
             <Button variant="warning" type="submit">
               Add to Cart

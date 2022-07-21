@@ -13,6 +13,7 @@ import Form from "react-bootstrap/Form";
 import HeaderProducts from "../Headers/HeaderProducts";
 import { ProductList } from "./ProductList";
 import ItemPage from "../ItemPage/ItemPage";
+import { Outlet } from "react-router-dom";
 
 const ProductPage = () => (
   <Container fluid className={styles.ProductPage} data-testid="ProductPage">
@@ -21,7 +22,7 @@ const ProductPage = () => (
       <Row className="align-items-center">
         <Breadcrumb className="pt-3">
           <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-          <Breadcrumb.Item href="#">Products</Breadcrumb.Item>
+          <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
           <Breadcrumb.Item active>All Categories</Breadcrumb.Item>
         </Breadcrumb>
       </Row>
@@ -58,8 +59,7 @@ const ProductPage = () => (
           </Container>
         </Col>
         <Col>
-          {ProductList()}
-          {/* <ItemPage /> */}
+          <Outlet />
         </Col>
       </Row>
     </Container>
