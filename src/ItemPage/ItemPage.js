@@ -11,12 +11,15 @@ import Button from "react-bootstrap/Button";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { IconStarEmpty } from "../Icons.js";
+import ItemCarousel from "./ItemCarousel";
 
 const ItemPage = () => (
-  <Container className={styles.ItemPage + " borders"} data-testid="ItemPage">
+  <Container className={styles.ItemPage} data-testid="ItemPage">
     <Row>
-      <Col className="d-flex flex-column justify-content-between">
-        <Container className="p-0">aaa</Container>
+      <Col xs={6} className="d-flex flex-column justify-content-between">
+        <Container className="p-0">
+          <ItemCarousel />
+        </Container>
         <Container className="p-0">
           <Row className="px-5">
             <Col xs={3} className="d-flex align-items-center p-0">
