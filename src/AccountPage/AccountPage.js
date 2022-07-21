@@ -13,6 +13,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 import HeaderProducts from "../Headers/HeaderProducts";
 import { MyCart } from "./MyCart";
+import { AppButtonWhite } from "../CustomComponents/AppButton";
 
 const AccountPage = () => (
   <Container fluid className={styles.AccountPage} data-testid="AccountPage">
@@ -21,7 +22,7 @@ const AccountPage = () => (
       <Row className="align-items-center">
         <Breadcrumb className="pt-3">
           <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-          <Breadcrumb.Item href="#">Account</Breadcrumb.Item>
+          <Breadcrumb.Item href="/account/profile">Account</Breadcrumb.Item>
           <Breadcrumb.Item active>My Cart</Breadcrumb.Item>
         </Breadcrumb>
       </Row>
@@ -37,10 +38,10 @@ const AccountPage = () => (
             <p>Username</p>
           </Container>
           <Stack className="gap-3">
-            <Button variant="outline-secondary">PROFILE</Button>
-            <Button variant="outline-secondary">MY CART</Button>
-            <Button variant="outline-secondary">MY PURCHASES</Button>
-            <Button variant="outline-secondary">WISHLIST</Button>
+            <AppButtonWhite type="button">PROFILE</AppButtonWhite>
+            <AppButtonWhite type="button">MY CART</AppButtonWhite>
+            <AppButtonWhite type="button">MY PURCHASES</AppButtonWhite>
+            <AppButtonWhite type="button">WISHLIST</AppButtonWhite>
           </Stack>
         </Col>
         <Col>
