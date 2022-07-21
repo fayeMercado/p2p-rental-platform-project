@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { AppButtonYellow } from "../CustomComponents/AppButton";
 
 export function CartItem() {
   return (
@@ -102,12 +103,8 @@ export function CartItem() {
         </Form.Group>
       </Col>
       <Container className="d-flex justify-content-center gap-3">
-        <Button variant="warning" type="button">
-          Remove Item
-        </Button>
-        <Button variant="warning" type="button">
-          Move to Wishlist
-        </Button>
+        <AppButtonYellow type="button">Remove Item</AppButtonYellow>
+        <AppButtonYellow type="button">Move to Wishlist</AppButtonYellow>
       </Container>
     </Container>
   );

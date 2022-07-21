@@ -22,6 +22,9 @@ import { ProductList } from "./ProductPage/ProductList";
 import ItemPage from "./ItemPage/ItemPage";
 import { MyCart } from "./AccountPage/MyCart";
 
+import PageMaintenance from "./Wildcards/PageMaintenance";
+import PageNotFound from "./Wildcards/PageNotFound";
+
 function App() {
   return (
     <BrowserRouter>
@@ -33,8 +36,10 @@ function App() {
           <Route path="item" element={<ItemPage />} />
         </Route>
         <Route path="account" element={<AccountPage />}>
+          <Route path="profile" element={<PageMaintenance />} />
           <Route path="my-cart" element={<MyCart />} />
         </Route>
+        <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );

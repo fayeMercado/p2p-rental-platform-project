@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styles from "./ItemPage.module.css";
 
@@ -12,6 +12,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { IconStarEmpty } from "../Icons.js";
 import ItemCarousel from "./ItemCarousel";
+import { AppButtonYellow } from "../CustomComponents/AppButton";
 
 const ItemPage = () => (
   <Container className={styles.ItemPage} data-testid="ItemPage">
@@ -64,35 +65,35 @@ const ItemPage = () => (
             </Stack>
             <span>0 reviews</span>
           </Container>
-          <Container>
-            <div>
+          <ul>
+            <li className={styles.ItemListing}>
               Location: <span>N/A</span>
-            </div>
-            <div>
+            </li>
+            <li className={styles.ItemListing}>
               Item Status: <span>N/A</span>
-            </div>
-            <div>
+            </li>
+            <li className={styles.ItemListing}>
               Available Quantity : <span>N/A</span>
-            </div>
-            <div>
+            </li>
+            <li className={styles.ItemListing}>
               Refundable Deposit: : <span>N/A</span>
-            </div>
-          </Container>
+            </li>
+          </ul>
           <hr />
           <Container className="mb-3">
-            Rates
+            Rates in Php
             <Row className="text-center">
               <Col>
-                <h5>Php0</h5>
-                <i className="text-muted">per day</i>
+                <span className={styles.Rates}>0</span>
+                <i className="text-muted">/ day</i>
               </Col>
               <Col>
-                <h5>Php0</h5>
-                <i className="text-muted">per week</i>
+                <span className={styles.Rates}>0</span>
+                <i className="text-muted">/ week</i>
               </Col>
               <Col>
-                <h5>Php0</h5>
-                <i className="text-muted">per month</i>
+                <span className={styles.Rates}>0</span>
+                <i className="text-muted">/ month</i>
               </Col>
             </Row>
           </Container>
@@ -103,9 +104,7 @@ const ItemPage = () => (
             <span>&#10003; Door-to-door delivery</span>
           </div>
           <Container className="d-flex justify-content-center mt-5">
-            <Button variant="warning" type="submit">
-              Add to Cart
-            </Button>
+            <AppButtonYellow type="button">Add to Cart</AppButtonYellow>
           </Container>
         </Form>
       </Col>

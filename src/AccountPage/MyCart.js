@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { CartItem } from "./CartItem";
 import { Button } from "react-bootstrap";
+import { AppButtonGreen } from "../CustomComponents/AppButton";
 
 export function MyCart() {
   return (
@@ -62,9 +63,7 @@ function OrderSummary() {
         </span>
       </div>
       <div className="mt-3 text-center">
-        <Button variant="success" type="button">
-          Checkout
-        </Button>
+        <AppButtonGreen type="submit">Checkout</AppButtonGreen>
       </div>
     </Container>
   );
