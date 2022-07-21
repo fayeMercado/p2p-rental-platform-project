@@ -58,8 +58,8 @@ const ProductPage = () => (
           </Container>
         </Col>
         <Col>
-          {/* {ProductList()} */}
-          <ItemPage />
+          {ProductList()}
+          {/* <ItemPage /> */}
         </Col>
       </Row>
     </Container>
