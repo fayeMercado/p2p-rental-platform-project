@@ -21,7 +21,6 @@ const ItemCarousel = () => {
     "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
     "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   ];
-  console.log(ImageCollection.map((image) => image));
   return (
     <Container
       className="p-0"
