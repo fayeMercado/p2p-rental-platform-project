@@ -13,13 +13,14 @@ import Tabs from "react-bootstrap/Tabs";
 import { IconStarEmpty } from "../Icons.js";
 import ItemCarousel from "./ItemCarousel";
 import { AppButtonYellow } from "../CustomComponents/AppButton";
+import { getProducts } from "../dataProduct";
 
 const ItemPage = () => (
   <Container className={styles.ItemPage} data-testid="ItemPage">
     <Row>
       <Col xs={6} className="d-flex flex-column justify-content-between">
         <Container className="p-0">
-          <ItemCarousel />
+          <ItemCarousel itemIndex="0" />
         </Container>
         <Container className="p-0 mt-3">
           <Row className="px-5">
@@ -54,7 +55,7 @@ const ItemPage = () => (
 
       <Col>
         <Form>
-          <h4 className="fontMain fw-bold">Item Name</h4>
+          <h4 className="fontMain fw-bold">{getProducts()[0].itemName}</h4>
           <Container fluid className="d-flex justify-content-between mb-3">
             <Stack direction="horizontal" className="d-flex ">
               <IconStarEmpty />
@@ -67,16 +68,22 @@ const ItemPage = () => (
           </Container>
           <ul>
             <li className={styles.ItemListing}>
-              Location: <span>N/A</span>
+              Location: <span>{getProducts()[0].location}</span>
             </li>
             <li className={styles.ItemListing}>
-              Item Status: <span>N/A</span>
+              Item Status:{" "}
+              <span>
+                {getProducts()[0].available ? "Available" : "Not Available"}
+              </span>
             </li>
             <li className={styles.ItemListing}>
-              Available Quantity : <span>N/A</span>
+              Available Quantity : <span>{getProducts()[0].quantity}</span>
             </li>
             <li className={styles.ItemListing}>
-              Refundable Deposit: : <span>N/A</span>
+              Refundable Deposit: :
+              <span>
+                Php <b>{getProducts()[0].deposit}</b>
+              </span>
             </li>
           </ul>
           <hr />
@@ -84,15 +91,21 @@ const ItemPage = () => (
             Rates in Php
             <Row className="text-center">
               <Col>
-                <span className={styles.Rates}>0</span>
+                <span className={styles.Rates}>
+                  {getProducts()[0].rent.day}
+                </span>
                 <i className="text-muted">/ day</i>
               </Col>
               <Col>
-                <span className={styles.Rates}>0</span>
+                <span className={styles.Rates}>
+                  {getProducts()[0].rent.week}
+                </span>
                 <i className="text-muted">/ week</i>
               </Col>
               <Col>
-                <span className={styles.Rates}>0</span>
+                <span className={styles.Rates}>
+                  {getProducts()[0].rent.month}
+                </span>
                 <i className="text-muted">/ month</i>
               </Col>
             </Row>
@@ -100,8 +113,11 @@ const ItemPage = () => (
           <hr />
           <div className="d-flex justify-content-center gap-5">
             Available for:
-            <span>&#10007; Pick-up</span>
-            <span>&#10003; Door-to-door delivery</span>
+            {getProducts()[0].method.map((method, index) => (
+              <span key={index}>{method}</span>
+            ))}
+            {/* <span>&#10007; Pick-up</span>
+            <span>&#10003; Door-to-door delivery</span> */}
           </div>
           <Container className="d-flex justify-content-center mt-5">
             <AppButtonYellow type="button">Add to Cart</AppButtonYellow>
@@ -127,10 +143,16 @@ function ControlledTabsExample() {
   return (
     <Tabs id="more-info" defaultActiveKey="description" className="mb-3" fill>
       <Tab eventKey="description" title="DESCRIPTION">
-        <Container>Lorem Ipsum</Container>
+        <Container>
+          <ul>
+            {getProducts()[0].description.map((list, index) => (
+              <li key={index}>{list}</li>
+            ))}
+          </ul>
+        </Container>
       </Tab>
       <Tab eventKey="instructions" title="PICK-UP & RETURN INSTRUCTIONS">
-        <Container>Lorem Ipsum2</Container>
+        <Container>{getProducts()[0].instructions}</Container>
       </Tab>
       <Tab eventKey="reviews" title="REVIEWS">
         <Container>Lorem Ipsum3</Container>

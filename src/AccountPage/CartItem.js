@@ -20,8 +20,11 @@ export function CartItem() {
       </Col>
       <Col className="p-0 mb-3">
         <Container className="mb-2">
+          <p>
+            Location: <span>Metro Manila</span>
+          </p>
           <span>Rates in Php:</span>
-          <Row className="text-end my-2">
+          <Row className="text-center my-2">
             <Col>
               <span className="fw-bold">0</span>
               <span className="text-muted">/day</span>
@@ -43,7 +46,7 @@ export function CartItem() {
         <Form.Group
           as={Row}
           key="item-quantity"
-          style={{ padding: "0 24px 12px" }}
+          style={{ padding: "0 24px 6px" }}
         >
           <Form.Label column htmlFor="inputItemQuantity">
             Quantity
@@ -61,7 +64,7 @@ export function CartItem() {
         <Form.Group
           as={Row}
           key="rent-duration"
-          style={{ padding: "0 24px 12px" }}
+          style={{ padding: "0 24px 6px" }}
         >
           <Form.Label column htmlFor="rentDuration">
             Rent Duration (in days)
@@ -75,11 +78,7 @@ export function CartItem() {
             />
           </Col>
         </Form.Group>
-        <Form.Group
-          as={Row}
-          key="start-date"
-          style={{ padding: "0 24px 12px" }}
-        >
+        <Form.Group as={Row} key="start-date" style={{ padding: "0 24px 6px" }}>
           <Form.Label column htmlFor="startDate">
             Rent Date
           </Form.Label>
