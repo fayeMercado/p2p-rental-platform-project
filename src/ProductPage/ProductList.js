@@ -6,9 +6,6 @@ import { getProducts } from "../dataProduct";
 
 export function ProductList() {
   let products = getProducts();
-
-  console.log(products.map((product) => product.code));
-  console.log(products);
   return (
     <Container className="p-0">
       <Row className="g-3">
