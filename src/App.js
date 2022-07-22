@@ -44,12 +44,12 @@ function App() {
           <Route path="my-cart" element={<MyCart />} />
         </Route>
         <Route path="*" element={<PageNotFound />}></Route>
+        <Route path="login" element={<Login />}></Route>
+        <Route path="signup" element={<Signup />}></Route>
+        <Route path="terms" element={<Terms />}></Route>
+        <Route path="rentalpolicy" element={<RentalPolicy />}></Route>
+        <Route path="faq" element={<FAQ />}></Route>
       </Routes>
-      {/* <Signup /> */}
-			{/* <HeaderLanding /> */}
-			{/* <Login /> */}
-			{/* <RentalPolicy /> */}
-			{/* <FAQ /> */}
     </BrowserRouter>
   );
 
