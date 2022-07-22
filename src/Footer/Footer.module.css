@@ -12,3 +12,12 @@
 
   color: #184d47;
 }
+
+.Footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Footer a:hover {
+  color: #81b395;
+}

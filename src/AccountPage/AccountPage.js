@@ -14,6 +14,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import HeaderProducts from "../Headers/HeaderProducts";
 import { MyCart } from "./MyCart";
 import { AppButtonWhite } from "../CustomComponents/AppButton";
+import Footer from "../Footer/Footer";
 
 const AccountPage = () => {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ const AccountPage = () => {
           </Col>
         </Row>
       </Container>
+      <Footer></Footer>
     </Container>
   );
 };
