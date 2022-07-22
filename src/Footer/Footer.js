@@ -18,17 +18,17 @@ const Footer = () => {
       <div className={styles.Logo}>Handeeman</div>
       <Container className="d-flex justify-content-between mt-3 mb-5">
         <div className="vr"></div>
-        <Link to="/">HOME</Link>
+        <a href="/">HOME</a>
         <div className="vr"></div>
-        <Link to="/about">ABOUT</Link>
+        <a href="/about">ABOUT</a>
         <div className="vr"></div>
-        <Link to="/faqs">FAQs</Link>
+        <a href="/faqs">FAQs</a>
         <div className="vr"></div>
-        <Link to="/terms-of-use">TERM & CONDITIONS</Link>
+        <a href="/terms-of-use">TERM & CONDITIONS</a>
         <div className="vr"></div>
-        <Link to="/rental-policy">RENTAL POLICY</Link>
+        <a href="/rental-policy">RENTAL POLICY</a>
         <div className="vr"></div>
-        <Link to="/contact-us">CONTACT US</Link>
+        <a href="/contact-us">CONTACT US</a>
         <div className="vr"></div>
       </Container>
       <Container className="d-flex align-items-center justify-content-center gap-3">
