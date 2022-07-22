@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import { CartItem } from "./CartItem";
 import { Button } from "react-bootstrap";
 import { AppButtonGreen } from "../CustomComponents/AppButton";
+import { getCart } from "./dataCart";
 
 export function MyCart() {
   return (
@@ -39,10 +40,7 @@ function OrderSummary() {
           <p>Barangay, City/Municipality, Province, ZIP Code</p>
         </div>
       </div>
-      <div>
-        {ItemSummary()}
-        {ItemSummary()}
-      </div>
+      <div>{ItemSummary()}</div>
       <div className={styles.SummaryList} style={{ fontSize: "0.875rem" }}>
         <span>Refundable Subtotal</span>
         <p className="text-end">Php 0</p>
@@ -128,11 +126,11 @@ function ItemSummary() {
 }
 
 function CartListByOwner() {
+  let myCart = getCart();
   return (
     <Form className={styles.Cart}>
       <Container className="p-0">
-        {CartItem()}
-        {CartItem()}
+        {myCart.map((itemcode) => CartItem(itemcode))}
         <p>By: Owner's Name</p>
         <hr />
       </Container>

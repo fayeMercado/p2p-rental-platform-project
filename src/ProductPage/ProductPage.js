@@ -25,10 +25,8 @@ function ProductPage() {
       <Container>
         <Row className="align-items-center">
           <Breadcrumb className="pt-3">
-            <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-            <Breadcrumb.Item href="/products/product-list">
-              Products
-            </Breadcrumb.Item>
+            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+            <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
             <Breadcrumb.Item active>{breadcrumbActive}</Breadcrumb.Item>
           </Breadcrumb>
         </Row>
