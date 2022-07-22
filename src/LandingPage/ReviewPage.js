@@ -1,27 +1,60 @@
 import React from "react";
-import { Row, Col, Container, Button, Badge } from "react-bootstrap"
+import { Row, Col, Container, Button, Form } from "react-bootstrap"
 import "./LandingPage.css"
 
+import juan from "../Images/juan.png"
+import maria from "../Images/maria.png"
 
 
 const ReviewPage = () => (
-    <Container>
-        <Row>
-            <Col>
-                <div>What is</div>
-                <div>Handeeman</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <Button variant="success" href="#" className="round" >
-                    Button
+    <Container className="mt-5">
+        <div style={{ textAlign: "center", fontWeight: "500", fontSize: "35px" }} className="fontMain mb-4">What our customers have to say.</div>
+        <Container className="w-75">
+            <Row>
+                <Col className="landing--border fontMain">
+                    <Row style={{ marginTop: "35px", marginBottom: "15px" }} >
+                        <Col><img src={juan} /></Col>
+                        <Col>
+                            <p style={{ fontWeight: "700", fontSize: "20px", color: "#184D47" }}>Juan Dela Cruz</p>
+                            <p style={{ fontWeight: "400", fontSize: "14px", fontStyle: "italic" }}>This site works so well and is conveinient to use. I am able to save money by renting instead of buying a brand new one.</p>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col md={1}></Col>
+                <Col className="landing--border fontMain">
+                    <Row style={{ marginTop: "35px", marginBottom: "15px" }}>
+                        <Col><img src={maria} /></Col>
+                        <Col>
+                            <p style={{ fontWeight: "700", fontSize: "20px", color: "#184D47" }}>Maria Clara</p>
+                            <p style={{ fontWeight: "400", fontSize: "14px", fontStyle: "italic" }}>This site works so well and is conveinient to use. I am able to save money by renting instead of buying a brand new one.</p>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </Container>
+        <div style={{ textAlign: "center" }} className="fontMain mt-4">
+            <p style={{ margin: "0px", fontWeight: "500", fontSize: "35px" }} >Question? Comments?</p>
+            <p style={{ fontWeight: "400", fontSize: "16px" }}>We love to hear from you! Fill out the contact form below and we'll get back to you within 48 hours.</p>
+        </div>
+        <Container className="landing--border w-50 mt-3" >
+            <Row className="mt-2">
+                <Col><Form.Control type="name" placeholder="Name*" /></Col>
+                <Col><Form.Control type="email" placeholder="Email*" /></Col>
+            </Row>
+            <Row className="mt-3">
+                <Col></Col>
+                <Col md={8}><div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a message here" id="floatingTextarea" style={{ height: "150px" }}></textarea>
+                    <label for="floatingTextarea">Message*</label>
+                </div></Col>
+                <Col></Col>
+            </Row>
+            <div className="d-flex justify-content-center mt-1 mb-3">
+                <Button variant="warning" style={{ borderRadius: "20px" }}>
+                    <span style={{ color: "#184D47", fontWeight: "bold" }}>Send</span>
                 </Button>
-                <Button variant="outline-success" href="#" className="round" >
-                    Button
-                </Button>
-            </Col>
-        </Row>
+            </div>
+        </Container>
     </Container>
 );
 
