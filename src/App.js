@@ -17,6 +17,7 @@ import AccountPage from "./AccountPage/AccountPage";
 import RentalPolicy from "./RentalPolicy/RentalPolicy";
 import Terms from "./TermsOfUse/Terms";
 import FAQ from "./FAQ/FAQ";
+import Privacy from "./Privacy/Privacy";
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 			{/* <Login /> */}
 			{/* <RentalPolicy /> */}
 			{/* <FAQ /> */}
+			{<Privacy />}
 		</div>
 	);
 }
