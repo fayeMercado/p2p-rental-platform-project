@@ -17,6 +17,10 @@
   color: inherit;
 }
 
+.ProductPage a:hover {
+  color: #81b395;
+}
+
 .customSelect {
   display: block;
   width: 100%;

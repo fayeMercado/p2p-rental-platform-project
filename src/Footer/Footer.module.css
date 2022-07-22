@@ -1,1 +1,14 @@
-.Footer {}
+.Footer {
+  padding: 2rem 0;
+}
+
+.Footer .Logo {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+
+  color: #184d47;
+}
