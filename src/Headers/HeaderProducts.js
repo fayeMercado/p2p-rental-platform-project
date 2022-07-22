@@ -12,10 +12,11 @@ import Badge from "react-bootstrap/Badge";
 
 import logoWhite from "../Images/logoWhite.svg";
 import { IconAccount, IconCart, IconSearch } from "../Icons.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const HeaderProducts = () => {
   const provinces = require("philippines/provinces");
+  const navigate = useNavigate();
   return (
     <Container fluid className={styles.HeaderProducts} data-testid="Headers">
       <Container
@@ -24,7 +25,12 @@ const HeaderProducts = () => {
         <Container>
           <Row>
             <Col>
-              <img src={logoWhite} alt="" />
+              <img
+                src={logoWhite}
+                alt=""
+                onClick={() => navigate("/")}
+                style={{ cursor: "pointer" }}
+              />
             </Col>
             <Col className="d-flex justify-content-end align-items-center gap-3">
               <span className={styles.Welcome}>Welcome, Username!</span>
@@ -35,6 +41,10 @@ const HeaderProducts = () => {
                 <IconCart defaultColor="#184D47" hoverColor="#81B395" />
               </Link>
             </Col>
+            <div style={{ color: "#fff", marginTop: "0.75rem" }}>
+              online marketplace that facilitates peer-to-peer renting in
+              Philippines
+            </div>
           </Row>
         </Container>
         <Container>
@@ -63,17 +73,9 @@ const HeaderProducts = () => {
                     border: "none",
                   }}
                 />
-                <Button
-                  variant="outline-warning"
-                  id="button-addon2"
-                  style={{
-                    border: "none",
-                    borderTopRightRadius: "25px",
-                    borderBottomRightRadius: "25px",
-                  }}
-                >
+                <div className={styles.searchButton}>
                   <IconSearch />
-                </Button>
+                </div>
               </InputGroup>
             </Col>
           </Row>
