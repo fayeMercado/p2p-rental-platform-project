@@ -42,17 +42,18 @@ function App() {
         <Route path="account" element={<AccountPage />}>
           <Route path="profile" element={<PageMaintenance />} />
           <Route path="my-cart" element={<MyCart />} />
+          <Route path="purchases" element={<PageMaintenance />} />
+          <Route path="wishlist" element={<PageMaintenance />} />
         </Route>
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
       {/* <Signup /> */}
-			{/* <HeaderLanding /> */}
-			{/* <Login /> */}
-			{/* <RentalPolicy /> */}
-			{/* <FAQ /> */}
+      {/* <HeaderLanding /> */}
+      {/* <Login /> */}
+      {/* <RentalPolicy /> */}
+      {/* <FAQ /> */}
     </BrowserRouter>
   );
-
 }
 
 export default App;

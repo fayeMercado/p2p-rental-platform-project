@@ -36,7 +36,7 @@ const ItemCarousel = (props) => {
       </Container>
       <Container className="px-3 py-2">
         <div
-          className="d-inline-flex p-2"
+          className={styles.collection + " d-inline-flex p-2"}
           style={{ width: "100%", overflow: "auto", padding: "0 24px" }}
         >
           {ImageCollection.map((image, index) => (

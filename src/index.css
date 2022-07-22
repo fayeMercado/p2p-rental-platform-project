@@ -24,3 +24,7 @@ body {
 .pl-0 {
   padding-left: 0 !important;
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}
