@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./ItemPage.module.css";
 
+import { useParams } from "react-router-dom";
+
 import Container from "react-bootstrap/Container";
-import { getProducts } from "../dataProduct";
+import { getItem } from "../dataProduct";
 
 const ItemCarousel = (props) => {
+  let params = useParams();
+  let item = getItem(parseInt(params.code, 10));
   const [currentImage, setCurrentImage] = useState(0);
-
-  const ImageCollection = getProducts()[props.itemIndex].images;
+  const ImageCollection = item.images;
 
   return (
     <Container

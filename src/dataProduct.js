@@ -11,6 +11,7 @@ export const Categories = [
 
 let products = [
   {
+    code: 1658469412709,
     itemName: 'Stanley 1800W 10" Table Saw',
     category: "tools & equipment",
     location: "Metro Manila",
@@ -37,6 +38,7 @@ let products = [
     reviews: {},
   },
   {
+    code: 1658469424081,
     itemName: "750W 9mm Planer",
     category: "tools & equipment",
     location: "Metro Manila",
@@ -64,4 +66,8 @@ let products = [
 
 export function getProducts() {
   return products;
+}
+
+export function getItem(code) {
+  return products.find((item) => item.code === code);
 }
