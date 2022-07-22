@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Footer.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import {
   IconFacebook,
@@ -12,24 +12,23 @@ import {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
   return (
     <Container className={styles.Footer} data-testid="Footer">
       <div className={styles.Logo}>Handeeman</div>
       <Container className="d-flex justify-content-between mt-3 mb-5">
         <div className="vr"></div>
-        <Link to="">HOME</Link>
+        <Link to="/">HOME</Link>
         <div className="vr"></div>
-        <Link to="">ABOUT</Link>
+        <Link to="/about">ABOUT</Link>
         <div className="vr"></div>
-        <Link to="">FAQs</Link>
+        <Link to="/faqs">FAQs</Link>
         <div className="vr"></div>
-        <Link to="">TERM & CONDITIONS</Link>
+        <Link to="/terms-of-use">TERM & CONDITIONS</Link>
         <div className="vr"></div>
-        <Link to="">PRIVACY POLICY</Link>
+        <Link to="/rental-policy">RENTAL POLICY</Link>
         <div className="vr"></div>
-        <Link to="">REFUND POLICY</Link>
-        <div className="vr"></div>
-        <Link to="">CONTACT US</Link>
+        <Link to="/contact-us">CONTACT US</Link>
         <div className="vr"></div>
       </Container>
       <Container className="d-flex align-items-center justify-content-center gap-3">

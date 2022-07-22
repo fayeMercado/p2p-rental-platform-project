@@ -7,14 +7,7 @@ import "./App.css";
 import Signup from "./Signup/Signup";
 import Login from "./Login/Login";
 
-import HeaderMain from "./Headers/HeaderMain";
-import HeaderLanding from "./Headers/HeaderLanding";
-import HeaderProducts from "./Headers/HeaderProducts";
-
 import MainPage from "./LandingPage/MainPage";
-import WhyPage from "./LandingPage/WhyPage";
-import HowPage from "./LandingPage/HowPage";
-import ReviewPage from "./LandingPage/ReviewPage";
 
 import ProductPage from "./ProductPage/ProductPage";
 import AccountPage from "./AccountPage/AccountPage";
@@ -33,10 +26,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="signup" element={<Signup />}></Route>
+        <Route path="sign-up" element={<Signup />}></Route>
+        <Route path="log-in" element={<Login />}></Route>
+
         <Route path="/" element={<MainPage />}></Route>
         <Route path="products" element={<ProductPage />}>
-          <Route path="product-list" element={<ProductList />} />
+          <Route index element={<ProductList />} />
           <Route path=":code" element={<ItemPage />} />
         </Route>
         <Route path="account" element={<AccountPage />}>
@@ -45,13 +40,13 @@ function App() {
           <Route path="purchases" element={<PageMaintenance />} />
           <Route path="wishlist" element={<PageMaintenance />} />
         </Route>
+
+        <Route path="rental-policy" element={<RentalPolicy />}></Route>
+        <Route path="faqs" element={<FAQ />}></Route>
+        <Route path="terms-of-use" element={<Terms />}></Route>
+
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
-      {/* <Signup /> */}
-      {/* <HeaderLanding /> */}
-      {/* <Login /> */}
-      {/* <RentalPolicy /> */}
-      {/* <FAQ /> */}
     </BrowserRouter>
   );
 }
