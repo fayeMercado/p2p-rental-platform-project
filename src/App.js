@@ -18,6 +18,10 @@ import ReviewPage from "./LandingPage/ReviewPage";
 
 import ProductPage from "./ProductPage/ProductPage";
 import AccountPage from "./AccountPage/AccountPage";
+import RentalPolicy from "./RentalPolicy/RentalPolicy";
+import Terms from "./TermsOfUse/Terms";
+import FAQ from "./FAQ/FAQ";
+
 import { ProductList } from "./ProductPage/ProductList";
 import ItemPage from "./ItemPage/ItemPage";
 import { MyCart } from "./AccountPage/MyCart";
@@ -41,8 +45,14 @@ function App() {
         </Route>
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
+      {/* <Signup /> */}
+			{/* <HeaderLanding /> */}
+			{/* <Login /> */}
+			{/* <RentalPolicy /> */}
+			{/* <FAQ /> */}
     </BrowserRouter>
   );
+
 }
 
 export default App;

@@ -1,11 +1,7 @@
-* {
+/* * {
 	box-sizing: border-box;
-	/* border: 1px solid red; */
-}
-
-body {
-	background-color: lightgrey;
-}
+	border: 1px solid red;
+} */
 
 .divLoginMain {
 	min-width: 450px;
@@ -34,8 +30,8 @@ body {
 	font-weight: bold;
 }
 
-input[type="text"],
-input[type="password"] {
+.inputItem[type="text"],
+.inputItem[type="password"] {
 	display: block;
 	justify-content: center;
 	border-radius: 25px;
@@ -45,11 +41,11 @@ input[type="password"] {
 	border-color: #eeeeee;
 }
 
-input[placeholder] {
+.inputItem[placeholder] {
 	padding-left: 22.8px;
 }
 
-form {
+.formItem {
 	display: flex;
 	justify-content: center;
 	padding-top: 13px;
@@ -71,7 +67,7 @@ form {
 	justify-content: center;
 }
 
-label {
+.labelItem {
 	padding-top: 20px;
 }
 

@@ -9,48 +9,64 @@ function Signup() {
 			<div className={styles.divSignupMain}>
 				<img src={close} className={styles.close} />
 				<h1 className={styles.signupH1}>CREATE A NEW ACCOUNT</h1>
-				<form action="">
+				<form className={styles.formItem} action="">
 					<div>
-						<label htmlFor="">First Name</label>
+						<label className={styles.labelItem}>First Name</label>
 						<input
 							type="text"
 							placeholder="First Name"
 							name="first name"
+							className={styles.inputItem}
 							required
 						/>
-						<label htmlFor="">Last Name</label>
+						<label className={styles.labelItem} htmlFor="">
+							Last Name
+						</label>
 						<input
 							type="text"
 							placeholder="Last Name"
 							name="first name"
+							className={styles.inputItem}
 							required
 						/>
-						<label htmlFor="">E-mail</label>
+						<label className={styles.labelItem} htmlFor="">
+							E-mail
+						</label>
 						<input
 							type="text"
 							placeholder="E-mail"
 							name="first name"
+							className={styles.inputItem}
 							required
 						/>
-						<label htmlFor="">Phone Number</label>
+						<label className={styles.labelItem} htmlFor="">
+							Phone Number
+						</label>
 						<input
 							type="text"
 							placeholder="+639XXXXXXXXX"
 							name="first name"
+							className={styles.inputItem}
 							required
 						/>
-						<label htmlFor="">Password</label>
+						<label className={styles.labelItem} htmlFor="">
+							Password
+						</label>
 						<input
 							type="password"
 							placeholder="Password"
 							name="first name"
+							className={styles.inputItem}
 							required
 						/>
-						<label htmlFor="">Confirm Password</label>
+						<label className={styles.labelItem} htmlFor="">
+							Confirm Password
+						</label>
 						<input
 							type="password"
 							placeholder="Confirm Password"
 							name="first name"
+							className={styles.inputItem}
 							required
 						/>
 						<div className="divTerms">
