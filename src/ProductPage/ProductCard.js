@@ -1,12 +1,19 @@
 import React from "react";
 import styles from "./ProductPage.module.css";
+
+import { useParams } from "react-router-dom";
+
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
 import { IconStarEmpty } from "../Icons.js";
 
-export function ProductCard() {
+import { getItem } from "../dataProduct";
+
+export function ProductCard(itemCode) {
+  let params = useParams();
+  let item = getItem(itemCode);
   return (
     <Col xs={3}>
       <Card style={{ width: "100%", height: "375px" }} className="ProductTitle">
@@ -16,7 +23,7 @@ export function ProductCard() {
         />
         <Card.Body className="d-flex flex-column justify-content-between align-items-center text-center">
           <Card.Title className={styles.ProductTitle}>
-            Card Title that may occupy 2 or more lines
+            {item.itemName}
           </Card.Title>
           <Card.Text>
             <Container fluid className="p-0 ">
