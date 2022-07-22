@@ -7,10 +7,10 @@ import HeaderLanding from "../Headers/HeaderLanding";
 import WhyPage from "./WhyPage";
 import HowPage from "./HowPage";
 import ReviewPage from "./ReviewPage";
-import Footer from "../Footer/Footer"
+import ScrollTop from "./ScrollTop";
+import Footer from "../Footer/Footer";
 
-import cycle from "../Images/cycle.png"
-
+import cycle from "../Images/cycle.png";
 
 const MainPage = () => (
     <>
@@ -35,6 +35,7 @@ const MainPage = () => (
         <WhyPage />
         <HowPage />
         <ReviewPage />
+        <ScrollTop />
         <Footer />
     </>
 );
