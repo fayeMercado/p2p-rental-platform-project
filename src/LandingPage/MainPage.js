@@ -10,7 +10,7 @@ import ReviewPage from "./ReviewPage";
 import ScrollTop from "./ScrollTop";
 import Footer from "../Footer/Footer";
 
-import cycle from "../Images/cycle.png";
+import main from "../Images/main.png";
 
 const MainPage = () => (
     <>
@@ -28,7 +28,7 @@ const MainPage = () => (
                         Handeeman will get you whatever you need, whenever you neet it!</p>
                 </Col>
                 <Col className="text-center">
-                    <img src={cycle} />
+                    <img src={main} />
                 </Col>
             </Row>
         </Container>
