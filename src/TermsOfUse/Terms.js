@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./Terms.module.css";
 import HeaderMain from "../Headers/HeaderMain";
 import Footer from "../Footer/Footer";
+import { Container } from "react-bootstrap";
 
 const Terms = () => {
   return (
     <div>
       <HeaderMain />
-      <div className={styles.divMain}>
+      <Container className={styles.divMain + " px-0 py-3"}>
         <h1 className={styles.h1Main}>TERMS OF USE</h1>
         <p>
           BY USING THE SITE IN ANY WAY, YOU ARE ACCEPTING ALL TERMS OF USE AND
@@ -76,7 +77,7 @@ const Terms = () => {
           TRANSACTION OR IF YOU WOULD LIKE A RENTAL AGREEMENT DRAFTED AND/OR
           REVIEWED.
         </p>
-      </div>
+      </Container>
       <Footer />
     </div>
   );

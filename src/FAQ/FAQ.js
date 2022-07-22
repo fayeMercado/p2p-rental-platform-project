@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./FAQ.module.css";
 import HeaderMain from "../Headers/HeaderMain";
 import Footer from "../Footer/Footer";
+import { Container } from "react-bootstrap";
 
 const FAQ = () => {
   return (
     <div>
       <HeaderMain />
-      <div className={styles.divMain}>
+      <Container className={styles.divMain + " px-0 py-3"}>
         <h1>Frequently Asked Questions</h1>
         <hr />
         <div className={styles.divQuestion}>
@@ -62,7 +63,7 @@ const FAQ = () => {
           </p>
         </div>
         <br />
-      </div>
+      </Container>
       <Footer />
     </div>
   );
