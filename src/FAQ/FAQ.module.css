@@ -1,0 +1,31 @@
+.divMain {
+	padding: 50px;
+}
+
+.h1Main {
+	color: #184d47;
+}
+
+.h2 {
+	color: #184d47;
+}
+
+.divQuestion {
+	background: #fdfcfc;
+	border: 1px solid #eeeeee;
+}
+
+.h2Question {
+	color: #198754;
+	padding-top: 13px;
+	padding-bottom: 7px;
+	padding-left: 9px;
+}
+
+.divAnswer {
+	border: 1px solid #efefee;
+}
+
+.pAnswer {
+	padding: 9px;
+}

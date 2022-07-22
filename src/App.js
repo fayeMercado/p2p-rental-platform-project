@@ -14,15 +14,20 @@ import ReviewPage from "./LandingPage/ReviewPage";
 
 import ProductPage from "./ProductPage/ProductPage";
 import AccountPage from "./AccountPage/AccountPage";
+import RentalPolicy from "./RentalPolicy/RentalPolicy";
+import Terms from "./TermsOfUse/Terms";
+import FAQ from "./FAQ/FAQ";
 
 function App() {
 	return (
 		<div className="App">
-			<Signup />
+			{/* <Signup /> */}
 			{/* <HeaderLanding /> */}
 			{/* <ProductPage /> */}
 			{/* <AccountPage /> */}
 			{/* <Login /> */}
+			{/* <RentalPolicy /> */}
+			{/* <FAQ /> */}
 		</div>
 	);
 }
