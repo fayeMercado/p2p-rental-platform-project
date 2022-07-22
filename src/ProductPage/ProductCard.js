@@ -19,7 +19,7 @@ export function ProductCard(itemCode) {
         className={styles.ProductCard + " ProductTitle"}
         onClick={() => navigate(`/products/${item.code}`)}
       >
-        <Card.Img variant="top" src={item.images[0]} />
+        <Card.Img variant="top" src={item.images[0]} className={styles.CardImage}/>
         <Card.Body className="d-flex flex-column justify-content-between align-items-center text-center">
           <Card.Title className={styles.ProductTitle}>
             {item.itemName}

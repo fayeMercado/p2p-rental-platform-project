@@ -62,6 +62,34 @@ let products = [
     instructions: ["Return at owner's address"],
     reviews: {},
   },
+  {
+    code: 1658482166242,
+    itemName: "Bosch GWS 750-100 Professional Angle Grinder Set",
+    category: "tools & equipment",
+    location: "Cavite",
+    available: true,
+    quantity: 4,
+    deposit: 800,
+    rent: { day: 60, week: 350, month: 1100 },
+    method: ["Pick-up", "Delivery"],
+    rating: 0,
+    images: [
+      "https://www.goldtoolsmanila.com/wp-content/uploads/2017/08/GWS-750-100-2-600x600.jpg",
+      "https://www.goldtoolsmanila.com/wp-content/uploads/2017/08/GWS-750-100-4.jpg",
+      "https://cdn.shopify.com/s/files/1/0728/1777/products/GWS750-100SPECS2.jpg?v=1644394025",
+    ],
+    description: [
+      "Rated input Power: 750 W",
+      "No-load Speed:11,000 rpm",
+      "Disc Diameter: 100 mm",
+      "High removal rate",
+      "Great controlling and easy handling",
+      "Improved motor cooling to handle long-time work",
+      "High overload capability",
+    ],
+    instructions: ["Return at owner's address"],
+    reviews: {},
+  },
 ];
 
 export function getProducts() {
