@@ -26,9 +26,9 @@ const HeaderLanding = () => (
             <Col xs={3}>
               <Form.Select aria-label="Default select example" className={styles.round}>
                 <option>Select location (optional)</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Manila</option>
+                <option value="2">Cebu</option>
+                <option value="3">Nueva Ecija</option>
               </Form.Select>
             </Col>
             <Col xs={7}>

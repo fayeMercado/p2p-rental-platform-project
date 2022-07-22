@@ -11,7 +11,7 @@ import choose6 from "../Images/c6.png";
 
 
 const WhyPage = () => (
-    <Container>
+    <Container className="mt-5">
         <Container>
             <div style={{ textAlign: "center", color: "#184D47" }} className="fontMain">
                 <span className="span--why">Why use</span> <span className="span--handeeman">Handeeman</span><span className="span--question">?</span>
