@@ -12,8 +12,10 @@ import Badge from "react-bootstrap/Badge";
 
 import logoWhite from "../Images/logoWhite.svg";
 import { IconAccount, IconCart, IconSearch } from "../Icons.js";
+import { Link } from "react-router-dom";
 
 const HeaderProducts = () => {
+  const provinces = require("philippines/provinces");
   return (
     <Container fluid className={styles.HeaderProducts} data-testid="Headers">
       <Container
@@ -26,8 +28,12 @@ const HeaderProducts = () => {
             </Col>
             <Col className="d-flex justify-content-end align-items-center gap-3">
               <span className={styles.Welcome}>Welcome, Username!</span>
-              <IconAccount defaultColor="#184D47" hoverColor="#81B395" />
-              <IconCart defaultColor="#184D47" hoverColor="#81B395" />
+              <Link to="/account">
+                <IconAccount defaultColor="#184D47" hoverColor="#81B395" />
+              </Link>
+              <Link to="/account/my-cart">
+                <IconCart defaultColor="#184D47" hoverColor="#81B395" />
+              </Link>
             </Col>
           </Row>
         </Container>
@@ -39,9 +45,11 @@ const HeaderProducts = () => {
                 className={styles.round}
               >
                 <option>Select location (optional)</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                {provinces.map((province) => (
+                  <option key={province.key} value={province.key}>
+                    {province.name}
+                  </option>
+                ))}
               </Form.Select>
             </Col>
             <Col>

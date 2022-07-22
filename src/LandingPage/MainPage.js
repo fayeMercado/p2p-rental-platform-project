@@ -2,31 +2,41 @@ import React from "react";
 import { Row, Col, Container, Button, Badge } from "react-bootstrap"
 import "./LandingPage.css"
 
+import HeaderMain from "../Headers/HeaderMain";
+import HeaderLanding from "../Headers/HeaderLanding";
+import WhyPage from "./WhyPage";
+import HowPage from "./HowPage";
+import ReviewPage from "./ReviewPage";
+import Footer from "../Footer/Footer"
+
 import cycle from "../Images/cycle.png"
 
 
 const MainPage = () => (
-    <Container>
-        <Row>
-            <Col>
-                <div>What is</div>
-                <div>Handeeman</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <Button variant="success" href="#" className="round" >
-                    Button
-                </Button>
-                <Button variant="outline-success" href="#" className="round" >
-                    Button
-                </Button>
-            </Col>
-            <Col>
-                <img src={cycle} />
-            </Col>
-        </Row>
-    </Container>
+    <>
+        <HeaderMain />
+        <Container className="mt-5">
+            <Row>
+                <Col>
+                    <p className="text--what">What is</p>
+                    <p className="text--handeeman">Handeeman?</p>
+                    <p>Handeeman is a peer-to-peer rental marketplace that makes better use of products that are lying about in a garage,
+                        storage facility, retail space, or warehouse. We give people and businesses a new way to make money and save money by renting instead of purchasing short-term necessities.</p>
+                    <p>Instead of keeping your useful items in storage, why not rent it out?
+                        And rather than buying things you will only need for a  a short while, why not simply rent it?
+                        It saves you money. It earns you money. It’s super convenient. Plus, you get to save mother earth!
+                        Handeeman will get you whatever you need, whenever you neet it!</p>
+                </Col>
+                <Col className="text-center">
+                    <img src={cycle} />
+                </Col>
+            </Row>
+        </Container>
+        <WhyPage />
+        <HowPage />
+        <ReviewPage />
+        <Footer />
+    </>
 );
 
 

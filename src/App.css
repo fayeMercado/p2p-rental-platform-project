@@ -2,3 +2,10 @@
   color: inherit;
   background-color: #f7f7fa;
 }
+
+.vr {
+  width: 2px;
+  min-height: 1em;
+  background-color: #353939;
+  opacity: 1;
+}
