@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./RentalPolicy.module.css";
 import HeaderMain from "../Headers/HeaderMain";
 import Footer from "../Footer/Footer";
+import { Container } from "react-bootstrap";
 
 const RentalPolicy = () => {
   return (
     <div>
       <HeaderMain />
-      <div className={styles.divMain}>
+      <Container className={styles.divMain + " px-0 py-3"}>
         <h1 className={styles.h1Main}>RENTAL POLICY</h1>
         <p>
           This Rental Policy is to be considered in conjunction with our Privacy
@@ -77,7 +78,7 @@ const RentalPolicy = () => {
           conditions set forth in the Rental Agreement specified in the Rent
           Tycoons' e-contract.
         </p>
-      </div>
+      </Container>
       <Footer />
     </div>
   );
