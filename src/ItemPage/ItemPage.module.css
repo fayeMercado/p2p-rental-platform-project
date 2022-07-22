@@ -25,3 +25,19 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #184d47;
 }
+
+.ItemPage ul {
+  padding: 0 24px;
+}
+
+.ItemListing {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 6px 0;
+}
+
+.Rates {
+  font-size: 1.25rem;
+  font-weight: 500;
+}

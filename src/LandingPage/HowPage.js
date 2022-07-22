@@ -14,7 +14,7 @@ import rent4 from "../Images/rent4.png"
 
 
 const HowPage = () => (
-    <Container>
+    <Container className="mt-5">
         <Container>
             <div style={{ textAlign: "center", color: "#184D47" }} className="span--how fontMain">How does <span className="span--handeeman">Handeeman</span> work ?</div>
         </Container>

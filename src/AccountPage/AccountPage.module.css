@@ -1,5 +1,6 @@
 .AccountPage {
   padding: 0 !important;
+  background-color: #f7f7fa;
 }
 
 .Cart {
@@ -10,4 +11,53 @@
   background-color: #ffffff;
   border-radius: 10px;
   padding: 0.75rem 0 0.75rem 0.5rem;
+}
+
+.Summary {
+  margin-top: 3rem;
+  margin-right: -12px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+.Summary ul {
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.Summary li {
+  list-style-type: square;
+  padding: 0.1rem 0;
+}
+
+.SummaryList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Address {
+  margin-bottom: 1rem;
+  padding-left: 8px;
+}
+
+.Address p {
+  margin: 0;
+}
+
+.AccountPage a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.AccountPage input[type="number"],
+.AccountPage input[type="date"] {
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 0 0.75rem;
+  border: 1px solid #dddddd;
+  border-radius: 50px;
+  font-size: 0.875rem;
 }
