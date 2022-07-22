@@ -13,6 +13,7 @@ import HeaderProducts from "../Headers/HeaderProducts";
 import { Outlet } from "react-router-dom";
 import { Categories } from "../dataProduct.js";
 import { AppButtonWhite } from "../CustomComponents/AppButton";
+import Footer from "../Footer/Footer";
 
 function ProductPage() {
   const [breadcrumbActive, setBreadcrumbActive] = useState("All Categories");
@@ -89,6 +90,7 @@ function ProductPage() {
           </Col>
         </Row>
       </Container>
+      <Footer></Footer>
     </Container>
   );
 }
