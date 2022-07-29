@@ -33,16 +33,6 @@ function ProductPage() {
         <Row>
           <Col xs={3}>
             <Stack className="gap-3">
-              {/* <AppButtonWhite
-                onClick={() => {
-                  setBreadcrumbActive("All Products");
-                  navigate(`/products/all`);
-                }}
-                type="button"
-                active={"All Products" === breadcrumbActive}
-              >
-                ALL PRODUCTS
-              </AppButtonWhite> */}
               {Categories.map((category, index) => (
                 <AppButtonWhite
                   key={index}
@@ -89,15 +79,6 @@ function ProductPage() {
             </Container>
           </Col>
           <Col>
-            <Container
-              fluid
-              className="d-flex mb-3 p-0 align-items-end justify-content-between"
-            >
-              <h3 className="fontMain fw-bold m-0">
-                {breadcrumbActive.toUpperCase()}
-              </h3>
-              <span>0 products found.</span>
-            </Container>
             <Outlet />
           </Col>
         </Row>
