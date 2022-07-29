@@ -10,7 +10,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Form from "react-bootstrap/Form";
 
 import HeaderProducts from "../Headers/HeaderProducts";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Categories } from "../dataCategories.js";
 import { AppButtonWhite } from "../CustomComponents/AppButton";
 import Footer from "../Footer/Footer";
@@ -18,7 +18,7 @@ import Footer from "../Footer/Footer";
 function ProductPage() {
   const [breadcrumbActive, setBreadcrumbActive] = useState("All Categories");
   const provinces = require("philippines/provinces");
-
+  const navigate = useNavigate();
   return (
     <Container fluid className={styles.ProductPage} data-testid="ProductPage">
       <HeaderProducts />
@@ -33,11 +33,25 @@ function ProductPage() {
         <Row>
           <Col xs={3}>
             <Stack className="gap-3">
+              {/* <AppButtonWhite
+                onClick={() => {
+                  setBreadcrumbActive("All Products");
+                  navigate(`/products/all`);
+                }}
+                type="button"
+                active={"All Products" === breadcrumbActive}
+              >
+                ALL PRODUCTS
+              </AppButtonWhite> */}
               {Categories.map((category, index) => (
                 <AppButtonWhite
                   key={index}
-                  onClick={() => setBreadcrumbActive(category.text)}
+                  onClick={() => {
+                    setBreadcrumbActive(category.text);
+                    navigate(`/products/${category.url}`);
+                  }}
                   type="button"
+                  active={category.text === breadcrumbActive}
                 >
                   {category.text.toUpperCase()}
                 </AppButtonWhite>

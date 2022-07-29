@@ -4,7 +4,7 @@ import styles from "./AppButton.module.css";
 
 export const AppButtonWhite = (props) => (
   <button
-    className={styles.AppButtonWhite}
+  className={`${styles.AppButtonWhite} ${props.active && styles.active}`}
     type={props.type}
     onClick={props.onClick}
   >

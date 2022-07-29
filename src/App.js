@@ -31,8 +31,8 @@ function App() {
 
         <Route path="/" element={<MainPage />}></Route>
         <Route path="products" element={<ProductPage />}>
-          <Route index element={<ProductList />} />
-          <Route path=":code" element={<ItemPage />} />
+          <Route path=":category" element={<ProductList />} />
+          <Route path="item/:code" element={<ItemPage />} />
         </Route>
         <Route path="account" element={<AccountPage />}>
           <Route path="profile" element={<PageMaintenance />} />

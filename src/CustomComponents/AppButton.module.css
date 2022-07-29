@@ -10,8 +10,11 @@
 }
 
 .AppButtonWhite:hover {
-  background-color: #ffffff;
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.4));
+}
+
+.active {
+  filter: drop-shadow(0px 2px 2px rgba(23, 79, 72, 1));
 }
 
 .AppButtonYellow {
