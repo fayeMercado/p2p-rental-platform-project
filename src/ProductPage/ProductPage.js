@@ -11,7 +11,7 @@ import Form from "react-bootstrap/Form";
 
 import HeaderProducts from "../Headers/HeaderProducts";
 import { Outlet } from "react-router-dom";
-import { Categories } from "../dataProduct.js";
+import { Categories } from "../dataCategories.js";
 import { AppButtonWhite } from "../CustomComponents/AppButton";
 import Footer from "../Footer/Footer";
 
@@ -36,10 +36,10 @@ function ProductPage() {
               {Categories.map((category, index) => (
                 <AppButtonWhite
                   key={index}
-                  onClick={() => setBreadcrumbActive(category)}
+                  onClick={() => setBreadcrumbActive(category.text)}
                   type="button"
                 >
-                  {category.toUpperCase()}
+                  {category.text.toUpperCase()}
                 </AppButtonWhite>
               ))}
             </Stack>
