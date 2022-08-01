@@ -2,18 +2,14 @@ import React from "react";
 import styles from "./ProductPage.module.css";
 
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
 import { IconStarEmpty } from "../Icons.js";
 
-import { getItem } from "../dataProduct";
 import { useNavigate, useParams } from "react-router-dom";
 
 export function ProductCard(props) {
   let item = props.itemCode;
   const navigate = useNavigate();
-  const categoryUrl = useParams().category;
   return (
     <Card
       className={styles.ProductCard + " ProductTitle"}
@@ -23,14 +19,21 @@ export function ProductCard(props) {
         variant="top"
         src={item.images[0]}
         className={styles.CardImage}
+        height="50%"
       />
-      <Card.Body className="d-flex flex-column justify-content-between align-items-center text-center">
+      <Card.Body className="d-flex flex-column align-items-center text-center pt-0">
         <Card.Title className={styles.ProductTitle}>{item.itemName}</Card.Title>
-        <Container>
+        <Container className="p-0">
+          <p style={{ margin: "0", fontWeight: "500", fontStyle: "italic" }}>
+            {item.location}
+          </p>
+          <hr className="mt-2 mb-0 p-0" />
           <Container fluid className="p-0 ">
             <div className="text-center py-2">
-              <span>Rate: </span>
-              <span className="fw-bold">{item.rent.day}</span>
+              <p className="m-0">Rate starts at</p>
+              <span style={{ fontSize: "1.25rem", fontWeight: "bold" }}>
+                {item.rent.day}
+              </span>
               <span className="text-muted">/day</span>
             </div>
             <div className="d-flex justify-content-center">

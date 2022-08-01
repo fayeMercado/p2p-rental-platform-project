@@ -1,12 +1,15 @@
 .ProductPage {
   padding: 0 !important;
   background-color: #f7f7fa;
+  font-size: 0.875rem;
 }
 
 .ProductTitle {
-  font-size: 1rem !important;
+  min-height: 3rem;
+  font-size: 0.875rem !important;
+  font-weight: 600;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -47,5 +50,6 @@
 }
 
 .CardImage {
+  padding: 0.75rem;
   object-fit: contain !important;
 }
