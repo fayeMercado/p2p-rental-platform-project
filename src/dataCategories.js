@@ -1,5 +1,5 @@
 export const Categories = [
-  { text: "All Categories", url: "all" },
+  { text: "All Products", url: "all" },
   { text: "Electronics & Accessories", url: "electronics-accessories" },
   { text: "Tools & Equipment", url: "tools-equipment" },
   { text: "Home Furniture & Appliances", url: "home-furniture-appliances" },
