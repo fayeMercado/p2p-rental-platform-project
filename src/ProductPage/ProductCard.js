@@ -1,32 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ProductPage.module.css";
 
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import { IconStarEmpty } from "../Icons.js";
+import { IconStarEmpty, IconLocation } from "../Icons.js";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function ProductCard(props) {
   let item = props.itemCode;
   const navigate = useNavigate();
+  const [hover, setHover] = useState(false);
+
   return (
     <Card
       className={styles.ProductCard + " ProductTitle"}
       onClick={() => navigate(`/products/item/${item.code}`)}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      <Card.Img
-        variant="top"
-        src={item.images[0]}
-        className={styles.CardImage}
-        height="50%"
-      />
+      <div style={{ height: "50%", padding: "0.75rem" }}>
+        {hover && <div className={styles.ViewItem}>VIEW ITEM</div>}
+        <Card.Img
+          variant="top"
+          src={item.images[0]}
+          className={styles.CardImage}
+          height="100%"
+        />
+      </div>
       <Card.Body className="d-flex flex-column align-items-center text-center pt-0">
         <Card.Title className={styles.ProductTitle}>{item.itemName}</Card.Title>
         <Container className="p-0">
-          <p style={{ margin: "0", fontWeight: "500", fontStyle: "italic" }}>
-            {item.location}
-          </p>
+          <div
+            className="d-flex justify-content-center align-items-center gap-1"
+            style={{ margin: "0", fontWeight: "500" }}
+          >
+            <IconLocation color="#184D47" /> {item.location}
+          </div>
           <hr className="mt-2 mb-0 p-0" />
           <Container fluid className="p-0 ">
             <div className="text-center py-2">
