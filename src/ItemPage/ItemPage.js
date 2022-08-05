@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import styles from "./ItemPage.module.css";
 
 import { useParams } from "react-router-dom";
@@ -9,20 +9,124 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import { IconStarEmpty } from "../Icons.js";
+
 import ItemCarousel from "./ItemCarousel";
+import { IconLocation, IconStarEmpty } from "../Icons.js";
 import { AppButtonYellow } from "../CustomComponents/AppButton";
 import { getItem } from "../dataProduct";
 
 const ItemPage = () => {
   let params = useParams();
   let item = getItem(parseInt(params.code, 10));
+
   return (
     <Container className={styles.ItemPage} data-testid="ItemPage">
+      {/* <<<<<<<<<< Item Description >>>>>>>>>> */}
       <Row>
+        <h4 className="fontMain fw-bold my-0">{item.itemName}</h4>
+        <Col>
+          <span style={{ fontSize: "1.15rem" }}>
+            <IconLocation color="#184D47" /> <span>{item.location}</span>
+          </span>
+          <Container className="p-0 mt-2">
+            Rates :
+            <Row className="my-2 text-center">
+              <Col>
+                <span className={styles.Rates}>&#8369;{item.rent.day}</span>
+                <span className="text-muted"> /day</span>
+              </Col>
+              <Col>
+                <span className={styles.Rates}>&#8369;{item.rent.week}</span>
+                <span className="text-muted"> /week</span>
+              </Col>
+              <Col>
+                <span className={styles.Rates}>&#8369;{item.rent.month}</span>
+                <span className="text-muted"> /month</span>
+              </Col>
+            </Row>
+          </Container>
+          <ul className={styles.ItemListing}>
+            <li>
+              Available Quantity : <b>{item.quantity}</b>
+            </li>
+            <li>
+              Refundable Deposit : Php <b>{item.deposit}</b>
+            </li>
+            <li>
+              <Container fluid className="p-0 d-flex justify-content-between">
+                <Stack direction="horizontal" className="d-flex ">
+                  <IconStarEmpty />
+                  <IconStarEmpty />
+                  <IconStarEmpty />
+                  <IconStarEmpty />
+                  <IconStarEmpty />
+                </Stack>
+                <span>0 reviews</span>
+              </Container>
+            </li>
+          </ul>
+          <hr />
+
+          {/* <<<<<<<<<< Order Form>>>>>>>>>> */}
+          <Form className="p-0">
+            <Form.Group
+              as={Row}
+              controlId="shippingMethod"
+              key="shipping-method"
+              required
+            >
+              <Col xs={3}>For:</Col>
+              <Col className="d-flex justify-content-between">
+                <Form.Check
+                  type="radio"
+                  id="pick-up"
+                  label="Pick-up"
+                  name="method"
+                />
+                <Form.Check
+                  type="radio"
+                  id="delivery"
+                  label="Door-to-door delivery"
+                  name="method"
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} key="start-date">
+              <Form.Label column xs={3} htmlFor="startDate">
+                Start Date:
+              </Form.Label>
+              <Col>
+                <Form.Control
+                  type="date"
+                  id="startDate"
+                  defaultValue={1}
+                  min={1}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} key="item-quantity">
+              <Form.Label column htmlFor="inputItemQuantity">
+                Quantity
+              </Form.Label>
+              <Col xs={4}>
+                <Form.Control
+                  type="number"
+                  id="inputItemQuantity"
+                  defaultValue={1}
+                  min={1}
+                  max={item.quantity}
+                />
+              </Col>
+            </Form.Group>
+          </Form>
+
+          <Container className="d-flex justify-content-center mt-5">
+            <AppButtonYellow type="button">Add to Cart</AppButtonYellow>
+          </Container>
+        </Col>
+
         <Col xs={6} className="d-flex flex-column justify-content-between">
           <Container className="p-0">
             <ItemCarousel itemIndex="0" />
@@ -56,70 +160,6 @@ const ItemPage = () => {
               </Col>
             </Row>
           </Container>
-        </Col>
-
-        <Col>
-          <Form>
-            <h4 className="fontMain fw-bold">{item.itemName}</h4>
-            <Container fluid className="d-flex justify-content-between mb-3">
-              <Stack direction="horizontal" className="d-flex ">
-                <IconStarEmpty />
-                <IconStarEmpty />
-                <IconStarEmpty />
-                <IconStarEmpty />
-                <IconStarEmpty />
-              </Stack>
-              <span>0 reviews</span>
-            </Container>
-            <ul>
-              <li className={styles.ItemListing}>
-                Location: <span>{item.location}</span>
-              </li>
-              <li className={styles.ItemListing}>
-                Item Status:
-                <span>{item.available ? "Available" : "Not Available"}</span>
-              </li>
-              <li className={styles.ItemListing}>
-                Available Quantity : <span>{item.quantity}</span>
-              </li>
-              <li className={styles.ItemListing}>
-                Refundable Deposit: :
-                <span>
-                  Php <b>{item.deposit}</b>
-                </span>
-              </li>
-            </ul>
-            <hr />
-            <Container className="mb-3">
-              Rates in Php
-              <Row className="text-center">
-                <Col>
-                  <span className={styles.Rates}>{item.rent.day}</span>
-                  <i className="text-muted">/ day</i>
-                </Col>
-                <Col>
-                  <span className={styles.Rates}>{item.rent.week}</span>
-                  <i className="text-muted">/ week</i>
-                </Col>
-                <Col>
-                  <span className={styles.Rates}>{item.rent.month}</span>
-                  <i className="text-muted">/ month</i>
-                </Col>
-              </Row>
-            </Container>
-            <hr />
-            <div className="d-flex justify-content-center gap-5">
-              Available for:
-              {item.method.map((method, index) => (
-                <span key={index}>{method}</span>
-              ))}
-              {/* <span>&#10007; Pick-up</span>
-            <span>&#10003; Door-to-door delivery</span> */}
-            </div>
-            <Container className="d-flex justify-content-center mt-5">
-              <AppButtonYellow type="button">Add to Cart</AppButtonYellow>
-            </Container>
-          </Form>
         </Col>
       </Row>
       <br />
