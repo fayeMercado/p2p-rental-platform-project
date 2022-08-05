@@ -7,7 +7,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
-import Form from "react-bootstrap/Form";
 
 import HeaderProducts from "../Headers/HeaderProducts";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -16,8 +15,7 @@ import { AppButtonWhite } from "../CustomComponents/AppButton";
 import Footer from "../Footer/Footer";
 
 function ProductPage() {
-  const [breadcrumbActive, setBreadcrumbActive] = useState("All Categories");
-  const provinces = require("philippines/provinces");
+  const [breadcrumbActive, setBreadcrumbActive] = useState("All Products");
   const navigate = useNavigate();
   return (
     <Container fluid className={styles.ProductPage} data-testid="ProductPage">
@@ -32,7 +30,7 @@ function ProductPage() {
         </Row>
         <Row>
           <Col xs={3}>
-            <Stack className="gap-3">
+            <Stack className="gap-2">
               {Categories.map((category, index) => (
                 <AppButtonWhite
                   key={index}
@@ -47,36 +45,6 @@ function ProductPage() {
                 </AppButtonWhite>
               ))}
             </Stack>
-            <Container className="p-0 mt-5">
-              <label htmlFor="sort">Sort by:</label>
-              <Form.Select
-                id="sort"
-                className={styles.customSelect}
-                aria-label="Sort items by"
-              >
-                <option value="none">--</option>
-                <option value="highest">Highest price first</option>
-                <option value="2">Lowest price first</option>
-                <option value="3">Newest uploads first</option>
-                <option value="3">Oldest items first</option>
-              </Form.Select>
-            </Container>
-            <Container className="p-0 mt-3">
-              <p>Filter by:</p>
-              <label htmlFor="location">Location</label>
-              <Form.Select
-                id="location"
-                className={styles.customSelect}
-                aria-label="Sort items by"
-              >
-                <option value="none">--</option>
-                {provinces.map((province) => (
-                  <option key={province.key} value={province.key}>
-                    {province.name}
-                  </option>
-                ))}
-              </Form.Select>
-            </Container>
           </Col>
           <Col>
             <Outlet />
