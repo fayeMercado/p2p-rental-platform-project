@@ -26,15 +26,14 @@
   background: #184d47;
 }
 
-.ItemPage ul {
-  padding: 0 24px;
+.ItemListing {
+  padding: 0;
+  margin: 0;
 }
 
-.ItemListing {
-  display: flex;
-  justify-content: space-between;
+.ItemListing li {
   list-style: none;
-  padding: 6px 0;
+  padding: 3px 0;
 }
 
 .Rates {
