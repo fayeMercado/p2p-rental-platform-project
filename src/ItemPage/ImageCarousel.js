@@ -1,17 +1,10 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import styles from "./ItemPage.module.css";
-
-import { useParams } from "react-router-dom";
-
 import Container from "react-bootstrap/Container";
-import { getItem } from "../dataProduct";
 
-const ItemCarousel = (props) => {
-  let params = useParams();
-  let item = getItem(parseInt(params.code, 10));
+export function ImageCarousel(item) {
+  const images = item.images && JSON.parse(item.images);
   const [currentImage, setCurrentImage] = useState(0);
-  const ImageCollection = item.images;
 
   return (
     <Container
@@ -26,7 +19,7 @@ const ItemCarousel = (props) => {
           }}
         >
           <img
-            src={ImageCollection[currentImage]}
+            src={images && images[currentImage]}
             alt=""
             width="100%"
             height="100%"
@@ -39,8 +32,13 @@ const ItemCarousel = (props) => {
           className={styles.collection + " d-inline-flex p-2"}
           style={{ width: "100%", overflow: "auto", padding: "0 24px" }}
         >
-          {ImageCollection.map((image, index) => (
-            <div key={index} onClick={() => setCurrentImage(index)}>
+          {images?.map((image, index) => (
+            <div
+              key={index}
+              onClick={() => {
+                setCurrentImage(index);
+              }}
+            >
               <div
                 style={{
                   width: "100px",
@@ -64,6 +62,4 @@ const ItemCarousel = (props) => {
       </Container>
     </Container>
   );
-};
-
-export default ItemCarousel;
+}
