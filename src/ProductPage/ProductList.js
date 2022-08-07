@@ -7,16 +7,26 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
 import { ProductCard } from "./ProductCard";
-import { getProducts } from "../dataProduct";
 import { useParams } from "react-router-dom";
 import { getCategory } from "../dataCategories";
 
 export function ProductList() {
-  let products = getProducts();
+  // let products = getProducts(); //allProducts
+  const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const urlparams = useParams().category;
   const category = getCategory(urlparams);
   const provinces = require("philippines/provinces");
+
+  const allProducts = () => {
+    fetch("http://localhost:8000/products")
+      .then((result) => result.json())
+      .then((response) => {
+        setProducts(response);
+      });
+  };
+
+  useEffect(allProducts, []);
 
   useEffect(() => {
     let filterCurrProduct = products.filter(
@@ -24,6 +34,7 @@ export function ProductList() {
     );
     setFiltered(filterCurrProduct);
   }, [urlparams]);
+
   const productList = useParams().category === "all" ? products : filtered;
 
   return (

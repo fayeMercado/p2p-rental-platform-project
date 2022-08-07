@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import styles from "./ProductPage.module.css";
 
 import Container from "react-bootstrap/Container";
@@ -17,6 +17,7 @@ import Footer from "../Footer/Footer";
 function ProductPage() {
   const [breadcrumbActive, setBreadcrumbActive] = useState("All Products");
   const navigate = useNavigate();
+
   return (
     <Container fluid className={styles.ProductPage} data-testid="ProductPage">
       <HeaderProducts />
