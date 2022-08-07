@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import PropTypes from "prop-types";
 import styles from "./ItemPage.module.css";
 
@@ -19,13 +19,24 @@ import { getItem } from "../dataProduct";
 
 const ItemPage = () => {
   let params = useParams();
-  let item = getItem(parseInt(params.code, 10));
+  const [item, setItem] = useState([]);
+  const rates = item.rent_rates && JSON.parse(item.rent_rates); //not undefined (waiting for value) before parsing
+
+  function findInProducts() {
+    fetch("http://localhost:8000/products")
+      .then((result) => result.json())
+      .then((response) => {
+        const findItem = response.find((item) => item.code === params.code);
+        setItem(findItem);
+      });
+  }
+  useEffect(findInProducts, []);
 
   return (
     <Container className={styles.ItemPage} data-testid="ItemPage">
       {/* <<<<<<<<<< Item Description >>>>>>>>>> */}
       <Row>
-        <h4 className="fontMain fw-bold my-0">{item.itemName}</h4>
+        <h4 className="fontMain fw-bold my-0">{item.item_name}</h4>
         <Col>
           <span style={{ fontSize: "1.15rem" }}>
             <IconLocation color="#184D47" /> <span>{item.location}</span>
@@ -34,25 +45,25 @@ const ItemPage = () => {
             Rates :
             <Row className="my-2 text-center">
               <Col>
-                <span className={styles.Rates}>&#8369;{item.rent.day}</span>
+                <span className={styles.Rates}>&#8369;{rates?.day}</span>
                 <span className="text-muted"> /day</span>
               </Col>
               <Col>
-                <span className={styles.Rates}>&#8369;{item.rent.week}</span>
+                <span className={styles.Rates}>&#8369;{rates?.week}</span>
                 <span className="text-muted"> /week</span>
               </Col>
               <Col>
-                <span className={styles.Rates}>&#8369;{item.rent.month}</span>
+                <span className={styles.Rates}>&#8369;{rates?.month}</span>
                 <span className="text-muted"> /month</span>
               </Col>
             </Row>
           </Container>
           <ul className={styles.ItemListing}>
             <li>
-              Available Quantity : <b>{item.quantity}</b>
+              Available Quantity : <b>{item.available_quantity}</b>
             </li>
             <li>
-              Refundable Deposit : Php <b>{item.deposit}</b>
+              Refundable Deposit : Php <b>{item.ref_deposit}</b>
             </li>
             <li>
               <Container fluid className="p-0 d-flex justify-content-between">
@@ -98,12 +109,7 @@ const ItemPage = () => {
                 Start Date:
               </Form.Label>
               <Col>
-                <Form.Control
-                  type="date"
-                  id="startDate"
-                  defaultValue={1}
-                  min={1}
-                />
+                <Form.Control type="date" id="startDate" />
               </Col>
             </Form.Group>
             <Form.Group as={Row} key="item-quantity">

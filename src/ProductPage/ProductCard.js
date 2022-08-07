@@ -21,15 +21,19 @@ export function ProductCard(props) {
     >
       <div style={{ height: "50%", padding: "0.75rem" }}>
         {hover && <div className={styles.ViewItem}>VIEW ITEM</div>}
+
         <Card.Img
           variant="top"
-          src={item.images[0]}
+          src={JSON.parse(item.images)[0]}
           className={styles.CardImage}
           height="100%"
         />
       </div>
+
       <Card.Body className="d-flex flex-column align-items-center text-center pt-0">
-        <Card.Title className={styles.ProductTitle}>{item.itemName}</Card.Title>
+        <Card.Title className={styles.ProductTitle}>
+          {item.item_name}
+        </Card.Title>
         <Container className="p-0">
           <div
             className="d-flex justify-content-center align-items-center gap-1"
@@ -42,7 +46,7 @@ export function ProductCard(props) {
             <div className="text-center py-2">
               <p className="m-0">Rate starts at</p>
               <span style={{ fontSize: "1.25rem", fontWeight: "bold" }}>
-                {item.rent.day}
+                {JSON.parse(item.rent_rates).day}
               </span>
               <span className="text-muted">/day</span>
             </div>
