@@ -12,15 +12,16 @@ import Form from "react-bootstrap/Form";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
-import ItemCarousel from "./ItemCarousel";
 import { IconLocation, IconStarEmpty } from "../Icons.js";
 import { AppButtonYellow } from "../CustomComponents/AppButton";
 import { getItem } from "../dataProduct";
+import { ImageCarousel } from "./ImageCarousel";
 
 const ItemPage = () => {
   let params = useParams();
   const [item, setItem] = useState([]);
   const rates = item.rent_rates && JSON.parse(item.rent_rates); //not undefined (waiting for value) before parsing
+  // const images = item.images && JSON.parse(item.images);
 
   function findInProducts() {
     fetch("http://localhost:8000/products")
@@ -135,7 +136,8 @@ const ItemPage = () => {
 
         <Col xs={6} className="d-flex flex-column justify-content-between">
           <Container className="p-0">
-            <ItemCarousel itemIndex="0" />
+            {/* <ItemCarousel item={item} itemIndex="0" /> */}
+            {ImageCarousel(item)}
           </Container>
           <Container className="p-0 mt-3">
             <Row className="px-5">
@@ -189,16 +191,16 @@ function ControlledTabsExample() {
   return (
     <Tabs id="more-info" defaultActiveKey="description" className="mb-3" fill>
       <Tab eventKey="description" title="DESCRIPTION">
-        <Container>
+        {/* <Container>
           <ul>
             {item.description.map((list, index) => (
               <li key={index}>{list}</li>
             ))}
           </ul>
-        </Container>
+        </Container> */}
       </Tab>
       <Tab eventKey="instructions" title="PICK-UP & RETURN INSTRUCTIONS">
-        <Container>{item.instructions}</Container>
+        {/* <Container>{item.instructions}</Container> */}
       </Tab>
       <Tab eventKey="reviews" title="REVIEWS">
         <Container>Lorem Ipsum3</Container>
