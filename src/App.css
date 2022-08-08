@@ -7,5 +7,10 @@
   width: 2px;
   min-height: 1em;
   background-color: #353939;
-  opacity: 1;
+}
+
+.vr-light {
+  width: 1px;
+  min-height: 1em;
+  background-color: #dddddd;
 }

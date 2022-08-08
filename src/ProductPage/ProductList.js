@@ -14,6 +14,7 @@ export function ProductList() {
   // let products = getProducts(); //allProducts
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
+
   const urlparams = useParams().category;
   const category = getCategory(urlparams);
   const provinces = require("philippines/provinces");
@@ -29,11 +30,11 @@ export function ProductList() {
   useEffect(allProducts, []);
 
   useEffect(() => {
-    let filterCurrProduct = products.filter(
-      (item) => item.category === urlparams
+    let filterCurrProduct = products?.filter(
+      (item) => item?.category === urlparams
     );
     setFiltered(filterCurrProduct);
-  }, [urlparams]);
+  }, [urlparams, products]);
 
   const productList = useParams().category === "all" ? products : filtered;
 
@@ -92,7 +93,7 @@ export function ProductList() {
 
       {/* <<<<<<<<<< List of items >>>>>>>>>> */}
       <Row className="g-3">
-        {productList.map((product, i) => (
+        {productList?.map((product, i) => (
           <Col xs={3} key={i}>
             <ProductCard itemCode={product} />
           </Col>

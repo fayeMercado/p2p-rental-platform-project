@@ -11,6 +11,8 @@ import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 import { IconLocation, IconStarEmpty } from "../Icons.js";
 import {
@@ -24,7 +26,12 @@ const ItemPage = () => {
   let params = useParams();
   const [item, setItem] = useState([]);
   const rates = item.rent_rates && JSON.parse(item.rent_rates); //not undefined (waiting for value) before parsing
-  // const images = item.images && JSON.parse(item.images);
+
+  //modal>>
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  //<<modal
 
   function findInProducts() {
     fetch("http://localhost:8000/products")
@@ -34,6 +41,7 @@ const ItemPage = () => {
         setItem(findItem);
       });
   }
+
   useEffect(findInProducts, []);
 
   return (
@@ -45,11 +53,6 @@ const ItemPage = () => {
           <span style={{ fontSize: "1.15rem", marginBottom: "0.5rem" }}>
             <IconLocation color="#184D47" /> <span>{item.location}</span>
           </span>
-
-          {/* <<<<<<<<<< Image Carousel >>>>>>>>>> */}
-          <Col xs={6} className="d-flex flex-column justify-content-between">
-            <Container className="p-0">{ImageCarousel(item)}</Container>
-          </Col>
 
           <Col>
             <Container className="p-0">
@@ -169,39 +172,62 @@ const ItemPage = () => {
               <AppButtonWhiteGreen type="button">
                 Add to Wishlist
               </AppButtonWhiteGreen>
-              <AppButtonYellow type="submit">Add to Cart</AppButtonYellow>
+              <AppButtonYellow type="submit" onClick={handleShow}>
+                Add to Cart
+              </AppButtonYellow>
             </Container>
+          </Col>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Successfully added to cart</Modal.Title>
+            </Modal.Header>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
+          {/* <<<<<<<<<< Image Carousel >>>>>>>>>> */}
+          <Col xs={6} className="d-flex flex-column justify-content-between">
+            <Container className="p-0">{ImageCarousel(item)}</Container>
           </Col>
         </Row>
       </Container>
 
-      <Container className={styles.ContentDivider}>
-        <Row className="px-0">
-          <Col xs={2} className="d-flex align-items-center p-0">
-            <Container className="px-3">
-              <img
-                src="https://www.sunsetlearning.com/wp-content/uploads/2019/09/User-Icon-Grey-300x300.png"
-                alt=""
-                width="100%"
-              />
-            </Container>
-          </Col>
-          <Col style={{ paddingLeft: 0 }}>
-            <span className="fontMain">
-              By: <b>Owner's Name</b>
-            </span>
-            <div className="d-flex justify-content-between p-0">
-              <Stack direction="horizontal" className="d-flex ">
-                <IconStarEmpty />
-                <IconStarEmpty />
-                <IconStarEmpty />
-                <IconStarEmpty />
-                <IconStarEmpty />
-              </Stack>
-              <span>0 reviews</span>
-            </div>
-          </Col>
-        </Row>
+      <Container className={`${styles.ContentDivider} ${styles.OwnersSection}`}>
+        <div className="d-flex flex-grow-1 justify-content-center gap-3">
+          <div className={styles.imgContainer}>
+            <img
+              src="https://www.sunsetlearning.com/wp-content/uploads/2019/09/User-Icon-Grey-300x300.png"
+              alt=""
+            />
+          </div>
+          <div className="d-flex flex-column justify-content-center text-center">
+            <h5 className="fontMain">Owner's Name</h5>
+            <span>OWNER</span>
+          </div>
+        </div>
+        <div className="vr-light"></div>
+        <div className="d-flex flex-column flex-grow-1 justify-content-center align-items-center gap-2">
+          <div className="d-flex ">
+            <IconStarEmpty />
+            <IconStarEmpty />
+            <IconStarEmpty />
+            <IconStarEmpty />
+            <IconStarEmpty />
+          </div>
+          <div className="d-flex align-items-center gap-2">
+            <h5 className="m-0">0.0</h5>
+            <span>of 0 ratings</span>
+          </div>
+        </div>
+        <div className="vr-light"></div>
+        <div className="d-flex flex-grow-1 align-items-center justify-content-center gap-3">
+          <AppButtonWhiteGreen type="button">View Products</AppButtonWhiteGreen>
+          <AppButtonWhiteGreen type="button">Chat Owner</AppButtonWhiteGreen>
+        </div>
       </Container>
 
       <Container className={styles.ContentDivider}>
