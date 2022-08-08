@@ -1,10 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import styles from "./AppButton.module.css";
 
 export const AppButtonWhite = (props) => (
   <button
-  className={`${styles.AppButtonWhite} ${props.active && styles.active}`}
+    className={`${styles.AppButtonWhite} ${props.active && styles.active}`}
     type={props.type}
     onClick={props.onClick}
   >

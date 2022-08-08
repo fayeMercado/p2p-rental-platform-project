@@ -7,10 +7,7 @@ export function ImageCarousel(item) {
   const [currentImage, setCurrentImage] = useState(0);
 
   return (
-    <Container
-      className="p-0"
-      style={{ backgroundColor: "#ffffff", borderRadius: "10px" }}
-    >
+    <Container className={styles.ImageCarousel}>
       <Container className="p-3" style={{ height: "300px" }}>
         <div
           style={{

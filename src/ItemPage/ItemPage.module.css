@@ -1,6 +1,19 @@
 .ItemPage {
-  padding: 0 !important;
+}
+
+.ContentDivider {
+  padding: 1rem !important;
+  margin-bottom: 1rem;
   font-size: 0.875rem;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.ImageCarousel {
+  padding: 0;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
 }
 
 /* width */
@@ -38,5 +51,14 @@
 
 .Rates {
   font-size: 1.25rem;
-  font-weight: 500;
+}
+
+.CustomField {
+  padding: 0.25rem 0.5rem;
+}
+
+.CustomField:focus {
+  box-shadow: 0 0 0 3px rgba(129, 179, 149, 0.5);
+  border: none;
+  outline: none;
 }
