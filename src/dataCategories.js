@@ -5,7 +5,8 @@ export const Categories = [
   { text: "Home Furniture & Appliances", url: "home-furniture-appliances" },
   { text: "Party & Event Items", url: "party-event-items" },
   { text: "Toys & Sports", url: "toys-sports" },
-  { text: "Books & Hobbies", url: "books-hobbies" },
+  { text: "Fashion & Jewelries", url: "fashion-jewelry" },
+  { text: "Books", url: "books" },
 ];
 
 export function getCategories() {
