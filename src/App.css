@@ -14,3 +14,11 @@
   min-height: 1em;
   background-color: #dddddd;
 }
+
+.popover {
+  max-width: fit-content !important;
+}
+
+.popover-body {
+  padding: 0;
+}

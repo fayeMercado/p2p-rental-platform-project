@@ -8,32 +8,23 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
-import Form from "react-bootstrap/Form";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 import { IconLocation, IconStarEmpty } from "../Icons.js";
-import {
-  AppBtnWhite,
-  AppBtnYellow,
-  AppButtonWhiteGreen,
-  AppButtonYellow,
-} from "../CustomComponents/AppButton";
+import { AppBtnWhite } from "../CustomComponents/AppButton";
 import { getItem } from "../dataProduct";
 import { ImageCarousel } from "./ImageCarousel";
+import { OrderForm } from "./SubComponents/OrderForm";
+
+import "react-day-picker/dist/style.css";
 
 const ItemPage = () => {
   let params = useParams();
   const [item, setItem] = useState([]);
   const rates = item.rent_rates && JSON.parse(item.rent_rates); //not undefined (waiting for value) before parsing
-
-  //modal>>
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  //<<modal
 
   function findInProducts() {
     fetch("http://localhost:8000/products")
@@ -46,6 +37,39 @@ const ItemPage = () => {
 
   useEffect(findInProducts, []);
 
+  //modal>>
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  //<<modal
+
+  //datepicker>>
+  const [duration, setDuration] = useState(0);
+  const [range, setRange] = useState([]);
+  const disabledDays = [{ from: new Date(1980, 0, 1), to: new Date() }];
+  const [output, setOutput] = useState("");
+
+  useEffect(() => {
+    if (!range?.from) {
+      setDuration(0);
+      setOutput("Pick a date");
+    } else if (range?.from) {
+      setDuration(1);
+      setOutput(range.from?.toLocaleDateString());
+      if (range.to) {
+        setDuration((range.to - range.from) / 86400000);
+        setOutput(
+          range.from?.toLocaleDateString() +
+            " - " +
+            range.to?.toLocaleDateString()
+        );
+      }
+    }
+  }, [range?.from, range?.to]);
+
+  let footer = <p>duration {duration}</p>;
+  //<<datepicker
+
   return (
     <div>
       <Container className={styles.ContentDivider} data-testid="ItemPage">
@@ -56,7 +80,7 @@ const ItemPage = () => {
             <IconLocation color="#184D47" /> <span>{item.location}</span>
           </span>
 
-          <Col>
+          <Col className="d-flex flex-column">
             <Container className="p-0">
               Rates :
               <Row className="my-2 text-center">
@@ -103,80 +127,17 @@ const ItemPage = () => {
             </ul>
             <hr />
 
-            {/* <<<<<<<<<< Order Form>>>>>>>>>> */}
-            <Form className="p-0">
-              <Form.Group
-                as={Row}
-                controlId="shippingMethod"
-                key="shipping-method"
-                required
-              >
-                <Col xs={4}>Shipping :</Col>
-                <Col className="d-flex justify-content-between">
-                  <Form.Check
-                    type="radio"
-                    id="pick-up"
-                    label="Pick-up"
-                    name="method"
-                  />
-                  <Form.Check
-                    type="radio"
-                    id="delivery"
-                    label="Door-to-door delivery"
-                    name="method"
-                  />
-                </Col>
-              </Form.Group>
-
-              <Form.Group as={Row} key="start-date">
-                <Form.Label column xs={4} htmlFor="startDate">
-                  Start Date :
-                </Form.Label>
-                <Col>
-                  <Form.Control
-                    className={styles.CustomField}
-                    type="date"
-                    id="startDate"
-                  />
-                </Col>
-              </Form.Group>
-
-              <Form.Group as={Row} className="d-flex align-items-center">
-                <Form.Label column xs={4} htmlFor="rentDuration">
-                  Rent Duration <i>(days)</i> :
-                </Form.Label>
-                <Col xs={3}>
-                  <Form.Control
-                    className={styles.CustomField}
-                    type="number"
-                    id="rentDuration"
-                    defaultValue={1}
-                    min={1}
-                  />
-                </Col>
-                <Col></Col>
-                <Form.Label column xs={2} htmlFor="ItemQuantity">
-                  Quantity
-                </Form.Label>
-                <Col xs={2}>
-                  <Form.Control
-                    className={styles.CustomField}
-                    type="number"
-                    id="ItemQuantity"
-                    defaultValue={1}
-                    min={1}
-                    max={item.available_quantity}
-                  />
-                </Col>
-              </Form.Group>
-
-              <Container className="d-flex justify-content-center mt-3 gap-3">
-                <AppBtnWhite type="button">Add to Wishlist</AppBtnWhite>
-                <AppBtnYellow type="submit" onClick={handleShow}>
-                  Add to Cart
-                </AppBtnYellow>
-              </Container>
-            </Form>
+            {/* <<<<<<<<<< Order Form >>>>>>>>>> */}
+            {OrderForm(
+              range,
+              footer,
+              setRange,
+              disabledDays,
+              output,
+              duration,
+              item,
+              handleShow
+            )}
           </Col>
 
           <Modal show={show} onHide={handleClose}>
@@ -196,7 +157,7 @@ const ItemPage = () => {
           </Col>
         </Row>
       </Container>
-
+      {/* <<<<<<<<<< Owner's Section >>>>>>>>>> */}
       <Container className={`${styles.ContentDivider} ${styles.OwnersSection}`}>
         <div className="d-flex flex-grow-1 justify-content-center gap-3">
           <div className={styles.imgContainer}>
@@ -230,7 +191,6 @@ const ItemPage = () => {
           <AppBtnWhite type="button">Chat Owner</AppBtnWhite>
         </div>
       </Container>
-
       <Container className={styles.ContentDivider}>
         {ProductTabInfo()}
       </Container>
