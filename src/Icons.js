@@ -66,6 +66,26 @@ export function IconClose(props) {
   );
 }
 
+export function IconCalendar(props) {
+  const [color, setColor] = useState(props.defaultColor);
+  return (
+    <svg
+      width="28"
+      height="30"
+      viewBox="0 0 28 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      onMouseEnter={() => setColor(props.hoverColor)}
+      onMouseLeave={() => setColor(props.defaultColor)}
+    >
+      <path
+        d="M24.5455 2.72727H23.1818V0H20.4545V2.72727H6.81818V0H4.09091V2.72727H2.72727C1.22727 2.72727 0 3.95455 0 5.45455V27.2727C0 28.7727 1.22727 30 2.72727 30H24.5455C26.0455 30 27.2727 28.7727 27.2727 27.2727V5.45455C27.2727 3.95455 26.0455 2.72727 24.5455 2.72727ZM24.5455 27.2727H2.72727V9.54545H24.5455V27.2727Z"
+        fill={color}
+      />
+    </svg>
+  );
+}
+
 export function IconStarFull() {
   return (
     <svg
