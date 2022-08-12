@@ -46,6 +46,26 @@ export function IconCart(props) {
   );
 }
 
+export function IconClose(props) {
+  const [color, setColor] = useState(props.defaultColor);
+  return (
+    <svg
+      width="25"
+      height="25"
+      viewBox="0 0 35 35"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      onMouseEnter={() => setColor(props.hoverColor)}
+      onMouseLeave={() => setColor(props.defaultColor)}
+    >
+      <path
+        d="M27.7083 9.34791L25.652 7.29166L17.5 15.4437L9.34788 7.29166L7.29163 9.34791L15.4437 17.5L7.29163 25.6521L9.34788 27.7083L17.5 19.5562L25.652 27.7083L27.7083 25.6521L19.5562 17.5L27.7083 9.34791Z"
+        fill={color}
+      />
+    </svg>
+  );
+}
+
 export function IconStarFull() {
   return (
     <svg
@@ -109,23 +129,6 @@ export function IconSearch() {
       <path
         d="M17.8674 15.7233H16.7381L16.3379 15.3373C17.7387 13.7078 18.582 11.5923 18.582 9.29102C18.582 4.15952 14.4225 0 9.29102 0C4.15952 0 0 4.15952 0 9.29102C0 14.4225 4.15952 18.582 9.29102 18.582C11.5923 18.582 13.7078 17.7387 15.3373 16.3379L15.7233 16.7381V17.8674L22.8702 25L25 22.8702L17.8674 15.7233V15.7233ZM9.29102 15.7233C5.73185 15.7233 2.85878 12.8502 2.85878 9.29102C2.85878 5.73185 5.73185 2.85878 9.29102 2.85878C12.8502 2.85878 15.7233 5.73185 15.7233 9.29102C15.7233 12.8502 12.8502 15.7233 9.29102 15.7233Z"
         fill="#184D47"
-      />
-    </svg>
-  );
-}
-
-export function IconClose() {
-  return (
-    <svg
-      width="35"
-      height="35"
-      viewBox="0 0 35 35"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M27.7083 9.34791L25.652 7.29166L17.5 15.4437L9.34788 7.29166L7.29163 9.34791L15.4437 17.5L7.29163 25.6521L9.34788 27.7083L17.5 19.5562L25.652 27.7083L27.7083 25.6521L19.5562 17.5L27.7083 9.34791Z"
-        fill="#126244"
       />
     </svg>
   );

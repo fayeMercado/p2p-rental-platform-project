@@ -16,6 +16,8 @@ import Button from "react-bootstrap/Button";
 
 import { IconLocation, IconStarEmpty } from "../Icons.js";
 import {
+  AppBtnWhite,
+  AppBtnYellow,
   AppButtonWhiteGreen,
   AppButtonYellow,
 } from "../CustomComponents/AppButton";
@@ -60,21 +62,21 @@ const ItemPage = () => {
               <Row className="my-2 text-center">
                 <Col>
                   <span className={styles.Rates}>
-                    &#8369;<b>{rates?.day}</b>
+                    &#8369;<b>{rates?.day.toLocaleString()}</b>
                   </span>
                   <span className="text-muted"> /day</span>
                 </Col>
                 <Col>
                   <span className={styles.Rates}>
-                    &#8369;<b>{rates?.week}</b>
+                    &#8369;<b>{rates?.week.toLocaleString()}</b>
                   </span>
                   <span className="text-muted"> /week</span>
                 </Col>
                 <Col>
                   <span className={styles.Rates}>
-                    &#8369;<b>{rates?.month}</b>
+                    &#8369;<b>{rates?.month.toLocaleString()}</b>
                   </span>
-                  <span className="text-muted"> /month</span>
+                  <span className="text-muted"> /mo</span>
                 </Col>
               </Row>
             </Container>
@@ -83,7 +85,8 @@ const ItemPage = () => {
                 Available Quantity : <b>{item.available_quantity}</b>
               </li>
               <li>
-                Refundable Deposit : &#8369;<b>{item.ref_deposit}</b>
+                Refundable Deposit : &#8369;
+                <b>{item.ref_deposit?.toLocaleString()}</b>
               </li>
               <li>
                 <Container fluid className="p-0 d-flex justify-content-between">
@@ -166,16 +169,14 @@ const ItemPage = () => {
                   />
                 </Col>
               </Form.Group>
-            </Form>
 
-            <Container className="d-flex justify-content-center mt-3 gap-3">
-              <AppButtonWhiteGreen type="button">
-                Add to Wishlist
-              </AppButtonWhiteGreen>
-              <AppButtonYellow type="submit" onClick={handleShow}>
-                Add to Cart
-              </AppButtonYellow>
-            </Container>
+              <Container className="d-flex justify-content-center mt-3 gap-3">
+                <AppBtnWhite type="button">Add to Wishlist</AppBtnWhite>
+                <AppBtnYellow type="submit" onClick={handleShow}>
+                  Add to Cart
+                </AppBtnYellow>
+              </Container>
+            </Form>
           </Col>
 
           <Modal show={show} onHide={handleClose}>
@@ -225,8 +226,8 @@ const ItemPage = () => {
         </div>
         <div className="vr-light"></div>
         <div className="d-flex flex-grow-1 align-items-center justify-content-center gap-3">
-          <AppButtonWhiteGreen type="button">View Products</AppButtonWhiteGreen>
-          <AppButtonWhiteGreen type="button">Chat Owner</AppButtonWhiteGreen>
+          <AppBtnWhite type="button">View Products</AppBtnWhite>
+          <AppBtnWhite type="button">Chat Owner</AppBtnWhite>
         </div>
       </Container>
 
