@@ -8,9 +8,10 @@
 }
 
 .CartItem {
+  margin: 0 0 1rem 0;
+  padding: 1rem !important;
   background-color: #ffffff;
   border-radius: 10px;
-  padding: 0.75rem 0 0.75rem 0.5rem;
 }
 
 .Summary {
@@ -30,11 +31,6 @@
 .Summary li {
   list-style-type: square;
   padding: 0.1rem 0;
-}
-
-.SummaryList {
-  display: flex;
-  justify-content: space-between;
 }
 
 .Address {
@@ -60,4 +56,19 @@
   border: 1px solid #dddddd;
   border-radius: 50px;
   font-size: 0.875rem;
+}
+
+/* <<<<<<<<<< Cart >>>>>>>>>> */
+.UserCart {
+  padding: 0;
+  margin: 0;
+}
+
+.UserCart div {
+  padding: 0;
+}
+
+.CartSummaryList {
+  display: flex;
+  justify-content: space-between;
 }

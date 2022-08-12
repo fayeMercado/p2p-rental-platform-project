@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import styles from "./AccountPage.module.css";
 
 import { Outlet, useNavigate } from "react-router-dom";
@@ -8,11 +8,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
-import Button from "react-bootstrap/Button";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 import HeaderProducts from "../Headers/HeaderProducts";
-import { MyCart } from "./MyCart";
 import { AppButtonWhite } from "../CustomComponents/AppButton";
 import Footer from "../Footer/Footer";
 
@@ -29,7 +27,7 @@ const AccountPage = () => {
             <Breadcrumb.Item active>My Cart</Breadcrumb.Item>
           </Breadcrumb>
         </Row>
-        <Row>
+        <Row className="gap-2">
           <Col xs={3}>
             <Container className="mb-4 text-center">
               <img
@@ -67,7 +65,7 @@ const AccountPage = () => {
               </AppButtonWhite>
             </Stack>
           </Col>
-          <Col>
+          <Col className="pl-0">
             <Outlet />
           </Col>
         </Row>

@@ -49,7 +49,7 @@
 }
 
 .AppButtonGreen {
-  height: 40px;
+  min-height: 35px;
   padding: 0 16px;
   border: 1px solid #dddddd;
   border-radius: 50px;
@@ -66,10 +66,10 @@
   color: #184d47;
 }
 
-.AppButtonWhiteGreen {
-  height: 40px;
-  padding: 0 16px;
-  border: 1px solid #dddddd;
+.WhiteGreen {
+  min-height: 35px;
+  padding: 6px 16px;
+  border: none;
   border-radius: 50px;
   background-color: #ffffff;
   font-family: "Montserrat", sans-serif;
@@ -77,9 +77,59 @@
   font-weight: 600;
   color: #184d47;
 }
+.WhiteGreen:hover {
+  border: none;
+  outline: 2px solid #184d47;
+}
 
-.AppButtonWhiteGreen:hover {
+.White {
+  min-height: 35px;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 50px;
+  background-color: #eeeeee;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #184d47;
+}
+.White:hover {
   background-color: #ffffff;
+  border: none;
+  outline: 2px solid #dddddd;
+}
+
+.Yellow {
+  min-height: 35px;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 50px;
+  background-color: #f7ebb1;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #184d47;
+}
+.Yellow:hover {
+  background-color: #ffffff;
+  border: none;
+  outline: 2px solid #f7ebb1;
+}
+
+.Green {
+  min-height: 35px;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 50px;
+  background-color: #184d47;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+.Green:hover {
+  background-color: #ffffff;
+  border: none;
   outline: 2px solid #184d47;
   color: #184d47;
 }

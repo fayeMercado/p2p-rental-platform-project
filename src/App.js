@@ -17,7 +17,7 @@ import FAQ from "./FAQ/FAQ";
 
 import { ProductList } from "./ProductPage/ProductList";
 import ItemPage from "./ItemPage/ItemPage";
-import { MyCart } from "./AccountPage/MyCart";
+import { UserCart } from "./AccountPage/UserCart";
 
 import PageMaintenance from "./Wildcards/PageMaintenance";
 import PageNotFound from "./Wildcards/PageNotFound";
@@ -36,7 +36,7 @@ function App() {
         </Route>
         <Route path="account" element={<AccountPage />}>
           <Route path="profile" element={<PageMaintenance />} />
-          <Route path="my-cart" element={<MyCart />} />
+          <Route path="my-cart" element={<UserCart />} />
           <Route path="purchases" element={<PageMaintenance />} />
           <Route path="wishlist" element={<PageMaintenance />} />
         </Route>

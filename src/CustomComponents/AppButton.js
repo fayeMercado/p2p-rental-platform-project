@@ -44,10 +44,28 @@ export const AppButtonGreen = (props) => (
 
 export const AppButtonWhiteGreen = (props) => (
   <button
-    className={styles.AppButtonWhiteGreen}
+    className={styles.WhiteGreen}
     type={props.type}
     onClick={props.onClick}
   >
+    {props.children}
+  </button>
+);
+
+export const AppBtnWhite = (props) => (
+  <button className={styles.White} type={props.type} onClick={props.onClick}>
+    {props.children}
+  </button>
+);
+
+export const AppBtnYellow = (props) => (
+  <button className={styles.Yellow} type={props.type} onClick={props.onClick}>
+    {props.children}
+  </button>
+);
+
+export const AppBtnGreen = (props) => (
+  <button className={styles.Green} type={props.type} onClick={props.onClick}>
     {props.children}
   </button>
 );

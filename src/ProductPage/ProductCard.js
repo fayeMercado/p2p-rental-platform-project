@@ -45,8 +45,9 @@ export function ProductCard(props) {
           <Container fluid className="p-0 ">
             <div className="text-center py-2">
               <p className="m-0">Rate starts at</p>
-              <span style={{ fontSize: "1.25rem", fontWeight: "bold" }}>
-                {JSON.parse(item.rent_rates).day}
+              <span style={{ fontSize: "1.25rem" }}>
+                <span className="text-muted">&#8369;</span>
+                <b>{JSON.parse(item.rent_rates).day.toLocaleString()}</b>
               </span>
               <span className="text-muted">/day</span>
             </div>
