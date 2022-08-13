@@ -92,7 +92,7 @@ export function OrderForm(
       quantity: event.target.ItemQuantity.value,
       rent_date: date,
       rent_duration: duration,
-      total_rent: totalRent(),
+      total_rent: totalRent() * event.target.ItemQuantity.value,
     };
 
     var myHeaders = new Headers();
