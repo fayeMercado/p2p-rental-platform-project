@@ -3,20 +3,29 @@ import styles from "./AccountPage.module.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
 import { AppBtnWhite, AppBtnYellow } from "../CustomComponents/AppButton";
-import { getItem } from "../dataProduct";
 import { IconClose, IconLocation } from "../Icons";
 
-export function UserCartItem(item, index) {
-  // let item = getItem(itemcode);
+export function UserCartItem(cartItem, index, allProducts) {
+  const item = allProducts.find((item) => item.code === cartItem.product_code);
+
+  // _.update(object, "a[0].b.c", function (n) {
+  //   return n * n;
+  // });
+  // console.log(object.a[0].b.c);
+
+  const itemTotal =
+    item.ref_deposit * cartItem.quantity +
+    cartItem.total_rent +
+    cartItem.shipping_rates;
+
   return (
     <Container key={index} className={styles.CartItem}>
       <Container as={Row} className="m-0">
-        <Col xs={10}>
-          <h5 className="m-0">{item.itemName}</h5>
+        <Col>
+          <h5 className="m-0">{item.item_name}</h5>
         </Col>
-        <Col className="text-end">
+        <Col xs={1} className="text-end">
           <IconClose defaultColor="#184d47" hoverColor="#b84141" />
         </Col>
       </Container>
@@ -31,50 +40,59 @@ export function UserCartItem(item, index) {
           <Container as={Row} className="m-0 gap-3">
             <Col>
               <img
-                src={item.images[0]}
+                src={JSON.parse(item.images)[0]}
                 alt=""
                 width="100%"
                 height="100%"
                 style={{ objectFit: "contain" }}
               />
             </Col>
-            <Col xs={10}>
+            <Col xs={10} style={{ fontSize: "0.875rem" }}>
               <Row className="m-0 gap-5">
-                <Col xs={5}>
+                <Col xs={5} className="d-flex flex-column gap-1">
                   <div className="d-flex justify-content-between">
                     <span>Quantity : </span>
-                    <span>{item.quantity}</span>
+                    <span>{cartItem.quantity}</span>
                   </div>
                   <div className="d-flex justify-content-between">
                     <span>Rent Duration : </span>
-                    <span>5 days</span>
+                    <span>{cartItem.rent_duration} days</span>
                   </div>
                   <div className="d-flex justify-content-between">
                     <span>Shipping : </span>
-                    <span>Pick-up</span>
+                    <span>
+                      {cartItem.shipping_method === "pick-up"
+                        ? "For pick-up"
+                        : "For delivery"}
+                    </span>
                   </div>
                   <div>
                     <span>Addresss : </span>
                     <p className="m-0">N/A</p>
                   </div>
                 </Col>
-                <Col>
+                <Col className="d-flex flex-column gap-1">
                   <div className="d-flex justify-content-between">
-                    <span>Refundable Deposit : </span>
-                    <span>&#8369;{item.deposit}</span>
+                    <span>Refundable Deposit Subtotal: </span>
+                    <span>
+                      &#8369;
+                      {(item.ref_deposit * cartItem.quantity).toLocaleString()}
+                    </span>
                   </div>
                   <div className="d-flex justify-content-between">
                     <span>Rent Rate Subtotal : </span>
-                    <span>&#8369;0</span>
+                    <span>&#8369;{cartItem.total_rent?.toLocaleString()}</span>
                   </div>
                   <div className="d-flex justify-content-between">
                     <span>Delivery Charges : </span>
-                    <span>&#8369;0</span>
+                    <span>
+                      &#8369;{cartItem.shipping_rates?.toLocaleString()}
+                    </span>
                   </div>
-                  <hr />
+                  <hr className="my-2" />
                   <div className="d-flex justify-content-between">
                     <span>Item Total : </span>
-                    <span>&#8369;0</span>
+                    <span>&#8369;{itemTotal.toLocaleString()}</span>
                   </div>
                 </Col>
               </Row>
