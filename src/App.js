@@ -22,6 +22,8 @@ import { UserCart } from "./AccountPage/UserCart";
 import PageMaintenance from "./Wildcards/PageMaintenance";
 import PageNotFound from "./Wildcards/PageNotFound";
 
+import { Profile, ProfileEdit } from "./Profile/Profile";
+
 function App() {
   return (
     <BrowserRouter>
@@ -35,7 +37,8 @@ function App() {
           <Route path="item/:code" element={<ItemPage />} />
         </Route>
         <Route path="account" element={<AccountPage />}>
-          <Route path="profile" element={<PageMaintenance />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="profile/edit" element={<ProfileEdit />} />
           <Route path="my-cart" element={<UserCart />} />
           <Route path="purchases" element={<PageMaintenance />} />
           <Route path="wishlist" element={<PageMaintenance />} />

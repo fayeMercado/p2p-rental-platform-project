@@ -69,3 +69,13 @@ export const AppBtnGreen = (props) => (
     {props.children}
   </button>
 );
+
+export const AppButtonYellowP = (props) => (
+  <button
+    className={styles.AppButtonYellowP}
+    type={props.type}
+    onClick={props.onClick}
+  >
+    {props.children}
+  </button>
+);

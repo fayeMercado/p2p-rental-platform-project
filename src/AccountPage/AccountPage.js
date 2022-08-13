@@ -13,6 +13,8 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import HeaderProducts from "../Headers/HeaderProducts";
 import { AppButtonWhite } from "../CustomComponents/AppButton";
 import Footer from "../Footer/Footer";
+import juan from "../Images/juan.png";
+
 
 const AccountPage = () => {
   const navigate = useNavigate();
@@ -31,7 +33,7 @@ const AccountPage = () => {
           <Col xs={3}>
             <Container className="mb-4 text-center">
               <img
-                src="https://www.sunsetlearning.com/wp-content/uploads/2019/09/User-Icon-Grey-300x300.png"
+                src={juan}
                 alt=""
                 width="75%"
               />
