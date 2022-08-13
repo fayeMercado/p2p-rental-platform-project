@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../ItemPage.module.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -9,22 +9,118 @@ import Popover from "react-bootstrap/Popover";
 import { IconCalendar } from "../../Icons.js";
 import { AppBtnWhite, AppBtnYellow } from "../../CustomComponents/AppButton";
 import { DayPicker } from "react-day-picker";
+import { useParams } from "react-router-dom";
 
 export function OrderForm(
-  range,
-  footer,
-  setRange,
-  disabledDays,
-  output,
-  duration,
+  // range,
+  // footer,
+  // setRange,
+  // disabledDays,
+  // output,
+  // duration,
   item,
   handleShow,
-  onSubmit
+  rates
 ) {
+  const [duration, setDuration] = useState(0);
+  const [range, setRange] = useState([]);
+  const disabledDays = [{ from: new Date(1980, 0, 1), to: new Date() }];
+  const [output, setOutput] = useState("");
+
+  useEffect(() => {
+    if (!range?.from) {
+      setDuration(0);
+      setOutput("Pick a date");
+    } else if (range?.from) {
+      setDuration(1);
+      setOutput(range.from?.toLocaleDateString());
+      if (range.to) {
+        setDuration((range.to - range.from) / 86400000);
+        setOutput(
+          range.from?.toLocaleDateString() +
+            " - " +
+            range.to?.toLocaleDateString()
+        );
+      }
+    }
+  }, [range?.from, range?.to]);
+
+  const productCode = useParams().code;
+  const date =
+    range?.from?.getFullYear() +
+    "-" +
+    range?.from?.getMonth() +
+    "-" +
+    range?.from?.getDate();
+
+  const submitOrder = (event) => {
+    event.preventDefault();
+
+    const totalRent = () => {
+      let days = duration;
+      let mo = 0;
+      let week = 0;
+      let day = 0;
+      if (duration >= 30) {
+        mo = Math.floor(duration / 30);
+        days %= 30;
+        if (days >= 7) {
+          week = Math.floor(days / 7);
+          day = days % 7;
+        } else {
+          day = days % 7;
+        }
+      } else if (days >= 7) {
+        week = Math.floor(days / 7);
+        day = days % 7;
+      } else {
+        day = days;
+      }
+
+      let rent_mo = rates?.month * mo;
+      let rent_week = rates?.week * week;
+      let rent_day = rates?.day * day;
+
+      return rent_mo + rent_week + rent_day;
+    };
+
+    let order = {
+      cart_id: "C0000001",
+      product_code: productCode,
+      shipping_method: event.target.method.value,
+      shipping_rates: 0,
+      quantity: event.target.ItemQuantity.value,
+      rent_date: date,
+      rent_duration: duration,
+      total_rent: totalRent(),
+    };
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify(order);
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://127.0.0.1:8000/cart", requestOptions)
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  // return console.log(addDays(range.from, 3));
+  // console.log(Date.parse("2022-08-17"));
+  // console.log(new Date(Date.parse(range?.from)));
+
   return (
     <Form
       className="p-0 h-100 d-flex flex-column justify-content-between"
-      onSubmit={onSubmit}
+      onSubmit={(event) => submitOrder(event)}
     >
       <div className="d-flex flex-column gap-2">
         <Form.Group
@@ -40,12 +136,14 @@ export function OrderForm(
               id="pick-up"
               label="Pick-up"
               name="method"
+              value="pick-up"
             />
             <Form.Check
               type="radio"
               id="delivery"
               label="Door-to-door delivery"
               name="method"
+              value="delivery"
             />
           </Col>
         </Form.Group>
@@ -68,7 +166,6 @@ export function OrderForm(
                       mode="range"
                       defaultMonth={new Date()}
                       selected={range}
-                      footer={footer}
                       onSelect={setRange}
                       disabled={disabledDays}
                     />
@@ -93,8 +190,8 @@ export function OrderForm(
               </Row>
             </OverlayTrigger>
             <div className="my-2">
-              This item will be rented for <b>{duration}</b>{" "}
-              {duration > 1 ? "days" : "day"}.
+              This item will be rented for <b>{duration}</b>
+              {duration > 1 ? " days" : " day"}.
             </div>
           </Col>
         </Form.Group>

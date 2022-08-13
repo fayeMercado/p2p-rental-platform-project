@@ -35,7 +35,7 @@ const ItemPage = () => {
       });
   }
 
-  useEffect(findInProducts, []);
+  useEffect(findInProducts, [params.code]);
 
   //modal>>
   const [show, setShow] = useState(false);
@@ -44,30 +44,30 @@ const ItemPage = () => {
   //<<modal
 
   //datepicker>>
-  const [duration, setDuration] = useState(0);
-  const [range, setRange] = useState([]);
-  const disabledDays = [{ from: new Date(1980, 0, 1), to: new Date() }];
-  const [output, setOutput] = useState("");
+  // const [duration, setDuration] = useState(0);
+  // const [range, setRange] = useState([]);
+  // const disabledDays = [{ from: new Date(1980, 0, 1), to: new Date() }];
+  // const [output, setOutput] = useState("");
 
-  useEffect(() => {
-    if (!range?.from) {
-      setDuration(0);
-      setOutput("Pick a date");
-    } else if (range?.from) {
-      setDuration(1);
-      setOutput(range.from?.toLocaleDateString());
-      if (range.to) {
-        setDuration((range.to - range.from) / 86400000);
-        setOutput(
-          range.from?.toLocaleDateString() +
-            " - " +
-            range.to?.toLocaleDateString()
-        );
-      }
-    }
-  }, [range?.from, range?.to]);
+  // useEffect(() => {
+  //   if (!range?.from) {
+  //     setDuration(0);
+  //     setOutput("Pick a date");
+  //   } else if (range?.from) {
+  //     setDuration(1);
+  //     setOutput(range.from?.toLocaleDateString());
+  //     if (range.to) {
+  //       setDuration((range.to - range.from) / 86400000);
+  //       setOutput(
+  //         range.from?.toLocaleDateString() +
+  //           " - " +
+  //           range.to?.toLocaleDateString()
+  //       );
+  //     }
+  //   }
+  // }, [range?.from, range?.to]);
 
-  let footer = <p>duration {duration}</p>;
+  // let footer = <p>duration {duration}</p>;
   //<<datepicker
 
   return (
@@ -129,14 +129,15 @@ const ItemPage = () => {
 
             {/* <<<<<<<<<< Order Form >>>>>>>>>> */}
             {OrderForm(
-              range,
-              footer,
-              setRange,
-              disabledDays,
-              output,
-              duration,
+              // range,
+              // footer,
+              // setRange,
+              // disabledDays,
+              // output,
+              // duration,
               item,
-              handleShow
+              handleShow,
+              rates
             )}
           </Col>
 
