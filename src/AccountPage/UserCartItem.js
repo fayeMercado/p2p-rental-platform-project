@@ -8,8 +8,8 @@ import { AppBtnWhite, AppBtnYellow } from "../CustomComponents/AppButton";
 import { getItem } from "../dataProduct";
 import { IconClose, IconLocation } from "../Icons";
 
-export function UserCartItem(itemcode, index) {
-  let item = getItem(itemcode);
+export function UserCartItem(item, index) {
+  // let item = getItem(itemcode);
   return (
     <Container key={index} className={styles.CartItem}>
       <Container as={Row} className="m-0">

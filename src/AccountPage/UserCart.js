@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./AccountPage.module.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
 
-import { AppBtnGreen, AppButtonGreen } from "../CustomComponents/AppButton";
+import { AppBtnGreen } from "../CustomComponents/AppButton";
 import { getCart } from "./dataCart";
 import { UserCartItem } from "./UserCartItem";
 
 export function UserCart() {
-  let myCart = getCart();
+  const [myCart, setMyCart] = useState([]);
+
+  useEffect(() => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = "";
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch("http://127.0.0.1:8000/cart", requestOptions)
+      .then((response) => response.text())
+      .then((result) => setMyCart(JSON.parse(result)))
+      .catch((error) => console.log("error", error));
+  }, []);
+
   return (
     <Container as={Row} className={styles.UserCart}>
       <Container className="d-flex align-items-end justify-content-between">
@@ -19,7 +35,7 @@ export function UserCart() {
       </Container>
 
       {/* <<<<<<<<<< Cart List >>>>>>>>>> */}
-      {myCart.map((itemcode, index) => UserCartItem(itemcode, index))}
+      {myCart.map((item, index) => UserCartItem(item, index))}
 
       <hr />
       <Container>
