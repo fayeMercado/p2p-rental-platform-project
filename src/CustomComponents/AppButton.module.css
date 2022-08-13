@@ -77,6 +77,7 @@
   font-weight: 600;
   color: #184d47;
 }
+
 .WhiteGreen:hover {
   border: none;
   outline: 2px solid #184d47;
@@ -93,6 +94,7 @@
   font-weight: 600;
   color: #184d47;
 }
+
 .White:hover {
   background-color: #ffffff;
   border: none;
@@ -110,6 +112,7 @@
   font-weight: 600;
   color: #184d47;
 }
+
 .Yellow:hover {
   background-color: #ffffff;
   border: none;
@@ -127,9 +130,27 @@
   font-weight: 600;
   color: #ffffff;
 }
+
 .Green:hover {
   background-color: #ffffff;
   border: none;
   outline: 2px solid #184d47;
   color: #184d47;
+}
+
+.AppButtonYellowP {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #eeeeee;
+  border-radius: 50px;
+  background-color: #f7d52f;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #184d47;
+}
+
+.AppButtonYellowP:hover {
+  background-color: #f5e79d;
+  outline: 2px solid #f7d52f;
 }

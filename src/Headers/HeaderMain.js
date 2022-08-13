@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
 import styles from "./Headers.module.css";
 
@@ -9,11 +9,19 @@ import {
   AppButtonWhiteGreen,
   AppButtonYellow100,
 } from "../CustomComponents/AppButton";
+import { Login, Signup } from "../Profile/Modal";
+
 import { useNavigate } from "react-router-dom";
 
 const HeaderMain = () => {
   const provinces = require("philippines/provinces");
   const navigate = useNavigate();
+
+  const [loginShow, setLoginShow] = useState(false);
+  const [signupShow, setSignupShow] = useState(false);
+
+
+
   return (
     <div className={styles.Headers} data-testid="Headers">
       <Container fluid className={styles.HeaderProducts} data-testid="Headers">
@@ -32,23 +40,42 @@ const HeaderMain = () => {
                   style={{ cursor: "pointer" }}
                 />
               </Col>
+
+              {/* Login Start */}
+
               <Col className="d-flex justify-content-end align-items-center gap-3">
                 <div className="ms-auto">
                   <AppButtonWhiteGreen
                     type="button"
-                    onClick={() => navigate("/log-in")}
+                    onClick={() => setLoginShow(true)}
                   >
                     Log in
                   </AppButtonWhiteGreen>
                 </div>
+                <Login
+                  show={loginShow}
+                  onHide={() => setLoginShow(false)}
+                />
+
+                {/* Login End */}
+
+                {/* Signup Start */}
+
                 <div>
                   <AppButtonGreen
                     type="button"
-                    onClick={() => navigate("/sign-up")}
+                    onClick={() => setSignupShow(true)}
                   >
                     Sign up
                   </AppButtonGreen>
                 </div>
+                <Signup
+                  show={signupShow}
+                  onHide={() => setSignupShow(false)}
+                />
+
+                {/* Signup End */}
+
               </Col>
               <div style={{ color: "#fff", marginTop: "0.75rem" }}>
                 online marketplace that facilitates peer-to-peer renting in
@@ -94,7 +121,7 @@ const HeaderMain = () => {
                 <span style={{ paddingRight: "12px" }}>or </span>
                 <AppButtonYellow100
                   type="button"
-                  onClick={() => navigate("/products")}
+                  onClick={() => navigate("/products/all")}
                 >
                   Explore
                 </AppButtonYellow100>
@@ -103,7 +130,7 @@ const HeaderMain = () => {
           </Container>
         </Container>
       </Container>
-    </div>
+    </div >
   );
 };
 

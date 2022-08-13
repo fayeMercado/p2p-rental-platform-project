@@ -34,7 +34,7 @@ const HeaderProducts = () => {
             </Col>
             <Col className="d-flex justify-content-end align-items-center gap-3">
               <span className={styles.Welcome}>Welcome, Username!</span>
-              <Link to="/account">
+              <Link to="/account/profile">
                 <IconAccount defaultColor="#184D47" hoverColor="#81B395" />
               </Link>
               <Link to="/account/my-cart">
