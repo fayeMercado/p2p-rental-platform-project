@@ -11,7 +11,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Badge from "react-bootstrap/Badge";
 
 import logoWhite from "../Images/logoWhite.svg";
-import { IconAccount, IconCart, IconSearch } from "../Icons.js";
+import { IconAccount, IconCart, IconSearch, Logout } from "../Icons.js";
 import { Link, useNavigate } from "react-router-dom";
 
 const HeaderProducts = () => {
@@ -39,6 +39,9 @@ const HeaderProducts = () => {
               </Link>
               <Link to="/account/my-cart">
                 <IconCart defaultColor="#184D47" hoverColor="#81B395" />
+              </Link>
+              <Link to="/account">
+                <Logout defaultColor="#184D47" hoverColor="#81B395" />
               </Link>
             </Col>
             <div style={{ color: "#fff", marginTop: "0.75rem" }}>
@@ -81,7 +84,7 @@ const HeaderProducts = () => {
           </Row>
         </Container>
       </Container>
-    </Container>
+    </Container >
   );
 };
 
