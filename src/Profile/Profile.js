@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Button, Modal } from "react-bootstrap";
 import { AppButtonYellowP, AppButtonGreen } from "../CustomComponents/AppButton";
 import { useNavigate } from "react-router-dom";
@@ -6,10 +6,28 @@ import { useNavigate } from "react-router-dom";
 export const Profile = () => {
     const navigate = useNavigate();
 
+    // useEffect(() => {
+    //     fetch("http://localhost:8000/profile")
+    //         .then((result) => result.json())
+    //         .then((response) => console.log(response));
+    // }, []);
+
+    useEffect(() => {
+        async function getData() {
+            const response = await fetch(
+                "http://localhost:8000/profile"
+            )
+            let actualData = await response.json();
+
+            console.log(actualData)
+        }
+        getData()
+    }, [])
+
+
     function Edit() {
         navigate("/account/profile/edit")
     }
-
 
     return (
         <div>

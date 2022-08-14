@@ -279,3 +279,30 @@ export function IconLocation(props) {
     </svg>
   );
 }
+
+
+export function Logout(props) {
+  const [color, setColor] = useState(props.defaultColor);
+  return (
+    <div
+      onMouseEnter={() => setColor(props.hoverColor)}
+      onMouseLeave={() => setColor(props.defaultColor)}
+    >
+      <svg
+        width="40"
+        height="40"
+        viewBox="0 0 40 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          // d="M5 22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5zm10-6l5-4-5-4v3H9v2h6v3z"
+          d="M5 22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5zm10-6l5-4-5-4v3H9v2h6v3z"
+          fill={color}
+        />
+      </svg>
+    </div>
+  );
+}
+
+
