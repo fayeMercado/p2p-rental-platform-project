@@ -2,16 +2,32 @@ import React, { useEffect, useState } from "react";
 import styles from "./AccountPage.module.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
 
-import { AppBtnGreen } from "../CustomComponents/AppButton";
+import {
+  AppBtnGreen,
+  AppBtnWhite,
+  AppBtnYellow,
+} from "../CustomComponents/AppButton";
 import { UserCartItem } from "./UserCartItem";
 
 export function UserCart() {
   const [myCart, setMyCart] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
+  const [checked, setChecked] = useState([]);
+  const cart = { cart_id: "C0000001" }; //change to dynamic
+
+  //modal>>
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [deleteItem, setDeleteItem] = useState("");
+
+  //<<modal
 
   const getCart = () => {
-    fetch("http://127.0.0.1:8000/cart")
+    fetch(`http://127.0.0.1:8000/cart/${cart.cart_id}`)
       .then((response) => response.json())
       .then((result) => setMyCart(result))
       .catch((error) => console.log("error", error));
@@ -31,7 +47,8 @@ export function UserCart() {
 
   const totalRefundable =
     allProducts.length &&
-    myCart
+    checked.length &&
+    checked
       .map((x) => {
         const current = allProducts.find(
           (item) => item.code === x.product_code
@@ -41,27 +58,95 @@ export function UserCart() {
       .reduce((a, b) => a + b);
 
   const totalRent =
-    myCart.length && myCart.map((x) => x.total_rent).reduce((a, b) => a + b);
+    checked.length && checked.map((x) => x.total_rent)?.reduce((a, b) => a + b);
 
   const totalDelivery =
-    myCart.length &&
-    myCart.map((x) => x.shipping_rates).reduce((a, b) => a + b);
+    checked.length &&
+    checked.map((x) => x.shipping_rates)?.reduce((a, b) => a + b);
 
   const cartTotal = totalRefundable + totalRent + totalDelivery;
 
-  return (
-    myCart.length &&
-    allProducts.length && (
-      <Container as={Row} className={styles.UserCart}>
-        <Container className="d-flex align-items-end justify-content-between">
-          <h3 className="fontMain fw-bold">MY CART</h3>
-          <span>0 products</span>
-        </Container>
+  const deleteConfirm = () => {
+    let itemToBeDeleted = {
+      id: deleteItem,
+    };
+    const requestOptions = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(itemToBeDeleted),
+    };
 
+    fetch("http://localhost:8000/cart", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        const filteredCart = result.filter(
+          (item) => item.cart_id === cart.cart_id
+        );
+        setMyCart(filteredCart);
+      });
+
+    return handleClose();
+  };
+
+  const handleChange = (event) => {
+    let updatedList = [...checked];
+    let findItem = myCart.find(
+      (item) => item.id === parseInt(event.target.value)
+    );
+    if (event.target.checked) {
+      updatedList = [...checked, findItem];
+    } else {
+      updatedList.splice(checked.indexOf(findItem), 1);
+    }
+    setChecked(updatedList);
+  };
+
+  return myCart.length && allProducts.length ? (
+    <Container as={Row} className={styles.UserCart}>
+      <Container className="d-flex align-items-end justify-content-between">
+        <h3 className="fontMain fw-bold">MY CART</h3>
+        <span className="m-2">{myCart.length} products found.</span>
+      </Container>
+
+      <Form className="p-0">
         {/* <<<<<<<<<< Cart List >>>>>>>>>> */}
-        {myCart.map((cartItem, index) =>
-          UserCartItem(cartItem, index, allProducts)
-        )}
+        {myCart.map((cartItem, index) => (
+          <Form.Group
+            className={styles.CartItem + " d-flex gap-2"}
+            controlId={index}
+            key={index}
+          >
+            <Form.Check
+              type="checkbox"
+              aria-label={cartItem.product_code}
+              id="default-checkbox-2"
+              value={cartItem.id}
+              onChange={(e) => handleChange(e)}
+            />
+
+            {UserCartItem(
+              cartItem,
+              allProducts,
+              handleShow,
+              deleteItem,
+              setDeleteItem
+            )}
+          </Form.Group>
+        ))}
+
+        <Modal show={show} onHide={handleClose} size="sm" centered backdrop>
+          <Modal.Body>
+            Are you sure you want to delete this item from your cart?
+          </Modal.Body>
+          <Modal.Footer>
+            <AppBtnWhite type="button" onClick={handleClose}>
+              No
+            </AppBtnWhite>
+            <AppBtnYellow type="button" onClick={deleteConfirm}>
+              Yes
+            </AppBtnYellow>
+          </Modal.Footer>
+        </Modal>
 
         <hr className="my-3" />
         <Container>
@@ -99,11 +184,15 @@ export function UserCart() {
             </div>
 
             <div className="text-center mt-3">
-              <AppBtnGreen type="submit">Checkout all Items</AppBtnGreen>
+              <AppBtnGreen type="submit">Proceed to Payment</AppBtnGreen>
             </div>
           </div>
         </Container>
-      </Container>
-    )
+      </Form>
+    </Container>
+  ) : (
+    <p style={{ textAlign: "center", fontSize: "1.5rem" }}>
+      "No items in your cart."
+    </p>
   );
 }

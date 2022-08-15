@@ -24,7 +24,7 @@ import "react-day-picker/dist/style.css";
 const ItemPage = () => {
   let params = useParams();
   const [item, setItem] = useState([]);
-  const rates = item.rent_rates && JSON.parse(item.rent_rates); //not undefined (waiting for value) before parsing
+  const rates = item.rent_rates && JSON.parse(item.rent_rates); //must not be undefined (waiting for value) before parsing
 
   function findInProducts() {
     fetch("http://localhost:8000/products")
@@ -39,36 +39,12 @@ const ItemPage = () => {
 
   //modal>>
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    window.location.reload();
+  };
   const handleShow = () => setShow(true);
   //<<modal
-
-  //datepicker>>
-  // const [duration, setDuration] = useState(0);
-  // const [range, setRange] = useState([]);
-  // const disabledDays = [{ from: new Date(1980, 0, 1), to: new Date() }];
-  // const [output, setOutput] = useState("");
-
-  // useEffect(() => {
-  //   if (!range?.from) {
-  //     setDuration(0);
-  //     setOutput("Pick a date");
-  //   } else if (range?.from) {
-  //     setDuration(1);
-  //     setOutput(range.from?.toLocaleDateString());
-  //     if (range.to) {
-  //       setDuration((range.to - range.from) / 86400000);
-  //       setOutput(
-  //         range.from?.toLocaleDateString() +
-  //           " - " +
-  //           range.to?.toLocaleDateString()
-  //       );
-  //     }
-  //   }
-  // }, [range?.from, range?.to]);
-
-  // let footer = <p>duration {duration}</p>;
-  //<<datepicker
 
   return (
     <div>
@@ -86,19 +62,19 @@ const ItemPage = () => {
               <Row className="my-2 text-center">
                 <Col>
                   <span className={styles.Rates}>
-                    &#8369;<b>{rates?.day.toLocaleString()}</b>
+                    &#8369;<b>{rates?.day?.toLocaleString()}</b>
                   </span>
                   <span className="text-muted"> /day</span>
                 </Col>
                 <Col>
                   <span className={styles.Rates}>
-                    &#8369;<b>{rates?.week.toLocaleString()}</b>
+                    &#8369;<b>{rates?.week?.toLocaleString()}</b>
                   </span>
                   <span className="text-muted"> /week</span>
                 </Col>
                 <Col>
                   <span className={styles.Rates}>
-                    &#8369;<b>{rates?.month.toLocaleString()}</b>
+                    &#8369;<b>{rates?.month?.toLocaleString()}</b>
                   </span>
                   <span className="text-muted"> /mo</span>
                 </Col>
@@ -128,28 +104,12 @@ const ItemPage = () => {
             <hr />
 
             {/* <<<<<<<<<< Order Form >>>>>>>>>> */}
-            {OrderForm(
-              // range,
-              // footer,
-              // setRange,
-              // disabledDays,
-              // output,
-              // duration,
-              item,
-              handleShow,
-              rates
-            )}
+            {OrderForm(item, handleShow, rates)}
           </Col>
 
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Successfully added to cart</Modal.Title>
-            </Modal.Header>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+          <Modal show={show} onHide={handleClose} size="sm" centered backdrop>
+            <Modal.Header closeButton></Modal.Header>
+            <Modal.Body>Successfully added to cart</Modal.Body>
           </Modal>
 
           {/* <<<<<<<<<< Image Carousel >>>>>>>>>> */}
