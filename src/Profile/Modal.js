@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { Modal, Form, Row, Col } from "react-bootstrap";
-import { AppButtonYellow, AppButtonGreen } from "../CustomComponents/AppButton"
+import { AppButtonYellow, AppButtonGreen } from "../CustomComponents/AppButton";
+import { nanoid } from 'nanoid';
 
 export function Signup(props) {
     const provinces = require("philippines/provinces");
     const navigate = useNavigate();
+    const cart_id = nanoid(10);
 
-
+    // const [cart_id, setCartId] = useState("");
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
     const [address, setAddress] = useState("");
     const [mobile, setMobile] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -20,13 +23,16 @@ export function Signup(props) {
 
     async function signUp(event) {
 
-        let item = { firstname, lastname, address, mobile, email, password };
+        let item = { cart_id, firstname, lastname, address, mobile, username, email, password };
         event.preventDefault();
         console.log(item)
+        // setCartId("");
+        // cart_id("");
         setFirstName("");
         setLastName("");
         setAddress("");
         setMobile("");
+        setUsername("");
         setEmail("");
         setPassword("");
 
@@ -56,6 +62,16 @@ export function Signup(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={signUp}>
+                    <Form.Group className="mb-3" >
+                        <Form.Label>Unique Key</Form.Label>
+                        <Form.Control
+                            type="text"
+                            // placeholder="Last Name"
+                            value={cart_id}
+                            // onChange={(e) => setCartId(e.target.value)}
+                            disabled
+                        />
+                    </Form.Group>
                     <Row>
                         <Col xs={12} md={6}>
                             <Form.Group className="mb-3" >
@@ -104,6 +120,16 @@ export function Signup(props) {
                             placeholder="09XXXXXXXXX"
                             value={mobile}
                             onChange={(e) => setMobile(e.target.value)}
+                            autoFocus
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" >
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             autoFocus
                         />
                     </Form.Group>
