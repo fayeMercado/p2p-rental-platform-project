@@ -13,7 +13,10 @@ export function UserCartItem(
   allProducts,
   handleShow,
   deleteItem,
-  setDeleteItem
+
+  setDeleteItem,
+  setModal
+
 ) {
   const item = allProducts.find((item) => item.code === cartItem.product_code);
 
@@ -24,6 +27,9 @@ export function UserCartItem(
 
   deleteItem = () => {
     handleShow();
+
+    setModal("forDelete");
+
     return setDeleteItem(cartItem.id);
   };
 

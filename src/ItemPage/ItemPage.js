@@ -11,7 +11,6 @@ import Stack from "react-bootstrap/Stack";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 
 import { IconLocation, IconStarEmpty } from "../Icons.js";
 import { AppBtnWhite } from "../CustomComponents/AppButton";

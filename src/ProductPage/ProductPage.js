@@ -11,7 +11,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import HeaderProducts from "../Headers/HeaderProducts";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Categories } from "../dataCategories.js";
-import { AppButtonWhite } from "../CustomComponents/AppButton";
+import { AppButtonWGY, AppButtonWhite } from "../CustomComponents/AppButton";
 import Footer from "../Footer/Footer";
 
 function ProductPage() {
@@ -33,7 +33,7 @@ function ProductPage() {
           <Col xs={3}>
             <Stack className="gap-2">
               {Categories.map((category, index) => (
-                <AppButtonWhite
+                <AppButtonWGY
                   key={index}
                   onClick={() => {
                     setBreadcrumbActive(category.text);
@@ -43,7 +43,7 @@ function ProductPage() {
                   active={category.text === breadcrumbActive}
                 >
                   {category.text.toUpperCase()}
-                </AppButtonWhite>
+                </AppButtonWGY>
               ))}
             </Stack>
           </Col>

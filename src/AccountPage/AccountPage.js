@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import PropTypes from "prop-types";
 import styles from "./AccountPage.module.css";
 
@@ -11,13 +11,23 @@ import Stack from "react-bootstrap/Stack";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 import HeaderProducts from "../Headers/HeaderProducts";
-import { AppButtonWhite } from "../CustomComponents/AppButton";
+import { AppButtonWGY } from "../CustomComponents/AppButton";
 import Footer from "../Footer/Footer";
 import juan from "../Images/juan.png";
 
-
 const AccountPage = () => {
   const navigate = useNavigate();
+  // const params
+  const [activeButton, setActiveButton] = useState("");
+  const clickHandler = (e) => {
+    navigate(`/account/${e.target.name}`);
+  };
+
+  useEffect(() => {
+    const urlLast = window.location.pathname.split("/")[2];
+    setActiveButton(urlLast);
+  }, [window.location.pathname]);
+
   return (
     <Container fluid className={styles.AccountPage} data-testid="AccountPage">
       <HeaderProducts />
@@ -32,39 +42,43 @@ const AccountPage = () => {
         <Row className="gap-2">
           <Col xs={3}>
             <Container className="mb-4 text-center">
-              <img
-                src={juan}
-                alt=""
-                width="75%"
-              />
+              <img src={juan} alt="" width="75%" />
               <h3 className="mt-3">Juan dela Cruz</h3>
               <p>Username</p>
             </Container>
             <Stack className="gap-3">
-              <AppButtonWhite
+              <AppButtonWGY
+                active={activeButton === "profile"}
                 type="button"
-                onClick={() => navigate("/account/profile")}
+                name="profile"
+                onClick={(e) => clickHandler(e)}
               >
                 PROFILE
-              </AppButtonWhite>
-              <AppButtonWhite
+              </AppButtonWGY>
+              <AppButtonWGY
+                active={activeButton === "cart"}
                 type="button"
-                onClick={() => navigate("/account/my-cart")}
+                name="cart"
+                onClick={(e) => clickHandler(e)}
               >
                 MY CART
-              </AppButtonWhite>
-              <AppButtonWhite
+              </AppButtonWGY>
+              <AppButtonWGY
+                active={activeButton === "purchases"}
                 type="button"
-                onClick={() => navigate("/account/purchases")}
+                name="purchases"
+                onClick={(e) => clickHandler(e)}
               >
                 MY PURCHASES
-              </AppButtonWhite>
-              <AppButtonWhite
+              </AppButtonWGY>
+              <AppButtonWGY
+                active={activeButton === "wishlist"}
                 type="button"
-                onClick={() => navigate("/account/wishlist")}
+                name="wishlist"
+                onClick={(e) => clickHandler(e)}
               >
                 WISHLIST
-              </AppButtonWhite>
+              </AppButtonWGY>
             </Stack>
           </Col>
           <Col className="pl-0">

@@ -16,7 +16,10 @@ export function UserCart() {
   const [myCart, setMyCart] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [checked, setChecked] = useState([]);
-  const cart = { cart_id: "C0000001" }; //change to dynamic
+
+  const [modal, setModal] = useState("");
+  const userToken = JSON.parse(localStorage.getItem("user-info"));
+
 
   //modal>>
   const [show, setShow] = useState(false);
@@ -27,7 +30,8 @@ export function UserCart() {
   //<<modal
 
   const getCart = () => {
-    fetch(`http://127.0.0.1:8000/cart/${cart.cart_id}`)
+    fetch(`http://127.0.0.1:8000/cart/${userToken.cart_id}`)
+
       .then((response) => response.json())
       .then((result) => setMyCart(result))
       .catch((error) => console.log("error", error));
@@ -80,13 +84,16 @@ export function UserCart() {
       .then((response) => response.json())
       .then((result) => {
         const filteredCart = result.filter(
-          (item) => item.cart_id === cart.cart_id
+
+          (item) => item.cart_id === userToken.cart_id
+
         );
         setMyCart(filteredCart);
       });
 
     return handleClose();
   };
+
 
   const handleChange = (event) => {
     let updatedList = [...checked];
@@ -101,12 +108,38 @@ export function UserCart() {
     setChecked(updatedList);
   };
 
+  const checkoutHandler = (event) => {
+    event.preventDefault();
+    handleShow();
+    setModal("forPayment");
+  };
+
+  const paymentConfirm = (event) => {
+    event.preventDefault();
+    if (event.target.confirmPassword.value === userToken.password) {
+      return console.log("paid");
+    } else {
+      return console.log("error");
+    }
+  };
+
+  const hasPickUpMethod = () => {
+    let arr = [];
+    checked.map((item) => arr.push(item.shipping_method));
+    return arr.includes("pick-up");
+  };
+
+  useEffect(() => {
+    hasPickUpMethod();
+  }, [checked]);
+
   return myCart.length && allProducts.length ? (
     <Container as={Row} className={styles.UserCart}>
       <Container className="d-flex align-items-end justify-content-between">
         <h3 className="fontMain fw-bold">MY CART</h3>
         <span className="m-2">{myCart.length} products found.</span>
       </Container>
+
 
       <Form className="p-0">
         {/* <<<<<<<<<< Cart List >>>>>>>>>> */}
@@ -129,31 +162,20 @@ export function UserCart() {
               allProducts,
               handleShow,
               deleteItem,
-              setDeleteItem
+
+              setDeleteItem,
+              setModal
             )}
           </Form.Group>
         ))}
 
-        <Modal show={show} onHide={handleClose} size="sm" centered backdrop>
-          <Modal.Body>
-            Are you sure you want to delete this item from your cart?
-          </Modal.Body>
-          <Modal.Footer>
-            <AppBtnWhite type="button" onClick={handleClose}>
-              No
-            </AppBtnWhite>
-            <AppBtnYellow type="button" onClick={deleteConfirm}>
-              Yes
-            </AppBtnYellow>
-          </Modal.Footer>
-        </Modal>
 
-        <hr className="my-3" />
         <Container>
           <h5 style={{ color: "#184d47", textAlign: "center" }}>
-            <b>Cart Summary</b>
+            <b>Cart Summary and Payment</b>
           </h5>
           <div className={styles.CartItem}>
+            <b>Cart Summary:</b>
             <div className="d-flex justify-content-between">
               <span>Refundable Subtotal</span>
               <span className="text-end">
@@ -182,12 +204,95 @@ export function UserCart() {
                 &#8369;<b>{cartTotal.toLocaleString()}</b>
               </span>
             </div>
+            <br />
+            <br />
+            <div>
+              <b>Payment Options:</b>
+              <Form.Group
+                className="px-4"
+                controlId="shippingMethod"
+                key="shipping-method"
+                required
+              >
+                <Form.Check
+                  default
+                  type="radio"
+                  id="wallet"
+                  label="My Wallet"
+                  name="payment"
+                  value="wallet-up"
+                />
+                <p>
+                  <i>Available Balance: &#8369;10000</i>
+                </p>
+                <Form.Check
+                  type="radio"
+                  id="cod"
+                  label="Cash on delivery"
+                  name="payment"
+                  value="cod"
+                  disabled={hasPickUpMethod() === true}
+                />
+                {hasPickUpMethod() && (
+                  <p style={{ color: "#9b9c9e" }}>
+                    <i>
+                      Only Door-to-door deliveries are allowed for cash on
+                      delivery payment option. Uncheck all "For pick-up" items
+                      to use this option.
+                    </i>
+                  </p>
+                )}
+              </Form.Group>
+            </div>
 
             <div className="text-center mt-3">
-              <AppBtnGreen type="submit">Proceed to Payment</AppBtnGreen>
+
+              <AppBtnGreen type="submit" onClick={(e) => checkoutHandler(e)}>
+                Checkout
+              </AppBtnGreen>
             </div>
           </div>
         </Container>
+        <Modal show={show} onHide={handleClose} size="sm" centered backdrop>
+          {modal === "forDelete" && (
+            <div>
+              <Modal.Body>
+                Are you sure you want to delete this item from your cart?
+              </Modal.Body>
+              <Modal.Footer>
+                <AppBtnWhite type="button" onClick={handleClose}>
+                  No
+                </AppBtnWhite>
+                <AppBtnYellow type="button" onClick={deleteConfirm}>
+                  Yes
+                </AppBtnYellow>
+              </Modal.Footer>
+            </div>
+          )}
+
+          {modal === "forPayment" && (
+            <Form onSubmit={(e) => paymentConfirm(e)}>
+              <Modal.Body>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Label>Enter password to confirm.</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    name="confirmPassword"
+                    autoFocus
+                  />
+                </Form.Group>
+              </Modal.Body>
+              <Modal.Footer>
+                <AppBtnWhite type="button" onClick={handleClose}>
+                  Close
+                </AppBtnWhite>
+                <AppBtnYellow type="submit">Confirm</AppBtnYellow>
+              </Modal.Footer>
+            </Form>
+          )}
+        </Modal>
+
       </Form>
     </Container>
   ) : (
