@@ -11,29 +11,29 @@ import { AppBtnWhite, AppBtnYellow } from "../../CustomComponents/AppButton";
 import { DayPicker } from "react-day-picker";
 import { useParams } from "react-router-dom";
 
-export function OrderForm(
-  // range,
-  // footer,
-  // setRange,
-  // disabledDays,
-  // output,
-  // duration,
-  item,
-  handleShow,
-  rates
-) {
+export function OrderForm(item, handleShow, rates) {
   const [duration, setDuration] = useState(0);
   const [range, setRange] = useState([]);
-  const disabledDays = [{ from: new Date(1980, 0, 1), to: new Date() }];
+  const productCode = useParams().code;
+  const disabledDays = [
+    { from: new Date(1980, 0, 1), to: new Date() },
+    // { from: new Date(2022, 7, 20), to: undefined },
+    // { from: new Date(2022, 7, 25), to: new Date(new Date(2022, 7, 25)) },
+  ];
   const [output, setOutput] = useState("");
 
   useEffect(() => {
+    let nextDay = new Date(range?.from).getTime() + 86400000;
     if (!range?.from) {
       setDuration(0);
       setOutput("Pick a date");
     } else if (range?.from) {
       setDuration(1);
-      setOutput(range.from?.toLocaleDateString());
+      setOutput(
+        range.from?.toLocaleDateString() +
+          " - " +
+          new Date(nextDay).toLocaleDateString()
+      );
       if (range.to) {
         setDuration((range.to - range.from) / 86400000);
         setOutput(
@@ -45,13 +45,11 @@ export function OrderForm(
     }
   }, [range?.from, range?.to]);
 
-  const productCode = useParams().code;
-  const date =
-    range?.from?.getFullYear() +
-    "-" +
-    range?.from?.getMonth() +
-    "-" +
-    range?.from?.getDate();
+  const dateFormat = (date) => {
+    return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+  };
+
+  // console.log(dateFormat(range?.from));
 
   const submitOrder = (event) => {
     event.preventDefault();
@@ -90,7 +88,8 @@ export function OrderForm(
       shipping_method: event.target.method.value,
       shipping_rates: 0,
       quantity: event.target.ItemQuantity.value,
-      rent_date: date,
+      rent_fromDate: range?.from && dateFormat(range?.from),
+      rent_toDate: range?.to ? dateFormat(range?.to) : null,
       rent_duration: duration,
       total_rent: totalRent() * event.target.ItemQuantity.value,
     };
@@ -165,6 +164,8 @@ export function OrderForm(
                       fixedWeeks
                       mode="range"
                       defaultMonth={new Date()}
+                      required
+                      min={1}
                       selected={range}
                       onSelect={setRange}
                       disabled={disabledDays}

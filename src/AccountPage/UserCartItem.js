@@ -1,32 +1,42 @@
 import React from "react";
-import styles from "./AccountPage.module.css";
+// import styles from "./AccountPage.module.css";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
 import { AppBtnWhite, AppBtnYellow } from "../CustomComponents/AppButton";
 import { IconClose, IconLocation } from "../Icons";
 
-export function UserCartItem(cartItem, index, allProducts) {
+export function UserCartItem(
+  cartItem,
+  allProducts,
+  handleShow,
+  deleteItem,
+  setDeleteItem
+) {
   const item = allProducts.find((item) => item.code === cartItem.product_code);
-
-  // _.update(object, "a[0].b.c", function (n) {
-  //   return n * n;
-  // });
-  // console.log(object.a[0].b.c);
 
   const itemTotal =
     item.ref_deposit * cartItem.quantity +
     cartItem.total_rent +
     cartItem.shipping_rates;
 
+  deleteItem = () => {
+    handleShow();
+    return setDeleteItem(cartItem.id);
+  };
+
   return (
-    <Container key={index} className={styles.CartItem}>
+    <Container>
       <Container as={Row} className="m-0">
         <Col>
           <h5 className="m-0">{item.item_name}</h5>
         </Col>
         <Col xs={1} className="text-end">
-          <IconClose defaultColor="#184d47" hoverColor="#b84141" />
+          <div onClick={deleteItem}>
+            <IconClose defaultColor="#184d47" hoverColor="#b84141" />
+          </div>
         </Col>
       </Container>
       <Row className="m-0 gap-3">
@@ -38,7 +48,7 @@ export function UserCartItem(cartItem, index, allProducts) {
             <Col className="text-end">Owner: Owner's Name</Col>
           </Container>
           <Container as={Row} className="m-0 gap-3">
-            <Col>
+            <Col style={{ maxHeight: "110px" }}>
               <img
                 src={JSON.parse(item.images)[0]}
                 alt=""
@@ -55,8 +65,15 @@ export function UserCartItem(cartItem, index, allProducts) {
                     <span>{cartItem.quantity}</span>
                   </div>
                   <div className="d-flex justify-content-between">
+                    <span>Quantity : </span>
+                    <span>{cartItem.quantity}</span>
+                  </div>
+                  <div className="d-flex justify-content-between">
                     <span>Rent Duration : </span>
-                    <span>{cartItem.rent_duration} days</span>
+                    <span>
+                      {cartItem.rent_duration}{" "}
+                      {cartItem.rent_duration > 1 ? " days" : " day"}
+                    </span>
                   </div>
                   <div className="d-flex justify-content-between">
                     <span>Shipping : </span>
@@ -66,10 +83,12 @@ export function UserCartItem(cartItem, index, allProducts) {
                         : "For delivery"}
                     </span>
                   </div>
-                  <div>
-                    <span>Addresss : </span>
-                    <p className="m-0">N/A</p>
-                  </div>
+                  {cartItem.shipping_method === "delivery" && (
+                    <div>
+                      <span>Delivery Address : </span>
+                      <p className="m-0">N/A</p>
+                    </div>
+                  )}
                 </Col>
                 <Col className="d-flex flex-column gap-1">
                   <div className="d-flex justify-content-between">
@@ -103,12 +122,7 @@ export function UserCartItem(cartItem, index, allProducts) {
           <AppBtnWhite className="white-green" type="button">
             Edit
           </AppBtnWhite>
-          <AppBtnWhite className="white-green" type="button">
-            Move to Wishlist
-          </AppBtnWhite>
-          <AppBtnYellow className="white-green" type="button">
-            Proceed to Checkout
-          </AppBtnYellow>
+          <AppBtnWhite type="button">Move to Wishlist</AppBtnWhite>
         </Col>
       </Row>
     </Container>
