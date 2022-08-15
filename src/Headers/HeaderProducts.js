@@ -37,10 +37,10 @@ const HeaderProducts = () => {
               <Link to="/account/profile">
                 <IconAccount defaultColor="#184D47" hoverColor="#81B395" />
               </Link>
-              <Link to="/account/my-cart">
+              <Link to="/account/cart">
                 <IconCart defaultColor="#184D47" hoverColor="#81B395" />
               </Link>
-              <Link to="/account">
+              <Link to="/">
                 <Logout defaultColor="#184D47" hoverColor="#81B395" />
               </Link>
             </Col>
@@ -84,7 +84,7 @@ const HeaderProducts = () => {
           </Row>
         </Container>
       </Container>
-    </Container >
+    </Container>
   );
 };
 

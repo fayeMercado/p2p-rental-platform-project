@@ -13,10 +13,6 @@
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.4));
 }
 
-.active {
-  background-color: #fcf9d5;
-}
-
 .AppButtonYellow {
   height: 40px;
   padding: 0 16px;
@@ -83,6 +79,23 @@
   outline: 2px solid #184d47;
 }
 
+.AppButtonYellowP {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #eeeeee;
+  border-radius: 50px;
+  background-color: #f7d52f;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #184d47;
+}
+
+.AppButtonYellowP:hover {
+  background-color: #f5e79d;
+  outline: 2px solid #f7d52f;
+}
+
 .White {
   min-height: 35px;
   padding: 6px 16px;
@@ -138,19 +151,27 @@
   color: #184d47;
 }
 
-.AppButtonYellowP {
-  height: 40px;
-  padding: 0 16px;
-  border: 1px solid #eeeeee;
+.WhiteGreenYellow {
+  min-height: 35px;
+  padding: 6px 16px;
+  border: none;
   border-radius: 50px;
-  background-color: #f7d52f;
+  background-color: #ffffff;
   font-family: "Montserrat", sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #184d47;
+  color: #126244;
 }
 
-.AppButtonYellowP:hover {
-  background-color: #f5e79d;
-  outline: 2px solid #f7d52f;
+.active {
+  background-color: #126244;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.WhiteGreenYellow:hover {
+  background-color: #fcf9d5;
+  border: none;
+  outline: 2px solid #126244 !important;
+  color: #126244;
 }

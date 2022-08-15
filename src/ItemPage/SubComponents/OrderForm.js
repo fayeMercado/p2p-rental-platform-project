@@ -83,7 +83,7 @@ export function OrderForm(item, handleShow, rates) {
     };
 
     let order = {
-      cart_id: "C0000001",
+      cart_id: JSON.parse(localStorage.getItem("user-info")).cart_id,
       product_code: productCode,
       shipping_method: event.target.method.value,
       shipping_rates: 0,
