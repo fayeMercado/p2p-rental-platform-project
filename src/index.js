@@ -43,11 +43,12 @@ root.render(
       <Route path="products" element={<ProductPage />}>
         <Route path=":category" element={<ProductList />} />
         <Route path="item/:code" element={<ItemPage />} />
+        <Route path="item/:code/edit=:cartItem" element={<ItemPage />} />
       </Route>
       <Route path="account" element={<AccountPage />}>
         <Route path="profile" element={<Profile />} />
         <Route path="profile/edit" element={<ProfileEdit />} />
-        <Route path="cart" element={<UserCart />} />
+        <Route path="cart" element={<UserCart />}></Route>
         <Route path="purchases" element={<PageMaintenance />} />
         <Route path="wishlist" element={<PageMaintenance />} />
       </Route>

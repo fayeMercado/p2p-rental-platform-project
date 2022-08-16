@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../ItemPage.module.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -11,16 +12,22 @@ import { AppBtnWhite, AppBtnYellow } from "../../CustomComponents/AppButton";
 import { DayPicker } from "react-day-picker";
 import { useParams } from "react-router-dom";
 
-export function OrderForm(item, handleShow, rates) {
+export function OrderForm(item, handleShow, rates, tempItem, checkURL) {
+  const navigate = useNavigate();
+  const productCode = useParams().code;
   const [duration, setDuration] = useState(0);
   const [range, setRange] = useState([]);
-  const productCode = useParams().code;
   const disabledDays = [
     { from: new Date(1980, 0, 1), to: new Date() },
     // { from: new Date(2022, 7, 20), to: undefined },
     // { from: new Date(2022, 7, 25), to: new Date(new Date(2022, 7, 25)) },
   ];
   const [output, setOutput] = useState("");
+
+  console.log(
+    window.location.pathname,
+    `/products/item/1660039917654/edit=${tempItem.cartId}`
+  );
 
   useEffect(() => {
     let nextDay = new Date(range?.from).getTime() + 86400000;
@@ -49,38 +56,36 @@ export function OrderForm(item, handleShow, rates) {
     return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
   };
 
-  // console.log(dateFormat(range?.from));
-
-  const submitOrder = (event) => {
-    event.preventDefault();
-
-    const totalRent = () => {
-      let days = duration;
-      let mo = 0;
-      let week = 0;
-      let day = 0;
-      if (duration >= 30) {
-        mo = Math.floor(duration / 30);
-        days %= 30;
-        if (days >= 7) {
-          week = Math.floor(days / 7);
-          day = days % 7;
-        } else {
-          day = days % 7;
-        }
-      } else if (days >= 7) {
+  const totalRent = () => {
+    let days = duration;
+    let mo = 0;
+    let week = 0;
+    let day = 0;
+    if (duration >= 30) {
+      mo = Math.floor(duration / 30);
+      days %= 30;
+      if (days >= 7) {
         week = Math.floor(days / 7);
         day = days % 7;
       } else {
-        day = days;
+        day = days % 7;
       }
+    } else if (days >= 7) {
+      week = Math.floor(days / 7);
+      day = days % 7;
+    } else {
+      day = days;
+    }
 
-      let rent_mo = rates?.month * mo;
-      let rent_week = rates?.week * week;
-      let rent_day = rates?.day * day;
+    let rent_mo = rates?.month * mo;
+    let rent_week = rates?.week * week;
+    let rent_day = rates?.day * day;
 
-      return rent_mo + rent_week + rent_day;
-    };
+    return rent_mo + rent_week + rent_day;
+  };
+
+  const submitOrder = (event) => {
+    event.preventDefault();
 
     let order = {
       cart_id: JSON.parse(localStorage.getItem("user-info")).cart_id,
@@ -112,6 +117,43 @@ export function OrderForm(item, handleShow, rates) {
       .catch((error) => console.log("error", error));
   };
 
+  const updateOrder = (event) => {
+    event.preventDefault();
+    let order = {
+      id: JSON.parse(localStorage.getItem("temp-edit")).cartId,
+      shipping_method: event.target.method.value,
+      shipping_rates: 0,
+      quantity: event.target.ItemQuantity.value,
+      rent_fromDate: range?.from && dateFormat(range?.from),
+      rent_toDate: range?.to ? dateFormat(range?.to) : null,
+      rent_duration: duration,
+      total_rent: totalRent() * event.target.ItemQuantity.value,
+    };
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let raw = JSON.stringify(order);
+
+    let requestOptions = {
+      method: "PATCH",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://127.0.0.1:8000/cart", requestOptions)
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+
+    navigate("/account/cart");
+  };
+
+  const discardChange = () => {
+    navigate("/account/cart");
+  };
+
   // return console.log(addDays(range.from, 3));
   // console.log(Date.parse("2022-08-17"));
   // console.log(new Date(Date.parse(range?.from)));
@@ -119,7 +161,7 @@ export function OrderForm(item, handleShow, rates) {
   return (
     <Form
       className="p-0 h-100 d-flex flex-column justify-content-between"
-      onSubmit={(event) => submitOrder(event)}
+      onSubmit={(event) => (checkURL ? updateOrder(event) : submitOrder(event))}
     >
       <div className="d-flex flex-column gap-2">
         <Form.Group
@@ -213,13 +255,23 @@ export function OrderForm(item, handleShow, rates) {
           </Col>
         </Form.Group>
       </div>
-
-      <Container className="d-flex justify-content-center mt-3 gap-3">
-        <AppBtnWhite type="button">Add to Wishlist</AppBtnWhite>
-        <AppBtnYellow type="submit" onClick={handleShow}>
-          Add to Cart
-        </AppBtnYellow>
-      </Container>
+      {checkURL ? (
+        <Container className="d-flex justify-content-center mt-3 gap-3">
+          <AppBtnWhite type="button" onClick={() => discardChange()}>
+            Cancel
+          </AppBtnWhite>
+          <AppBtnYellow type="submit" onClick={handleShow}>
+            Save
+          </AppBtnYellow>
+        </Container>
+      ) : (
+        <Container className="d-flex justify-content-center mt-3 gap-3">
+          <AppBtnWhite type="button">Add to Wishlist</AppBtnWhite>
+          <AppBtnYellow type="submit" onClick={handleShow}>
+            Add to Cart
+          </AppBtnYellow>
+        </Container>
+      )}
     </Form>
   );
 }
