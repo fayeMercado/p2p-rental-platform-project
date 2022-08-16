@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./AccountPage.module.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -12,13 +13,21 @@ import { ModalForDelete, ModalForPaymentConfirmation } from "./CartModals";
 import { customAlphabet } from "nanoid/non-secure";
 
 export function UserCart() {
+  const navigate = useNavigate();
   const [myCart, setMyCart] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [checked, setChecked] = useState([]);
-
   const [modal, setModal] = useState("");
   const userToken = JSON.parse(localStorage.getItem("user-info"));
   const nanoid = customAlphabet("1234567890abcdef");
+  const [retriveItem, setRetriveItem] = useState({});
+
+  const clickHandler = (e) => {
+    localStorage.removeItem("temp-edit");
+    navigate(`/products/item/${e.itemCode}/edit=${e.cartId}`);
+    let temp = e;
+    localStorage.setItem("temp-edit", JSON.stringify(temp));
+  };
 
   //modal>>
   const [show, setShow] = useState(false);
@@ -173,9 +182,11 @@ export function UserCart() {
               allProducts,
               handleShow,
               deleteItem,
-
               setDeleteItem,
-              setModal
+              setModal,
+              retriveItem,
+              setRetriveItem,
+              clickHandler
             )}
           </Form.Group>
         ))}
@@ -189,13 +200,13 @@ export function UserCart() {
             <div className="d-flex justify-content-between">
               <span>Refundable Subtotal</span>
               <span className="text-end">
-                &#8369;<b>{totalRefundable.toLocaleString()}</b>
+                &#8369;<b>{totalRefundable?.toLocaleString()}</b>
               </span>
             </div>
             <div className="d-flex justify-content-between">
               <span>Rent Subtotal</span>
               <span className="text-end">
-                &#8369;<b>{totalRent.toLocaleString()}</b>
+                &#8369;<b>{totalRent?.toLocaleString()}</b>
               </span>
             </div>
             <div className="d-flex justify-content-between">

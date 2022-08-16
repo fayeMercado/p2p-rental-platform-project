@@ -24,6 +24,10 @@ const ItemPage = () => {
   let params = useParams();
   const [item, setItem] = useState([]);
   const rates = item.rent_rates && JSON.parse(item.rent_rates); //must not be undefined (waiting for value) before parsing
+  const tempItem = JSON.parse(localStorage.getItem("temp-edit"));
+  const checkURL =
+    window.location.pathname ===
+    `/products/item/${tempItem.itemCode}/edit=${tempItem.cartId}`;
 
   function findInProducts() {
     fetch("http://localhost:8000/products")
@@ -103,12 +107,16 @@ const ItemPage = () => {
             <hr />
 
             {/* <<<<<<<<<< Order Form >>>>>>>>>> */}
-            {OrderForm(item, handleShow, rates)}
+            {OrderForm(item, handleShow, rates, tempItem, checkURL)}
           </Col>
 
           <Modal show={show} onHide={handleClose} size="sm" centered backdrop>
             <Modal.Header closeButton></Modal.Header>
-            <Modal.Body>Successfully added to cart</Modal.Body>
+            <Modal.Body>
+              {checkURL
+                ? "Successfully added to cart"
+                : "Item updated successfully"}
+            </Modal.Body>
           </Modal>
 
           {/* <<<<<<<<<< Image Carousel >>>>>>>>>> */}
@@ -127,7 +135,7 @@ const ItemPage = () => {
             />
           </div>
           <div className="d-flex flex-column justify-content-center text-center">
-            <h5 className="fontMain">Owner's Name</h5>
+            <h5 className="fontMain">{item.owner}</h5>
             <span>OWNER</span>
           </div>
         </div>
