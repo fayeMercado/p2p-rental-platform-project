@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 // import styles from "./AccountPage.module.css";
 
 import Container from "react-bootstrap/Container";
@@ -56,8 +56,8 @@ export function UserCartItem(
           </div>
         </Col>
       </Container>
-      <Row className="m-0 gap-3">
-        <Col>
+      <div style={{ paddingRight: "1.75rem" }}>
+        <Row className="m-0 gap-3">
           <Container as={Row} className="m-0 mb-2">
             <Col>
               <IconLocation color="#184D47" /> {item.location}
@@ -145,18 +145,20 @@ export function UserCartItem(
               </Row>
             </Col>
           </Container>
-        </Col>
-        <Col xs={2} className="d-flex flex-column justify-content-end gap-2">
-          <AppBtnWhite
-            className="white-green"
-            type="button"
-            onClick={(e) => getId(e)}
-          >
-            Edit
-          </AppBtnWhite>
-          <AppBtnWhite type="button">Move to Wishlist</AppBtnWhite>
-        </Col>
-      </Row>
+        </Row>
+
+        <Row className="d-flex justify-content-center mt-3">
+          <Col xs={2} className="d-flex flex-column">
+            <AppBtnWhite
+              className="white-green"
+              type="button"
+              onClick={(e) => getId(e)}
+            >
+              Edit
+            </AppBtnWhite>
+          </Col>
+        </Row>
+      </div>
     </Container>
   );
 }

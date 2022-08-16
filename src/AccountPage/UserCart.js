@@ -63,7 +63,7 @@ export function UserCart() {
     getCart();
     getProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [myCart]);
 
   const totalRefundable =
     allProducts.length &&

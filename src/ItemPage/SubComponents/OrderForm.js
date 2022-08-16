@@ -12,7 +12,7 @@ import { AppBtnWhite, AppBtnYellow } from "../../CustomComponents/AppButton";
 import { DayPicker } from "react-day-picker";
 import { useParams } from "react-router-dom";
 
-export function OrderForm(item, handleShow, rates, tempItem, checkURL) {
+export function OrderForm(item, handleShow, rates, tempItem, editMode) {
   const navigate = useNavigate();
   const productCode = useParams().code;
   const [duration, setDuration] = useState(0);
@@ -23,11 +23,6 @@ export function OrderForm(item, handleShow, rates, tempItem, checkURL) {
     // { from: new Date(2022, 7, 25), to: new Date(new Date(2022, 7, 25)) },
   ];
   const [output, setOutput] = useState("");
-
-  console.log(
-    window.location.pathname,
-    `/products/item/1660039917654/edit=${tempItem.cartId}`
-  );
 
   useEffect(() => {
     let nextDay = new Date(range?.from).getTime() + 86400000;
@@ -148,10 +143,12 @@ export function OrderForm(item, handleShow, rates, tempItem, checkURL) {
       .catch((error) => console.log("error", error));
 
     navigate("/account/cart");
+    localStorage.removeItem("temp-edit");
   };
 
   const discardChange = () => {
     navigate("/account/cart");
+    localStorage.removeItem("temp-edit");
   };
 
   // return console.log(addDays(range.from, 3));
@@ -161,7 +158,7 @@ export function OrderForm(item, handleShow, rates, tempItem, checkURL) {
   return (
     <Form
       className="p-0 h-100 d-flex flex-column justify-content-between"
-      onSubmit={(event) => (checkURL ? updateOrder(event) : submitOrder(event))}
+      onSubmit={(event) => (editMode ? updateOrder(event) : submitOrder(event))}
     >
       <div className="d-flex flex-column gap-2">
         <Form.Group
@@ -255,7 +252,7 @@ export function OrderForm(item, handleShow, rates, tempItem, checkURL) {
           </Col>
         </Form.Group>
       </div>
-      {checkURL ? (
+      {editMode ? (
         <Container className="d-flex justify-content-center mt-3 gap-3">
           <AppBtnWhite type="button" onClick={() => discardChange()}>
             Cancel
