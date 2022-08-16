@@ -15,6 +15,7 @@ export function UserCart() {
   const [myCart, setMyCart] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [checked, setChecked] = useState([]);
+
   const [modal, setModal] = useState("");
   const userToken = JSON.parse(localStorage.getItem("user-info"));
   const nanoid = customAlphabet("1234567890abcdef");
@@ -39,6 +40,7 @@ export function UserCart() {
 
   const getCart = () => {
     fetch(`http://127.0.0.1:8000/cart/${userToken.cart_id}`)
+
       .then((response) => response.json())
       .then((result) => {
         setMyCart(result);
@@ -88,13 +90,16 @@ export function UserCart() {
       .then((response) => response.json())
       .then((result) => {
         const filteredCart = result.filter(
+
           (item) => item.cart_id === userToken.cart_id
+
         );
         setMyCart(filteredCart);
       });
 
     return handleClose();
   };
+
 
   const handleChange = (event) => {
     let updatedList = [...checked];
@@ -153,6 +158,7 @@ export function UserCart() {
         <span className="m-2">{myCart.length} products found.</span>
       </Container>
 
+
       <Form className="p-0">
         {/* <<<<<<<<<< Cart List >>>>>>>>>> */}
         {myCart.map((cartItem, index) => (
@@ -174,11 +180,13 @@ export function UserCart() {
               allProducts,
               handleShow,
               deleteItem,
+
               setDeleteItem,
               setModal
             )}
           </Form.Group>
         ))}
+
 
         <Container>
           <h5 style={{ color: "#184d47", textAlign: "center" }}>
@@ -256,6 +264,7 @@ export function UserCart() {
             </div>
 
             <div className="text-center mt-3">
+
               <AppBtnGreen type="submit" onClick={(e) => checkoutHandler(e)}>
                 Checkout
               </AppBtnGreen>
@@ -274,6 +283,7 @@ export function UserCart() {
               checkoutCart
             )}
         </Modal>
+
       </Form>
     </Container>
   ) : (
