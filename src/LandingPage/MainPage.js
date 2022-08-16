@@ -3,7 +3,7 @@ import { Row, Col, Container, Button, Badge } from "react-bootstrap";
 import "./LandingPage.css";
 
 import HeaderMain from "../Headers/HeaderMain";
-import HeaderLanding from "../Headers/HeaderLanding";
+import HeaderMainLogin from "../Headers/HeaderMainLogin";
 import WhyPage from "./WhyPage";
 import HowPage from "./HowPage";
 import ReviewPage from "./ReviewPage";
@@ -14,7 +14,13 @@ import main from "../Images/main.png";
 
 const MainPage = () => (
   <>
-    <HeaderMain />
+
+    {
+      localStorage.getItem('user-info') ?
+        <HeaderMainLogin />
+        :
+        <HeaderMain />
+    }
     <Container className="mt-5">
       <Row>
         <Col>
