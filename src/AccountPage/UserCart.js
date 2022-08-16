@@ -96,7 +96,7 @@ export function UserCart() {
       body: JSON.stringify(itemToBeDeleted),
     };
 
-    fetch("http://localhost:8000/cart", requestOptions)
+    fetch("http://phplaravel-821102-2821130.cloudwaysapps.com/cart", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         const filteredCart = result.filter(
@@ -145,7 +145,7 @@ export function UserCart() {
         body: JSON.stringify(toCheckout),
       };
 
-      fetch("http://localhost:8000/cart/checkout", requestOptions)
+      fetch("http://phplaravel-821102-2821130.cloudwaysapps.com/cart/checkout", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log("result", result);

@@ -36,7 +36,7 @@ const ItemPage = () => {
   }, [tempItem]);
 
   function findInProducts() {
-    fetch("http://localhost:8000/products")
+    fetch("http://phplaravel-821102-2821130.cloudwaysapps.com/products")
       .then((result) => result.json())
       .then((response) => {
         const findItem = response.find((item) => item.code === params.code);

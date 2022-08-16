@@ -33,7 +33,7 @@ export function Signup(props) {
         setEmail("");
         setPassword("");
 
-        let result = await fetch("http://localhost:8000/register", {
+        let result = await fetch("http://phplaravel-821102-2821130.cloudwaysapps.com/register", {
             method: 'POST',
             body: JSON.stringify(item),
             headers: {
@@ -181,7 +181,7 @@ export function Login(props) {
         setPassword("");
 
         let item = { email, password }
-        let result = await fetch("http://localhost:8000/login", {
+        let result = await fetch("http://phplaravel-821102-2821130.cloudwaysapps.com/login", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
