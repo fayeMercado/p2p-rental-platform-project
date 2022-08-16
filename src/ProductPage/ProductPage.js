@@ -9,6 +9,7 @@ import Stack from "react-bootstrap/Stack";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 import HeaderProducts from "../Headers/HeaderProducts";
+import HeaderProductsNo from "../Headers/HeaderProductsNo";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Categories } from "../dataCategories.js";
 import { AppButtonWGY, AppButtonWhite } from "../CustomComponents/AppButton";
@@ -20,7 +21,14 @@ function ProductPage() {
 
   return (
     <Container fluid className={styles.ProductPage} data-testid="ProductPage">
-      <HeaderProducts />
+
+      {
+        localStorage.getItem('user-info') ?
+          <HeaderProducts />
+          :
+          <HeaderProductsNo />
+      }
+
       <Container>
         <Row className="align-items-center">
           <Breadcrumb className="pt-3">
