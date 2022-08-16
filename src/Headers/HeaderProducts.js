@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Headers.module.css";
 
@@ -17,6 +17,15 @@ import { Link, useNavigate } from "react-router-dom";
 const HeaderProducts = () => {
   const provinces = require("philippines/provinces");
   const navigate = useNavigate();
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('user-info'));
+    if (items) {
+      setItems(items);
+    }
+  }, []);
 
   function logOut() {
     localStorage.clear();
@@ -38,7 +47,7 @@ const HeaderProducts = () => {
               />
             </Col>
             <Col className="d-flex justify-content-end align-items-center gap-3">
-              <span className={styles.Welcome}>Welcome, Username!</span>
+              <span className={styles.Welcome}>Welcome, {items.firstname}</span>
               <Link to="/account/profile">
                 <IconAccount defaultColor="#184D47" hoverColor="#81B395" />
               </Link>
