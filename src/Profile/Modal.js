@@ -25,9 +25,6 @@ export function Signup(props) {
 
         let item = { cart_id, firstname, lastname, address, mobile, username, email, password };
         event.preventDefault();
-        console.log(item)
-        // setCartId("");
-        // cart_id("");
         setFirstName("");
         setLastName("");
         setAddress("");
@@ -45,7 +42,6 @@ export function Signup(props) {
             }
         })
         result = await result.json()
-        localStorage.setItem('user-info', JSON.stringify(result));
         navigate("/");
     }
 
@@ -62,16 +58,7 @@ export function Signup(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={signUp}>
-                    <Form.Group className="mb-3" >
-                        <Form.Label>Unique Key</Form.Label>
-                        <Form.Control
-                            type="text"
-                            // placeholder="Last Name"
-                            value={cart_id}
-                            // onChange={(e) => setCartId(e.target.value)}
-                            disabled
-                        />
-                    </Form.Group>
+
                     <Row>
                         <Col xs={12} md={6}>
                             <Form.Group className="mb-3" >
