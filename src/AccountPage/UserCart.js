@@ -30,14 +30,8 @@ export function UserCart() {
   //<<modal
 
   useEffect(() => {
-    getCart();
-    getProducts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
     hasPickUpMethod();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checked]);
 
   const getCart = () => {
@@ -55,6 +49,12 @@ export function UserCart() {
       .then((result) => setAllProducts(result))
       .catch((error) => console.log("error", error));
   };
+
+  useEffect(() => {
+    getCart();
+    getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const totalRefundable =
     allProducts.length &&
