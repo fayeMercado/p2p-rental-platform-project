@@ -11,12 +11,17 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Badge from "react-bootstrap/Badge";
 
 import logoWhite from "../Images/logoWhite.svg";
-import { IconAccount, IconCart, IconSearch, Logout } from "../Icons.js";
+import { IconAccount, IconCart, IconSearch, IconLogout } from "../Icons.js";
 import { Link, useNavigate } from "react-router-dom";
 
 const HeaderProducts = () => {
   const provinces = require("philippines/provinces");
   const navigate = useNavigate();
+
+  function logOut() {
+    localStorage.clear();
+  }
+
   return (
     <Container fluid className={styles.HeaderProducts} data-testid="Headers">
       <Container
@@ -40,8 +45,8 @@ const HeaderProducts = () => {
               <Link to="/account/cart">
                 <IconCart defaultColor="#184D47" hoverColor="#81B395" />
               </Link>
-              <Link to="/">
-                <Logout defaultColor="#184D47" hoverColor="#81B395" />
+              <Link to="/" onClick={logOut}>
+                <IconLogout defaultColor="#184D47" hoverColor="#81B395" />
               </Link>
             </Col>
             <div style={{ color: "#fff", marginTop: "0.75rem" }}>
