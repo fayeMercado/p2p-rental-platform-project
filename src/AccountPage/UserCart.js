@@ -9,7 +9,7 @@ import { AppBtnGreen } from "../CustomComponents/AppButton";
 import { UserCartItem } from "./UserCartItem";
 import { ModalForDelete, ModalForPaymentConfirmation } from "./CartModals";
 
-import { nanoid, customAlphabet } from "nanoid/non-secure";
+import { customAlphabet } from "nanoid/non-secure";
 
 export function UserCart() {
   const [myCart, setMyCart] = useState([]);
@@ -32,15 +32,16 @@ export function UserCart() {
   useEffect(() => {
     getCart();
     getProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     hasPickUpMethod();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checked]);
 
   const getCart = () => {
     fetch(`http://127.0.0.1:8000/cart/${userToken.cart_id}`)
-
       .then((response) => response.json())
       .then((result) => {
         setMyCart(result);
@@ -90,16 +91,13 @@ export function UserCart() {
       .then((response) => response.json())
       .then((result) => {
         const filteredCart = result.filter(
-
           (item) => item.cart_id === userToken.cart_id
-
         );
         setMyCart(filteredCart);
       });
 
     return handleClose();
   };
-
 
   const handleChange = (event) => {
     let updatedList = [...checked];
@@ -142,10 +140,6 @@ export function UserCart() {
         .then((response) => response.json())
         .then((result) => {
           console.log("result", result);
-          // const filteredCart = result.filter(
-          //   (item) => item.cart_id === userToken.cart_id
-          // );
-          // setMyCart(filteredCart);
         });
       return console.log("success");
     });
@@ -157,7 +151,6 @@ export function UserCart() {
         <h3 className="fontMain fw-bold">MY CART</h3>
         <span className="m-2">{myCart.length} products found.</span>
       </Container>
-
 
       <Form className="p-0">
         {/* <<<<<<<<<< Cart List >>>>>>>>>> */}
@@ -186,7 +179,6 @@ export function UserCart() {
             )}
           </Form.Group>
         ))}
-
 
         <Container>
           <h5 style={{ color: "#184d47", textAlign: "center" }}>
@@ -264,7 +256,6 @@ export function UserCart() {
             </div>
 
             <div className="text-center mt-3">
-
               <AppBtnGreen type="submit" onClick={(e) => checkoutHandler(e)}>
                 Checkout
               </AppBtnGreen>
@@ -283,7 +274,6 @@ export function UserCart() {
               checkoutCart
             )}
         </Modal>
-
       </Form>
     </Container>
   ) : (
