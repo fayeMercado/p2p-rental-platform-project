@@ -12,6 +12,15 @@ export const Profile = () => {
     //         .then((response) => console.log(response));
     // }, []);
 
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        const items = JSON.parse(localStorage.getItem('user-info'));
+        if (items) {
+            setItems(items);
+        }
+    }, []);
+
     useEffect(() => {
         async function getData() {
             const response = await fetch(
@@ -40,7 +49,7 @@ export const Profile = () => {
                                     <h6 className="mb-0">Full Name</h6>
                                 </div>
                                 <div className="col-sm-9 text-secondary">
-                                    Juan dela Cruz
+                                    {items.firstname} {items.lastname}
                                 </div>
                             </div>
                             <hr />
@@ -49,7 +58,7 @@ export const Profile = () => {
                                     <h6 className="mb-0">Email</h6>
                                 </div>
                                 <div className="col-sm-9 text-secondary">
-                                    jdcruz@test.com
+                                    {items.email}
                                 </div>
                             </div>
                             <hr />
@@ -58,7 +67,7 @@ export const Profile = () => {
                                     <h6 className="mb-0">Phone</h6>
                                 </div>
                                 <div className="col-sm-9 text-secondary">
-                                    (09) 123-456-789
+                                    {items.mobile}
                                 </div>
                             </div>
                             <hr />
@@ -67,7 +76,7 @@ export const Profile = () => {
                                     <h6 className="mb-0">Address</h6>
                                 </div>
                                 <div className="col-sm-9 text-secondary">
-                                    Junquera, Cebu City, Cebu
+                                    {items.address}
                                 </div>
                             </div>
                             <hr />
@@ -86,11 +95,20 @@ export const Profile = () => {
 
 export const ProfileEdit = () => {
     const navigate = useNavigate();
-    const [fullname, setFullName] = useState('Juan dela Cruz');
-    const [email, setEmail] = useState('jdcruz@test.com');
-    const [mobile, setMobile] = useState('(09) 123-456-789');
-    const [address, setAddress] = useState('Junquera, Cebu City, Cebu');
+    const [fullname, setFullName] = useState('Juan Cruz');
+    const [email, setEmail] = useState('jc@test.com');
+    const [mobile, setMobile] = useState('09173248992');
+    const [address, setAddress] = useState('CEB');
     const [show, setShow] = useState(false);
+    // const [items, setItems] = useState([]);
+
+    // useEffect(() => {
+    //     const items = JSON.parse(localStorage.getItem('user-info'));
+    //     if (items) {
+    //         setItems(items);
+    //     }
+    // }, []);
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -152,9 +170,9 @@ export const ProfileEdit = () => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Confirmation</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                <Modal.Body>Do you want to save changes you made to your profile?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
