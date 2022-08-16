@@ -46,6 +46,29 @@ export function IconCart(props) {
   );
 }
 
+export function IconLogout(props) {
+  const [color, setColor] = useState(props.defaultColor);
+  return (
+    <div
+      onMouseEnter={() => setColor(props.hoverColor)}
+      onMouseLeave={() => setColor(props.defaultColor)}
+    >
+      <svg
+        width="45"
+        height="40"
+        viewBox="0 0 45 40"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M33.3333 8.88889L30.2 12.0222L35.9333 17.7778H13.3333V22.2222H35.9333L30.2 27.9556L33.3333 31.1111L44.4444 20L33.3333 8.88889ZM4.44444 4.44444H22.2222V0H4.44444C2 0 0 2 0 4.44444V35.5556C0 38 2 40 4.44444 40H22.2222V35.5556H4.44444V4.44444Z"
+          fill={color}
+        />
+      </svg>
+    </div>
+  );
+}
+
 export function IconClose(props) {
   const [color, setColor] = useState(props.defaultColor);
   return (
@@ -280,7 +303,6 @@ export function IconLocation(props) {
   );
 }
 
-
 export function Logout(props) {
   const [color, setColor] = useState(props.defaultColor);
   return (
@@ -304,5 +326,3 @@ export function Logout(props) {
     </div>
   );
 }
-
-
