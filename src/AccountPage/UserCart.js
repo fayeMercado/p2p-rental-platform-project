@@ -5,12 +5,11 @@ import Row from "react-bootstrap/Row";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
-import {
-  AppBtnGreen,
-  AppBtnWhite,
-  AppBtnYellow,
-} from "../CustomComponents/AppButton";
+import { AppBtnGreen } from "../CustomComponents/AppButton";
 import { UserCartItem } from "./UserCartItem";
+import { ModalForDelete, ModalForPaymentConfirmation } from "./CartModals";
+
+import { nanoid, customAlphabet } from "nanoid/non-secure";
 
 export function UserCart() {
   const [myCart, setMyCart] = useState([]);
@@ -18,18 +17,32 @@ export function UserCart() {
   const [checked, setChecked] = useState([]);
   const [modal, setModal] = useState("");
   const userToken = JSON.parse(localStorage.getItem("user-info"));
+  const nanoid = customAlphabet("1234567890abcdef");
 
   //modal>>
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [deleteItem, setDeleteItem] = useState("");
+  const [confirmation, setConfirmation] = useState(true);
+  const [confirmed, setConfirmed] = useState(false);
   //<<modal
+
+  useEffect(() => {
+    getCart();
+    getProducts();
+  }, []);
+
+  useEffect(() => {
+    hasPickUpMethod();
+  }, [checked]);
 
   const getCart = () => {
     fetch(`http://127.0.0.1:8000/cart/${userToken.cart_id}`)
       .then((response) => response.json())
-      .then((result) => setMyCart(result))
+      .then((result) => {
+        setMyCart(result);
+      })
       .catch((error) => console.log("error", error));
   };
 
@@ -39,11 +52,6 @@ export function UserCart() {
       .then((result) => setAllProducts(result))
       .catch((error) => console.log("error", error));
   };
-
-  useEffect(() => {
-    getCart();
-    getProducts();
-  }, []);
 
   const totalRefundable =
     allProducts.length &&
@@ -104,16 +112,7 @@ export function UserCart() {
   const checkoutHandler = (event) => {
     event.preventDefault();
     handleShow();
-    setModal("forPayment");
-  };
-
-  const paymentConfirm = (event) => {
-    event.preventDefault();
-    if (event.target.confirmPassword.value === userToken.password) {
-      return console.log("paid");
-    } else {
-      return console.log("error");
-    }
+    setModal("forPaymentConfirmation");
   };
 
   const hasPickUpMethod = () => {
@@ -122,9 +121,30 @@ export function UserCart() {
     return arr.includes("pick-up");
   };
 
-  useEffect(() => {
-    hasPickUpMethod();
-  }, [checked]);
+  const checkoutCart = () => {
+    checked.map((item) => {
+      let toCheckout = {
+        id: item.id,
+        orderId: nanoid(13),
+      };
+      const requestOptions = {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(toCheckout),
+      };
+
+      fetch("http://localhost:8000/cart/checkout", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log("result", result);
+          // const filteredCart = result.filter(
+          //   (item) => item.cart_id === userToken.cart_id
+          // );
+          // setMyCart(filteredCart);
+        });
+      return console.log("success");
+    });
+  };
 
   return myCart.length && allProducts.length ? (
     <Container as={Row} className={styles.UserCart}>
@@ -243,43 +263,16 @@ export function UserCart() {
           </div>
         </Container>
         <Modal show={show} onHide={handleClose} size="sm" centered backdrop>
-          {modal === "forDelete" && (
-            <div>
-              <Modal.Body>
-                Are you sure you want to delete this item from your cart?
-              </Modal.Body>
-              <Modal.Footer>
-                <AppBtnWhite type="button" onClick={handleClose}>
-                  No
-                </AppBtnWhite>
-                <AppBtnYellow type="button" onClick={deleteConfirm}>
-                  Yes
-                </AppBtnYellow>
-              </Modal.Footer>
-            </div>
-          )}
-
-          {modal === "forPayment" && (
-            <Form onSubmit={(e) => paymentConfirm(e)}>
-              <Modal.Body>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Enter password to confirm.</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    name="confirmPassword"
-                    autoFocus
-                  />
-                </Form.Group>
-              </Modal.Body>
-              <Modal.Footer>
-                <AppBtnWhite type="button" onClick={handleClose}>
-                  Close
-                </AppBtnWhite>
-                <AppBtnYellow type="submit">Confirm</AppBtnYellow>
-              </Modal.Footer>
-            </Form>
-          )}
+          {modal === "forDelete" && ModalForDelete(handleClose, deleteConfirm)}
+          {modal === "forPaymentConfirmation" &&
+            ModalForPaymentConfirmation(
+              handleClose,
+              confirmation,
+              setConfirmation,
+              confirmed,
+              setConfirmed,
+              checkoutCart
+            )}
         </Modal>
       </Form>
     </Container>
