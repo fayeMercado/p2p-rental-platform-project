@@ -23,21 +23,26 @@ import "react-day-picker/dist/style.css";
 const ItemPage = () => {
   let params = useParams();
   const [item, setItem] = useState([]);
+  const [editMode, setEditMode] = useState(false);
   const rates = item.rent_rates && JSON.parse(item.rent_rates); //must not be undefined (waiting for value) before parsing
-  const tempItem = JSON.parse(localStorage.getItem("temp-edit"));
-  const checkURL =
-    window.location.pathname ===
-    `/products/item/${tempItem.itemCode}/edit=${tempItem.cartId}`;
+  let tempItem = JSON.parse(localStorage.getItem("temp-edit"));
+
+  useEffect(() => {
+    if (tempItem === null) {
+      setEditMode(false);
+    } else {
+      setEditMode(true);
+    }
+  }, [tempItem]);
 
   function findInProducts() {
-    fetch("http://localhost:8000/products")
+    fetch("http://phplaravel-821102-2821130.cloudwaysapps.com/products")
       .then((result) => result.json())
       .then((response) => {
         const findItem = response.find((item) => item.code === params.code);
         setItem(findItem);
       });
   }
-
   useEffect(findInProducts, [params.code]);
 
   //modal>>
@@ -107,15 +112,15 @@ const ItemPage = () => {
             <hr />
 
             {/* <<<<<<<<<< Order Form >>>>>>>>>> */}
-            {OrderForm(item, handleShow, rates, tempItem, checkURL)}
+            {OrderForm(item, handleShow, rates, tempItem, editMode)}
           </Col>
 
           <Modal show={show} onHide={handleClose} size="sm" centered backdrop>
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
-              {checkURL
-                ? "Successfully added to cart"
-                : "Item updated successfully"}
+              {editMode
+                ? "Item updated successfully"
+                : "Successfully added to cart"}
             </Modal.Body>
           </Modal>
 

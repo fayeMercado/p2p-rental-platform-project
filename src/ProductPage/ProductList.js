@@ -20,7 +20,7 @@ export function ProductList() {
   const provinces = require("philippines/provinces");
 
   const allProducts = () => {
-    fetch("http://localhost:8000/products")
+    fetch("http://phplaravel-821102-2821130.cloudwaysapps.com/products")
       .then((result) => result.json())
       .then((response) => {
         setProducts(response);
