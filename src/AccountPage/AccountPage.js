@@ -72,12 +72,12 @@ const AccountPage = () => {
                 MY PURCHASES
               </AppButtonWGY>
               <AppButtonWGY
-                active={activeButton === "wishlist"}
+                active={activeButton === "inventory"}
                 type="button"
-                name="wishlist"
+                name="inventory"
                 onClick={(e) => clickHandler(e)}
               >
-                WISHLIST
+                MY INVENTORY
               </AppButtonWGY>
             </Stack>
           </Col>

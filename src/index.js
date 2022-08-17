@@ -28,6 +28,7 @@ import { Profile, ProfileEdit } from "./Profile/Profile";
 
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import Inventory from "./AccountPage/UserInventory";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -50,7 +51,7 @@ root.render(
         <Route path="profile/edit" element={<ProfileEdit />} />
         <Route path="cart" element={<UserCart />}></Route>
         <Route path="purchases" element={<PageMaintenance />} />
-        <Route path="wishlist" element={<PageMaintenance />} />
+        <Route path="inventory" element={<Inventory />} />
       </Route>
 
       <Route path="rental-policy" element={<RentalPolicy />}></Route>
