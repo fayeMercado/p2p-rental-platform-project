@@ -20,7 +20,9 @@ const HeaderMain = () => {
   const [loginShow, setLoginShow] = useState(false);
   const [signupShow, setSignupShow] = useState(false);
 
-
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div className={styles.Headers} data-testid="Headers">
@@ -52,30 +54,24 @@ const HeaderMain = () => {
                     Log in
                   </AppButtonWhiteGreen>
                 </div>
-                <Login
-                  show={loginShow}
-                  onHide={() => setLoginShow(false)}
-                />
+                <Login show={loginShow} onHide={() => setLoginShow(false)} />
 
                 {/* Login End */}
 
                 {/* Signup Start */}
 
                 <div>
-                  <AppButtonGreen
-                    type="button"
-                    onClick={() => setSignupShow(true)}
-                  >
+                  <AppButtonGreen type="button" onClick={handleShow}>
                     Sign up
                   </AppButtonGreen>
                 </div>
-                <Signup
+                {/* <Signup
                   show={signupShow}
                   onHide={() => setSignupShow(false)}
-                />
+                /> */}
+                {Signup(show, handleClose)}
 
                 {/* Signup End */}
-
               </Col>
               <div style={{ color: "#fff", marginTop: "0.75rem" }}>
                 online marketplace that facilitates peer-to-peer renting in
@@ -130,7 +126,7 @@ const HeaderMain = () => {
           </Container>
         </Container>
       </Container>
-    </div >
+    </div>
   );
 };
 
