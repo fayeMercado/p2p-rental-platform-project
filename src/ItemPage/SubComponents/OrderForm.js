@@ -106,7 +106,10 @@ export function OrderForm(item, handleShow, rates, tempItem, editMode) {
       redirect: "follow",
     };
 
-    fetch("http://127.0.0.1:8000/cart", requestOptions)
+    fetch(
+      "https://phplaravel-821102-2821130.cloudwaysapps.com/cart",
+      requestOptions
+    )
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
@@ -137,7 +140,10 @@ export function OrderForm(item, handleShow, rates, tempItem, editMode) {
       redirect: "follow",
     };
 
-    fetch("http://127.0.0.1:8000/cart", requestOptions)
+    fetch(
+      "https://phplaravel-821102-2821130.cloudwaysapps.com/cart",
+      requestOptions
+    )
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

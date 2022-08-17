@@ -13,6 +13,7 @@ import Badge from "react-bootstrap/Badge";
 import logoWhite from "../Images/logoWhite.svg";
 import { IconAccount, IconCart, IconSearch, IconLogout } from "../Icons.js";
 import { Link, useNavigate } from "react-router-dom";
+import { AppButtonYellow100 } from "../CustomComponents/AppButton";
 
 const HeaderProducts = () => {
   const provinces = require("philippines/provinces");
@@ -21,7 +22,7 @@ const HeaderProducts = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('user-info'));
+    const items = JSON.parse(localStorage.getItem("user-info"));
     if (items) {
       setItems(items);
     }
@@ -94,6 +95,15 @@ const HeaderProducts = () => {
                   <IconSearch />
                 </div>
               </InputGroup>
+            </Col>
+            <Col xs={2} className="d-flex align-items-center pl-0">
+              <span style={{ paddingRight: "12px" }}>or </span>
+              <AppButtonYellow100
+                type="button"
+                onClick={() => navigate("/products/all")}
+              >
+                Explore
+              </AppButtonYellow100>
             </Col>
           </Row>
         </Container>

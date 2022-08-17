@@ -26,12 +26,15 @@ export function ModalForPaymentConfirmation(
   setConfirmation,
   confirmed,
   setConfirmed,
-  checkoutCart
+  checkoutCart,
+  refresh,
+  setRefresh
 ) {
   const confirmPayment = () => {
     checkoutCart();
     setConfirmation(false);
     setConfirmed(true);
+    setRefresh(!refresh);
   };
 
   const resetModal = () => {
