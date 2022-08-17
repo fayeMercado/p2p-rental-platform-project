@@ -23,6 +23,16 @@ const AccountPage = () => {
     navigate(`/account/${e.target.name}`);
   };
 
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("user-info"));
+    if (items) {
+      setItems(items);
+    }
+  }, []);
+
+
   useEffect(() => {
     const urlLast = window.location.pathname.split("/")[2];
     setActiveButton(urlLast);
@@ -43,7 +53,7 @@ const AccountPage = () => {
           <Col xs={3}>
             <Container className="mb-4 text-center">
               <img src={juan} alt="" width="75%" />
-              <h3 className="mt-3">Juan dela Cruz</h3>
+              <h3 className="mt-3">{items.username}</h3>
               <p>Username</p>
             </Container>
             <Stack className="gap-3">
