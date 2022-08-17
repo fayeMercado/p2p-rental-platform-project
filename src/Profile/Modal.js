@@ -5,21 +5,47 @@ import { Modal, Form, Row, Col } from "react-bootstrap";
 import { AppButtonYellow, AppButtonGreen } from "../CustomComponents/AppButton";
 import { nanoid } from "nanoid";
 
-export function Signup(props) {
+export function Signup(show, handleClose) {
   const provinces = require("philippines/provinces");
+  const cities = require("philippines/cities");
   const navigate = useNavigate();
   const cart_id = nanoid(10);
 
   // const [cart_id, setCartId] = useState("");
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
-  const [address, setAddress] = useState("");
+  const [block, setBlock] = useState("");
+  const [city, setCity] = useState("");
+  const [filteredCity, setFilteredCity] = useState([]);
+  const [province, setProvince] = useState("");
   const [mobile, setMobile] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const getProvince = (entry) => {
+    let find = provinces?.find((province) => province.name === entry);
+    return find?.key;
+  };
+
+  const filterCity = (entry) => {
+    let key = getProvince(entry);
+    return cities?.filter((city) => city.province === key);
+  };
+
+  useEffect(() => {
+    setFilteredCity(filterCity(province));
+    setCity("Select City");
+  }, [province]);
+
+  // console.log({ city: city, province: province });
+
   async function signUp(event) {
+    setCity(event.target.city.value);
+    let address = JSON.stringify({
+      city: event.target.city.value,
+      province: province,
+    });
     let item = {
       cart_id,
       firstname,
@@ -30,14 +56,15 @@ export function Signup(props) {
       email,
       password,
     };
+    // console.log(item);
     event.preventDefault();
-    setFirstName("");
-    setLastName("");
-    setAddress("");
-    setMobile("");
-    setUsername("");
-    setEmail("");
-    setPassword("");
+    // setFirstName("");
+    // setLastName("");
+    // setAddress("");
+    // setMobile("");
+    // setUsername("");
+    // setEmail("");
+    // setPassword("");
 
     let result = await fetch(
       "https://phplaravel-821102-2821130.cloudwaysapps.com/register",
@@ -56,7 +83,9 @@ export function Signup(props) {
 
   return (
     <Modal
-      {...props}
+      show={show}
+      onHide={handleClose}
+      backdrop
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -66,7 +95,7 @@ export function Signup(props) {
         <Modal.Title>REGISTER A NEW ACCOUNT</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={signUp}>
+        <Form onSubmit={(e) => signUp(e)}>
           <Row>
             <Col xs={12} md={6}>
               <Form.Group className="mb-3">
@@ -94,18 +123,39 @@ export function Signup(props) {
             </Col>
           </Row>
           <Form.Group className="mb-3">
-            <Form.Label>Address</Form.Label>
+            <label htmlFor="province">Select Province</label>
             <Form.Select
-              aria-label="Default select example"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              aria-label="Select Province"
+              controlId="province"
+              name="province"
+              defaultValue="Select Province"
+              onChange={(e) => setProvince(e.target.value)}
             >
-              <option>Select Address</option>
+              <option disabled>--</option>
               {provinces.map((province) => (
-                <option key={province.key} value={province.key}>
+                <option key={province.key} value={province.name}>
                   {province.name}
                 </option>
               ))}
+            </Form.Select>
+
+            <label htmlFor="city" className="mt-3">
+              Select City/Municipality
+            </label>
+            <Form.Select
+              aria-label="Select City/Municipality"
+              controlId="city"
+              name="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            >
+              <option disabled>--</option>
+              {filteredCity.length &&
+                filteredCity.map((entry) => (
+                  <option key={entry.key} value={entry.name}>
+                    {entry.name}
+                  </option>
+                ))}
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">

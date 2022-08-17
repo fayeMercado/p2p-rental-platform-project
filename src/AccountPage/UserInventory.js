@@ -5,12 +5,12 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import { Categories } from "../dataCategories";
 import { AppBtnWhite, AppBtnYellow } from "../CustomComponents/AppButton";
 
 function Inventory() {
-  const categorylist = Categories;
-  const provinces = require("philippines/provinces");
+  const [textAreaValue, setTextAreaValue] = useState("");
+  const [imageArray, setImageArray] = useState([]);
+
   const getUserInfo = () => {
     if (localStorage.getItem("user-info")) {
       return JSON.parse(localStorage.getItem("user-info"));
@@ -22,16 +22,26 @@ function Inventory() {
     getUserInfo();
   }, []);
 
-  console.log(require("philippines/cities"));
+  const user = getUserInfo();
+  const userLocation = () => {
+    let explode = JSON.parse(user.address);
+    return explode.city + ", " + explode.province;
+  };
+
+  console.log(userLocation());
+
+  const addImage = () => {
+    setImageArray([...imageArray, textAreaValue]);
+    return setTextAreaValue("");
+  };
 
   const addItem = (event) => {
     event.preventDefault();
-    let imageArray = [];
 
     let product = {
       item_name: event.target.itemName.value,
       category: event.target.category.value,
-      location: getUserInfo().address,
+      location: userLocation(),
       available_quantity: event.target.quantity.value,
       rent_rates: JSON.stringify({
         day: event.target.rentday.value,
@@ -39,10 +49,12 @@ function Inventory() {
         month: event.target.rentmonth.value,
       }),
       ref_deposit: event.target.refundable.value,
-      owner: getUserInfo().username,
+      owner: user.username,
       item_description: event.target.description.value,
       images: JSON.stringify(imageArray),
     };
+
+    console.log(product);
 
     // <<<< manual add >>>>>
     // let product = {
@@ -171,12 +183,29 @@ function Inventory() {
 
         <Form.Group className="mb-3" controlId="images">
           <Form.Label>Insert Image URL</Form.Label>
-          <Form.Control className={styles.CustomField} as="textarea" />
-
-          <Form.Text className="d-flex flex-column text-muted">
-            <span>Added URLs:</span>
-            <span>aaa</span>
-          </Form.Text>
+          <Form.Control
+            className={styles.CustomField + " mb-2"}
+            as="textarea"
+            value={textAreaValue}
+            onChange={(e) => setTextAreaValue(e.target.value)}
+          />
+          <Row>
+            <Col>
+              <Form.Text className="d-flex flex-column text-muted">
+                <span>Added URLs:</span>
+                {imageArray.map((url, index) => (
+                  <span key={index}>{url}</span>
+                ))}
+              </Form.Text>
+            </Col>
+            <Col xs={2} className="d-flex justify-content-end">
+              <div>
+                <AppBtnWhite type="button" onClick={() => addImage()}>
+                  Add URL
+                </AppBtnWhite>
+              </div>
+            </Col>
+          </Row>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="description">
