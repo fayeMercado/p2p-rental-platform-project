@@ -193,6 +193,7 @@ function ProductTabInfo() {
       </Tab>
       <Tab eventKey="instructions" title="PICK-UP & RETURN INSTRUCTIONS">
         {/* <Container>{item.instructions}</Container> */}
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15396.88401822494!2d120.86164571784316!3d15.255738930583504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396e156fdf233a1%3A0x2f5c25121ac8a586!2sJollibee%20Cabiao!5e0!3m2!1sen!2sph!4v1660731590763!5m2!1sen!2sph" width="600" height="450" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </Tab>
       <Tab eventKey="reviews" title="REVIEWS">
         <Container>Lorem Ipsum3</Container>
