@@ -39,6 +39,22 @@ export const Profile = () => {
   function Edit() {
     navigate("/account/profile/edit");
   }
+  const getUserInfo = () => {
+    if (localStorage.getItem("user-info")) {
+      return JSON.parse(localStorage.getItem("user-info"));
+    } else {
+      return null;
+    }
+  };
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
+  const user = getUserInfo();
+  const userLocation = () => {
+    let explode = JSON.parse(user.address);
+    return explode.city + ", " + explode.province;
+  };
 
   return (
     <div>
@@ -73,7 +89,7 @@ export const Profile = () => {
                 <div className="col-sm-3">
                   <h6 className="mb-0">Address</h6>
                 </div>
-                <div className="col-sm-9 text-secondary">{items.address}</div>
+                <div className="col-sm-9 text-secondary">{userLocation()}</div>
               </div>
               {/* <hr />
               <div className="row">
