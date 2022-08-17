@@ -225,28 +225,51 @@ export function Login(props) {
   //     setPassword("");
   // };
 
-  async function logIn(event) {
-    console.log(email, password);
-    event.preventDefault();
-    setEmail("");
-    setPassword("");
+  // async function logIn(event) {
+  //   console.log(email, password);
+  //   event.preventDefault();
+  //   setEmail("");
+  //   setPassword("");
 
-    let item = { email, password };
-    let result = await fetch(
-      "https://phplaravel-821102-2821130.cloudwaysapps.com/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(item),
+  //   let item = { email, password };
+  //   let result = await fetch(
+  //     "https://phplaravel-821102-2821130.cloudwaysapps.com/login",
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Accept: "application/json",
+  //       },
+  //       body: JSON.stringify(item),
+  //     }
+  //   );
+  //   result = await result.json();
+  //   localStorage.setItem("user-info", JSON.stringify(result));
+  //   navigate("/products/all");
+  // }
+  function handleSubmit(e) {
+    const item = { email, password };
+    e.preventDefault();
+    fetch("https://phplaravel-821102-2821130.cloudwaysapps.com/login", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify(item)
+    }).then(async response => {
+      if (!response.ok) {
+        const validation = await response.json();
+        console.log(validation.errors);
+      } else {
+        const result = await response.json();
+        localStorage.setItem("user-info", JSON.stringify(result));
+        navigate("/products/all");
       }
-    );
-    result = await result.json();
-    localStorage.setItem("user-info", JSON.stringify(result));
-    navigate("/products/all");
+    })
   }
+
+
 
   // const [loginInfo, setLoginInfo] = useState({
   //     email: "",
@@ -275,7 +298,7 @@ export function Login(props) {
         <Modal.Title id="contained-modal-title-vcenter">LOG IN</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={logIn}>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Label>Email address</Form.Label>
             <Form.Control
