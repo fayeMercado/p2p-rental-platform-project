@@ -28,8 +28,6 @@ function Inventory() {
     return explode.city + ", " + explode.province;
   };
 
-  console.log(userLocation());
-
   const addImage = () => {
     setImageArray([...imageArray, textAreaValue]);
     return setTextAreaValue("");
@@ -54,21 +52,20 @@ function Inventory() {
       images: JSON.stringify(imageArray),
     };
 
-    console.log(product);
-
     // <<<< manual add >>>>>
     // let product = {
-    //   item_name: 'Stanley 1800W 10" Table Saw',
-    //   category: "tools-equipment",
-    //   location: getUserInfo().address,
-    //   available_quantity: 1,
-    //   rent_rates: '{"day" : 200, "week" : 1000, "month" : 3500}',
-    //   ref_deposit: 2000,
-    //   owner: getUserInfo().username,
+    //   item_name: data.item_name,
+    //   category: data.category,
+    //   location: userLocation(),
+    //   available_quantity: data.available_quantity,
+    //   rent_rates: data.rent_rates,
+    //   ref_deposit: data.ref_deposit,
+    //   owner: user.username,
     //   item_description: "",
-    //   images:
-    //     '["https://adamimages.sbdinc.com/GEM/Stanley/1000x1000_144r/STST1825_1.jpg", "https://adamimages.sbdinc.com/GEM/Stanley/1000x1000_144r/STST1825_2.jpg", "https://adamimages.sbdinc.com/GEM/Stanley/1000x1000_144r/STST1825_3.jpg", "https://adamimages.sbdinc.com/GEM/Stanley/1000x1000_144r/STST1825_4.jpg", "https://cdn.store-assets.com/s/14425/i/23731082.jpg?width=1024"]',
+    //   images: data.images,
     // };
+
+    console.log(product);
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
