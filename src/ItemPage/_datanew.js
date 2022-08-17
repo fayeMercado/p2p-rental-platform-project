@@ -1,31 +1,31 @@
 export const newdata = [
-  {
-    id: 1,
-    date_created: "8/9/22 16:33",
-    code: 1660033987092,
-    item_name: "Harry Potter: The Complete Series (Paperback) by J.K. Rowling",
-    category: "books",
-    location: "Nueva Ecija",
-    available_quantity: 1,
-    rent_rates: '{"day" : 80, "week" : 300, "month" : 1000}',
-    ref_deposit: 500,
-    images:
-      '["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmU-ECJLx5pEYnbfB7I_71e8CaNLKnbmv16g&usqp=CAU"]',
-  },
-  {
-    id: 2,
-    date_created: "8/9/22 16:32",
-    code: 1660033965499,
-    item_name:
-      "VR Shinecon Virtual Reality Glasses Headset Box for 4.0 - 6.6 inch Smartphone",
-    category: "electronics-accessories",
-    location: "Laguna",
-    available_quantity: 3,
-    rent_rates: '{"day" : 30, "week" : 200, "month" : 700}',
-    ref_deposit: 500,
-    images:
-      '["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDQs-DS-Ef4Prx5MowuYRWX7E3aLISVkSwh6V1FdFxJko6NvYBqWtGO_ErA23HP9R4ZSQ&usqp=CAU"]',
-  },
+  // {
+  //   id: 1,
+  //   date_created: "8/9/22 16:33",
+  //   code: 1660033987092,
+  //   item_name: "Harry Potter: The Complete Series (Paperback) by J.K. Rowling",
+  //   category: "books",
+  //   location: "Nueva Ecija",
+  //   available_quantity: 1,
+  //   rent_rates: '{"day" : 80, "week" : 300, "month" : 1000}',
+  //   ref_deposit: 500,
+  //   images:
+  //     '["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmU-ECJLx5pEYnbfB7I_71e8CaNLKnbmv16g&usqp=CAU"]',
+  // },
+  // {
+  //   id: 2,
+  //   date_created: "8/9/22 16:32",
+  //   code: 1660033965499,
+  //   item_name:
+  //     "VR Shinecon Virtual Reality Glasses Headset Box for 4.0 - 6.6 inch Smartphone",
+  //   category: "electronics-accessories",
+  //   location: "Laguna",
+  //   available_quantity: 3,
+  //   rent_rates: '{"day" : 30, "week" : 200, "month" : 700}',
+  //   ref_deposit: 500,
+  //   images:
+  //     '["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDQs-DS-Ef4Prx5MowuYRWX7E3aLISVkSwh6V1FdFxJko6NvYBqWtGO_ErA23HP9R4ZSQ&usqp=CAU"]',
+  // },
   {
     id: 3,
     date_created: "8/9/22 16:31",
@@ -482,6 +482,19 @@ export const newdata = [
     images:
       '["https://i.ibb.co/1dwLP2S/500x500-i38-24042018075336.jpg","https://i.ibb.co/ZShZX4d/gallery2.jpg","https://i.ibb.co/BqQB5Sm/500x500-m4-P-24042018075336.jpg"]',
   },
+];
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+export const newdata2 = [
   {
     id: 38,
     date_created: "8/9/22 16:33",
@@ -993,109 +1006,5 @@ export const newdata = [
     ref_deposit: 32201,
     images:
       '["https://i.ibb.co/kq4ww5C/500x500-9-Fr-24042018074013.jpg","https://i.ibb.co/kqsCf8m/k7vx5-K6i-SESPEQapn-Yew-XZ.jpg","https://i.ibb.co/ygR97Sn/b3ec05253cbb714c9addd1db8aff7289.jpg"]',
-  },
-  {
-    id: 77,
-    date_created: "8/9/22 16:32",
-    code: 1660033953721,
-    item_name: "Rent an Electric Kick Scooter",
-    category: "transport",
-    location: "NA",
-    available_quantity: 1,
-    rent_rates: '{"day" : 1208, "week" : 4830, "month" : 14491}',
-    ref_deposit: 20126,
-    images:
-      '["https://i.ibb.co/Zz99Dhc/500x500-LBy-24042018071809.jpg","https://i.ibb.co/grNMsMp/500x500-Cha-24042018071809.jpg","https://i.ibb.co/KrzY0hg/images.png"]',
-  },
-  {
-    id: 78,
-    date_created: "8/9/22 16:33",
-    code: 1660034034204,
-    item_name: "Merida Reacto 5000 Carbon Aero road bicycle",
-    category: "transport",
-    location: "NA",
-    available_quantity: 1,
-    rent_rates: '{"day" : 1208, "week" : 6038, "month" : 20126}',
-    ref_deposit: 2013,
-    images:
-      '["https://i.ibb.co/Vj8mpdD/500x500-ZNK-24042018075831.png","https://i.ibb.co/ZSQ6kZH/REACTO-DISC-5000-bluslv-MY2020.jpg","https://i.ibb.co/47JMt49/merida-reacto-5000-frame.webp"]',
-  },
-  {
-    id: 79,
-    date_created: "8/9/22 16:33",
-    code: 1660033989055,
-    item_name: "Electronic wheelchair",
-    category: "transport",
-    location: "NA",
-    available_quantity: 1,
-    rent_rates: '{"day" : 403, "week" : 2616, "month" : 10465}',
-    ref_deposit: 8050,
-    images:
-      '["https://i.ibb.co/JKWzPZ5/500x500-b-Iq-24042018075238.jpg","https://i.ibb.co/wWtLyZn/pf-f81f9d83-phoenix-3-263x.jpg","https://i.ibb.co/KKRFYdG/849a2773.jpg"]',
-  },
-  {
-    id: 80,
-    date_created: "8/9/22 16:33",
-    code: 1660034018500,
-    item_name: "Segway X2",
-    category: "transport",
-    location: "NA",
-    available_quantity: 1,
-    rent_rates: '{"day" : 6038, "week" : 36226, "month" : 72453}',
-    ref_deposit: 4025,
-    images:
-      '["https://i.ibb.co/Tq6JXc1/500x500-3-TY-24042018072944.jpg","https://i.ibb.co/zFJ6Zct/1-jpg58119eaf-af89-4083-9fdf-db5cf7060d20-Original.jpg","https://i.ibb.co/w6jGMqH/x2-SE-Multi-terrain.jpg"]',
-  },
-  {
-    id: 81,
-    date_created: "8/9/22 16:31",
-    code: 1660033873238,
-    item_name: "Compact & Lightweight Baby Stroller",
-    category: "transport",
-    location: "NA",
-    available_quantity: 1,
-    rent_rates: '{"day" : 113, "week" : 805, "month" : 3220}',
-    ref_deposit: 4025,
-    images:
-      '["https://i.ibb.co/3pRRzfP/500x500-p-Bn-24042018073219.jpg","https://i.ibb.co/JHPfTtM/quinny-zapp-stroller-1642562406-ee4bb6a3-progressive.jpg","https://i.ibb.co/grjzJxM/quinny-zapp-stroller-1642562407-231ff9da-progressive.jpg"]',
-  },
-  {
-    id: 82,
-    date_created: "8/9/22 16:32",
-    code: 1660033938017,
-    item_name: "Toyota Hiace ",
-    category: "transport",
-    location: "NA",
-    available_quantity: 1,
-    rent_rates: '{"day" : 3421, "week" : 19723, "month" : 52327}',
-    ref_deposit: 8050,
-    images:
-      '["https://i.ibb.co/DrMwZDd/500x500-C1-N-24042018072706.jpg","https://i.ibb.co/TvWMT0n/3-R4-Gan4p-of-ALng-Gp-St-Z-Svl-Rb-Qzh8-C.jpg","https://i.ibb.co/61fTZJZ/Toyota-Hiace-4-WD.jpg"]',
-  },
-  {
-    id: 83,
-    date_created: "8/9/22 16:31",
-    code: 1660033871275,
-    item_name: "10ft Truck with canopy for rent",
-    category: "transport",
-    location: "NA",
-    available_quantity: 1,
-    rent_rates: '{"day" : 4025, "week" : 18113, "month" : 60377}',
-    ref_deposit: 4025,
-    images:
-      '["https://i.ibb.co/d4SDqW6/500x500-7u2-24042018074820.jpg","https://i.ibb.co/Wtk7yPZ/gallery-used-car-one2car-kia-k2700-truck-thailand-9523854-o-MLLksy-GU0l-YFf-FCBXr-JMD.jpg","https://i.ibb.co/PNkj59p/5c74a31a-4-e8b8.jpg"]',
-  },
-  {
-    id: 84,
-    date_created: "8/9/22 16:31",
-    code: 1660033892868,
-    item_name: "Self-balancing scooter/hoverboard with samsung battery",
-    category: "transport",
-    location: "NA",
-    available_quantity: 1,
-    rent_rates: '{"day" : 604, "week" : 3623, "month" : 14491}',
-    ref_deposit: 4025,
-    images:
-      '["https://i.ibb.co/y4705wK/500x500-ng1-24042018080243.jpg","https://i.ibb.co/KN5Mm4J/Electric-Two-Wheel-Self-Balance-Scooter-2-Wheels-Smart-Balance-Scooter-Electric-Scooter-Two-Wheel-Se.jpg","https://i.ibb.co/3cc8GYJ/ed7a86ad-610a-4913-842c-51f35823f3df-1-4859aeb42f913d7e1ea69f202dad66d0.jpg"]',
   },
 ];
