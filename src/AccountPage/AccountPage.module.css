@@ -72,3 +72,17 @@
   display: flex;
   justify-content: space-between;
 }
+
+.CustomField {
+  min-height: 32px !important;
+  border: 1px solid #90c594 !important;
+  border-radius: 5px !important;
+  padding: 0.25rem 0.5rem;
+  display: flex !important;
+}
+
+.CustomField:focus {
+  box-shadow: 0 0 0 3px rgba(129, 179, 149, 0.5);
+  border: 1px solid rgba(129, 179, 149, 0.5);
+  outline: none;
+}
