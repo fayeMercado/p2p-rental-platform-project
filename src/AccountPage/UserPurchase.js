@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { AppBtnWhite, AppBtnYellow } from "../CustomComponents/AppButton";
 
-function UserInventory() {
+function UserPurchase() {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [imageArray, setImageArray] = useState([]);
 
@@ -43,8 +43,8 @@ function UserInventory() {
   );
 }
 
-UserInventory.propTypes = {};
+UserPurchase.propTypes = {};
 
-UserInventory.defaultProps = {};
+UserPurchase.defaultProps = {};
 
-export default UserInventory;
+export default UserPurchase;

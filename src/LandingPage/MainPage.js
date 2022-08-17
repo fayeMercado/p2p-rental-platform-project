@@ -14,13 +14,7 @@ import main from "../Images/main.png";
 
 const MainPage = () => (
   <>
-
-    {
-      localStorage.getItem('user-info') ?
-        <HeaderMainLogin />
-        :
-        <HeaderMain />
-    }
+    {localStorage.getItem("user-info") ? <HeaderMainLogin /> : <HeaderMain />}
     <Container className="mt-5">
       <Row>
         <Col>

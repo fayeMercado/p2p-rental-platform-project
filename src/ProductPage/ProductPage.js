@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
+import ScrollTop from "../LandingPage/ScrollTop";
+
 import HeaderProducts from "../Headers/HeaderProducts";
 import HeaderProductsNo from "../Headers/HeaderProductsNo";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -21,13 +23,11 @@ function ProductPage() {
 
   return (
     <Container fluid className={styles.ProductPage} data-testid="ProductPage">
-
-      {
-        localStorage.getItem('user-info') ?
-          <HeaderProducts />
-          :
-          <HeaderProductsNo />
-      }
+      {localStorage.getItem("user-info") ? (
+        <HeaderProducts />
+      ) : (
+        <HeaderProductsNo />
+      )}
 
       <Container>
         <Row className="align-items-center">
@@ -60,6 +60,7 @@ function ProductPage() {
           </Col>
         </Row>
       </Container>
+      <ScrollTop />
       <Footer></Footer>
     </Container>
   );
