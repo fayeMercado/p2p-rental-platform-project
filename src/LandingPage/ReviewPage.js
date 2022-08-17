@@ -38,7 +38,7 @@ const ReviewPage = () => (
                   fontStyle: "italic",
                 }}
               >
-                This site works so well and is conveinient to use. I am able to
+                This site works so well and is convenient to use. I am able to
                 save money by renting instead of buying a brand new one.
               </p>
             </Col>
@@ -67,8 +67,7 @@ const ReviewPage = () => (
                   fontStyle: "italic",
                 }}
               >
-                This site works so well and is conveinient to use. I am able to
-                save money by renting instead of buying a brand new one.
+                I love this site and these products and now I love this customer service! Thank you!
               </p>
             </Col>
           </Row>
