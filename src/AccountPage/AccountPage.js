@@ -93,6 +93,14 @@ const AccountPage = () => {
               >
                 MY INVENTORY
               </AppButtonWGY>
+              <AppButtonWGY
+                active={activeButton === "addproducts"}
+                type="button"
+                name="addproducts"
+                onClick={(e) => clickHandler(e)}
+              >
+                ADD ITEMS FOR RENT
+              </AppButtonWGY>
             </Stack>
           </Col>
           <Col className="pl-0">

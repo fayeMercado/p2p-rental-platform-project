@@ -29,6 +29,9 @@ import { Profile, ProfileEdit } from "./Profile/Profile";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Inventory from "./AccountPage/UserInventory";
+import UserPurchase from "./AccountPage/UserPurchase";
+import UserAddItems from "./AccountPage/UserAddItems";
+import UserInventory from "./AccountPage/UserInventory";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -50,8 +53,9 @@ root.render(
         <Route path="profile" element={<Profile />} />
         <Route path="profile/edit" element={<ProfileEdit />} />
         <Route path="cart" element={<UserCart />}></Route>
-        <Route path="purchases" element={<PageMaintenance />} />
-        <Route path="inventory" element={<Inventory />} />
+        <Route path="purchases" element={<UserPurchase />} />
+        <Route path="inventory" element={<UserInventory />} />
+        <Route path="addproducts" element={<UserAddItems />} />
       </Route>
 
       <Route path="rental-policy" element={<RentalPolicy />}></Route>
