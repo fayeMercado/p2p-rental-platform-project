@@ -54,8 +54,8 @@ export function IconLogout(props) {
       onMouseLeave={() => setColor(props.defaultColor)}
     >
       <svg
-        width="45"
-        height="40"
+        width="40"
+        height="32"
         viewBox="0 0 45 40"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
