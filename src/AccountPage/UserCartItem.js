@@ -19,11 +19,13 @@ export function UserCartItem(
   setRetriveItem,
   clickHandler
 ) {
-  const item = allProducts.find((item) => item.code === cartItem.product_code);
+  const item =
+    allProducts.length &&
+    allProducts.find((item) => item?.code === cartItem?.product_code);
   const itemTotal =
-    item.ref_deposit * cartItem.quantity +
-    cartItem.total_rent +
-    cartItem.shipping_rates;
+    item?.ref_deposit * cartItem?.quantity +
+    cartItem?.total_rent +
+    cartItem?.shipping_rates;
 
   deleteItem = () => {
     handleShow();
@@ -48,7 +50,7 @@ export function UserCartItem(
     <Container>
       <Container as={Row} className="m-0">
         <Col>
-          <h5 className="m-0">{item.item_name}</h5>
+          <h5 className="m-0">{item?.item_name}</h5>
         </Col>
         <Col xs={1} className="text-end">
           <div onClick={deleteItem}>
@@ -60,14 +62,14 @@ export function UserCartItem(
         <Row className="m-0 gap-3">
           <Container as={Row} className="m-0 mb-2">
             <Col>
-              <IconLocation color="#184D47" /> {item.location}
+              <IconLocation color="#184D47" /> {item?.location}
             </Col>
-            <Col className="text-end">Owner: {item.owner}</Col>
+            <Col className="text-end">Owner: {item?.owner}</Col>
           </Container>
           <Container as={Row} className="m-0 gap-3">
             <Col style={{ maxHeight: "110px" }}>
               <img
-                src={JSON.parse(item.images)[0]}
+                src={JSON.parse(item?.images)[0]}
                 alt=""
                 width="100%"
                 height="100%"

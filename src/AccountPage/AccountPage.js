@@ -32,7 +32,6 @@ const AccountPage = () => {
     }
   }, []);
 
-
   useEffect(() => {
     const urlLast = window.location.pathname.split("/")[2];
     setActiveButton(urlLast);
@@ -52,7 +51,12 @@ const AccountPage = () => {
         <Row className="gap-2">
           <Col xs={3}>
             <Container className="mb-4 text-center">
-              <img src={juan} alt="" width="75%" />
+              <img
+                src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"
+                alt=""
+                width="75%"
+                style={{ borderRadius: "100px" }}
+              />
               <h3 className="mt-3">{items.username}</h3>
               <p>Username</p>
             </Container>

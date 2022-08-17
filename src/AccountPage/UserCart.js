@@ -21,10 +21,11 @@ export function UserCart() {
   const userToken = JSON.parse(localStorage.getItem("user-info"));
   const nanoid = customAlphabet("1234567890abcdef");
   const [retriveItem, setRetriveItem] = useState({});
+  const [refresh, setRefresh] = useState(false);
 
   const clickHandler = (e) => {
     localStorage.removeItem("temp-edit");
-    navigate(`/products/item/${e.itemCode}/edit=${e.cartId}`);
+    navigate(`/products/item/${e.itemCode}/edit=${e.cart_id}`);
     let temp = e;
     localStorage.setItem("temp-edit", JSON.stringify(temp));
   };
@@ -44,7 +45,9 @@ export function UserCart() {
   }, [checked]);
 
   const getCart = () => {
-    fetch(`http://127.0.0.1:8000/cart/${userToken.cart_id}`)
+    fetch(
+      `https://phplaravel-821102-2821130.cloudwaysapps.com/cart/${userToken.cart_id}`
+    )
       .then((response) => response.json())
       .then((result) => {
         setMyCart(result);
@@ -53,7 +56,7 @@ export function UserCart() {
   };
 
   const getProducts = () => {
-    fetch("http://127.0.0.1:8000/products")
+    fetch("https://phplaravel-821102-2821130.cloudwaysapps.com/products")
       .then((response) => response.json())
       .then((result) => setAllProducts(result))
       .catch((error) => console.log("error", error));
@@ -63,7 +66,12 @@ export function UserCart() {
     getCart();
     getProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [myCart]);
+  }, []);
+
+  useEffect(() => {
+    getCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refresh]);
 
   const totalRefundable =
     allProducts.length &&
@@ -96,7 +104,10 @@ export function UserCart() {
       body: JSON.stringify(itemToBeDeleted),
     };
 
-    fetch("https://phplaravel-821102-2821130.cloudwaysapps.com/cart", requestOptions)
+    fetch(
+      "https://phplaravel-821102-2821130.cloudwaysapps.com/cart",
+      requestOptions
+    )
       .then((response) => response.json())
       .then((result) => {
         const filteredCart = result.filter(
@@ -137,7 +148,7 @@ export function UserCart() {
     checked.map((item) => {
       let toCheckout = {
         id: item.id,
-        orderId: nanoid(13),
+        order_id: nanoid(13),
       };
       const requestOptions = {
         method: "PATCH",
@@ -145,7 +156,10 @@ export function UserCart() {
         body: JSON.stringify(toCheckout),
       };
 
-      fetch("https://phplaravel-821102-2821130.cloudwaysapps.com/cart/checkout", requestOptions)
+      fetch(
+        "https://phplaravel-821102-2821130.cloudwaysapps.com/cart/checkout",
+        requestOptions
+      )
         .then((response) => response.json())
         .then((result) => {
           console.log("result", result);
@@ -282,7 +296,9 @@ export function UserCart() {
               setConfirmation,
               confirmed,
               setConfirmed,
-              checkoutCart
+              checkoutCart,
+              refresh,
+              setRefresh
             )}
         </Modal>
       </Form>
