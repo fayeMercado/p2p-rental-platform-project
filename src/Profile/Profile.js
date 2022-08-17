@@ -75,12 +75,12 @@ export const Profile = () => {
                 </div>
                 <div className="col-sm-9 text-secondary">{items.address}</div>
               </div>
-              <hr />
+              {/* <hr />
               <div className="row">
                 <div className="col-sm-12">
                   <AppButtonYellowP onClick={Edit}>Edit</AppButtonYellowP>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
