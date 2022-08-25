@@ -79,10 +79,7 @@ function UserAddItems() {
       redirect: "follow",
     };
 
-    fetch(
-      "https://phplaravel-821102-2821130.cloudwaysapps.com/products",
-      requestOptions
-    )
+    fetch("https://p2p-database.herokuapp.com/products", requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

@@ -45,9 +45,7 @@ export function UserCart() {
   }, [checked]);
 
   const getCart = () => {
-    fetch(
-      `https://phplaravel-821102-2821130.cloudwaysapps.com/cart/${userToken.cart_id}`
-    )
+    fetch(`https://p2p-database.herokuapp.com/cart/${userToken.cart_id}`)
       .then((response) => response.json())
       .then((result) => {
         setMyCart(result);
@@ -56,7 +54,7 @@ export function UserCart() {
   };
 
   const getProducts = () => {
-    fetch("https://phplaravel-821102-2821130.cloudwaysapps.com/products")
+    fetch("https://p2p-database.herokuapp.com/products")
       .then((response) => response.json())
       .then((result) => setAllProducts(result))
       .catch((error) => console.log("error", error));
@@ -104,10 +102,7 @@ export function UserCart() {
       body: JSON.stringify(itemToBeDeleted),
     };
 
-    fetch(
-      "https://phplaravel-821102-2821130.cloudwaysapps.com/cart",
-      requestOptions
-    )
+    fetch("https://p2p-database.herokuapp.com/cart", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         const filteredCart = result.filter(
@@ -156,10 +151,7 @@ export function UserCart() {
         body: JSON.stringify(toCheckout),
       };
 
-      fetch(
-        "https://phplaravel-821102-2821130.cloudwaysapps.com/cart/checkout",
-        requestOptions
-      )
+      fetch("https://p2p-database.herokuapp.com/cart/checkout", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log("result", result);

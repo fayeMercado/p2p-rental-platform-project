@@ -10,7 +10,7 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   // useEffect(() => {
-  //     fetch("https://phplaravel-821102-2821130.cloudwaysapps.com/profile")
+  //     fetch("https://p2p-database.herokuapp.com/profile")
   //         .then((result) => result.json())
   //         .then((response) => console.log(response));
   // }, []);
@@ -27,7 +27,7 @@ export const Profile = () => {
   useEffect(() => {
     async function getData() {
       const response = await fetch(
-        "https://phplaravel-821102-2821130.cloudwaysapps.com/profile"
+        "https://p2p-database.herokuapp.com/profile"
       );
       let actualData = await response.json();
 
