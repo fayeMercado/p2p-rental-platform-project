@@ -66,17 +66,14 @@ export function Signup(show, handleClose) {
     // setEmail("");
     // setPassword("");
 
-    let result = await fetch(
-      "https://phplaravel-821102-2821130.cloudwaysapps.com/register",
-      {
-        method: "POST",
-        body: JSON.stringify(item),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
+    let result = await fetch("https://p2p-database.herokuapp.com/register", {
+      method: "POST",
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
     result = await result.json();
     navigate("/");
   }
@@ -233,7 +230,7 @@ export function Login(props) {
 
   //   let item = { email, password };
   //   let result = await fetch(
-  //     "https://phplaravel-821102-2821130.cloudwaysapps.com/login",
+  //     "https://p2p-database.herokuapp.com/login",
   //     {
   //       method: "POST",
   //       headers: {
@@ -250,14 +247,14 @@ export function Login(props) {
   function handleSubmit(e) {
     const item = { email, password };
     e.preventDefault();
-    fetch("https://phplaravel-821102-2821130.cloudwaysapps.com/login", {
-      method: 'POST',
+    fetch("https://p2p-database.herokuapp.com/login", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "accept": "application/json"
+        accept: "application/json",
       },
-      body: JSON.stringify(item)
-    }).then(async response => {
+      body: JSON.stringify(item),
+    }).then(async (response) => {
       if (!response.ok) {
         const validation = await response.json();
         console.log(validation.errors);
@@ -266,10 +263,8 @@ export function Login(props) {
         localStorage.setItem("user-info", JSON.stringify(result));
         navigate("/products/all");
       }
-    })
+    });
   }
-
-
 
   // const [loginInfo, setLoginInfo] = useState({
   //     email: "",

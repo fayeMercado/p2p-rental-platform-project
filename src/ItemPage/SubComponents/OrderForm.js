@@ -106,10 +106,7 @@ export function OrderForm(item, handleShow, rates, tempItem, editMode) {
       redirect: "follow",
     };
 
-    fetch(
-      "https://phplaravel-821102-2821130.cloudwaysapps.com/cart",
-      requestOptions
-    )
+    fetch("https://p2p-database.herokuapp.com/cart", requestOptions)
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
@@ -140,10 +137,7 @@ export function OrderForm(item, handleShow, rates, tempItem, editMode) {
       redirect: "follow",
     };
 
-    fetch(
-      "https://phplaravel-821102-2821130.cloudwaysapps.com/cart",
-      requestOptions
-    )
+    fetch("https://p2p-database.herokuapp.com/cart", requestOptions)
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
